@@ -1,27 +1,6 @@
 {
-  "version": 2,
-  "routes": [
-    {
-      "src": "/app.jsx",
-      "dest": "/app.jsx",
-      "headers": {
-        "Content-Type": "text/babel"
-      }
-    },
-    {
-      "src": "/tweaks-panel.jsx",
-      "dest": "/tweaks-panel.jsx",
-      "headers": {
-        "Content-Type": "text/babel"
-      }
-    },
-    {
-      "src": "/public/(.*)",
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+  "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
