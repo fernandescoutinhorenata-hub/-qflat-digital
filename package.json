@@ -1,0 +1,27 @@
+{
+  "name": "bilinho-3d-printing",
+  "version": "1.0.0",
+  "description": "Portfólio e marketplace de impressão 3D sob demanda",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve -p 3000",
+    "start": "npx serve -p 3000"
+  },
+  "keywords": [
+    "impressao-3d",
+    "portfolio",
+    "marketplace",
+    "react",
+    "3d-printing"
+  ],
+  "author": "BILINHO",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/bilinho-3d-printing.git"
+  }
+}
