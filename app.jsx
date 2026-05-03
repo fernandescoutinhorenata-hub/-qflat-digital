@@ -1,4 +1,4 @@
-// BILINHO — 3D Print Marketplace Portfolio
+// BILINHO - 3D Print Marketplace Portfolio
 // Visual system: Space Grotesk + Inter, Purple/White/Orange palette
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
@@ -15,77 +15,154 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 // ─── DATA ──────────────────────────────────────────────
 const PRODUCTS = [
   {
-    id: 1, name: "Miniatura Personalizada", category: "Decoração",
-    material: "PLA", customization: "Alta", price: "A partir de R$ 49",
+    id: 1, name: "Flyer Promocional", 
+    category: "Social Mídia",
+    material: "Digital", customization: "Alta", 
+    price: "A partir de R$ 49",
     badge: "POPULAR",
     color: "oklch(72% 0.18 280)",
-    description: "Miniaturas únicas criadas a partir de fotos, desenhos ou ideias. Perfeitas para presentes, coleções ou decoração pessoal.",
-    details: ["Tamanhos 5cm a 30cm", "Pintura opcional", "Prazo 3–7 dias", "Arquivo digital incluso"],
-    images: ["oklch(72% 0.18 280)", "oklch(60% 0.22 160)", "oklch(68% 0.19 45)"],
+    description: "Flyers digitais criativos e impactantes para divulgar promoções, eventos e campanhas. Layout profissional com identidade visual da sua marca.",
+    details: [
+      "Formato para Instagram, Facebook e WhatsApp",
+      "Até 2 revisões inclusas",
+      "Entrega em até 24h",
+      "Arquivo em PNG e PDF"
+    ],
+    images: [
+      "oklch(72% 0.18 280)", 
+      "oklch(60% 0.22 300)", 
+      "oklch(68% 0.19 45)"
+    ],
     reviews: [
-      { name: "Lucas M.", role: "Designer", text: "Qualidade surpreendente! A miniatura ficou idêntica ao modelo que enviei.", stars: 5 },
-      { name: "Ana P.", role: "Colecionadora", text: "Entrega rápida e embalagem excelente. Com certeza vou pedir de novo.", stars: 5 }
+      { name: "Carlos M.", role: "Empresário", 
+        text: "Flyer incrível! Aumentou muito o engajamento das minhas postagens.", stars: 5 },
+      { name: "Patrícia L.", role: "Lojista", 
+        text: "Entrega rápida e qualidade surpreendente. Super recomendo!", stars: 5 }
     ]
   },
   {
-    id: 2, name: "Peças Técnicas / Protótipos", category: "Industrial",
-    material: "PETG", customization: "Total", price: "A partir de R$ 89",
+    id: 2, name: "Banner Digital", 
+    category: "Social Mídia",
+    material: "Digital", customization: "Alta", 
+    price: "A partir de R$ 69",
     badge: "PRO",
     color: "oklch(55% 0.14 220)",
-    description: "Protótipos funcionais e peças de reposição impressas com precisão industrial. Ideal para engenharia e desenvolvimento de produto.",
-    details: ["Tolerâncias ±0.2mm", "Materiais técnicos", "Prazo expresso disponível", "Relatório técnico incluso"],
-    images: ["oklch(55% 0.14 220)", "oklch(45% 0.10 200)", "oklch(65% 0.08 210)"],
+    description: "Banners profissionais para campanhas digitais, anúncios pagos e comunicação visual da sua marca nas redes sociais.",
+    details: [
+      "Formatos Feed, Stories e Cover",
+      "Adaptação para múltiplas plataformas",
+      "Entrega em até 24h",
+      "Arquivo editável incluso"
+    ],
+    images: [
+      "oklch(55% 0.14 220)", 
+      "oklch(45% 0.10 200)", 
+      "oklch(65% 0.08 210)"
+    ],
     reviews: [
-      { name: "Rodrigo S.", role: "Engenheiro", text: "Peças com dimensional perfeito. Substituiu a original sem nenhum ajuste.", stars: 5 }
+      { name: "Rodrigo S.", role: "Marketing", 
+        text: "Banners com qualidade de agência grande. Resultado excelente!", stars: 5 }
     ]
   },
   {
-    id: 3, name: "Objetos de Decoração", category: "Decoração",
-    material: "PLA+", customization: "Média", price: "A partir de R$ 35",
-    badge: null,
-    color: "oklch(70% 0.12 160)",
-    description: "Vasos, luminárias, porta-retratos e objetos únicos para transformar qualquer espaço com design exclusivo.",
-    details: ["Acabamento premium", "Diversas cores", "Prazo 2–5 dias", "Personalização de cor inclusa"],
-    images: ["oklch(70% 0.12 160)", "oklch(75% 0.15 130)", "oklch(65% 0.10 170)"],
-    reviews: [
-      { name: "Carla F.", role: "Arquiteta", text: "Os vasos ficaram lindos! Perfeitos para os projetos dos meus clientes.", stars: 5 },
-      { name: "Pedro T.", role: "Cliente", text: "Excelente qualidade e acabamento impecável. Super recomendo!", stars: 4 }
-    ]
-  },
-  {
-    id: 4, name: "Brindes Corporativos", category: "Corporativo",
-    material: "PLA", customization: "Alta", price: "Sob consulta",
+    id: 3, name: "Pack de Social Mídia", 
+    category: "Social Mídia",
+    material: "Digital", customization: "Total", 
+    price: "A partir de R$ 149",
     badge: "NOVO",
-    color: "oklch(68% 0.19 45)",
-    description: "Brindes personalizados com logo, troféus, placas comemorativas e itens exclusivos para eventos corporativos e feiras.",
-    details: ["Lotes a partir de 10 unidades", "Logo incluso", "Entrega expressa", "Embalagem personalizada"],
-    images: ["oklch(68% 0.19 45)", "oklch(60% 0.22 55)", "oklch(75% 0.15 40)"],
+    color: "oklch(70% 0.12 160)",
+    description: "Pacote completo de peças para redes sociais. Feed, Stories, Reels cover, Destaques e muito mais, tudo com identidade visual consistente.",
+    details: [
+      "10 artes personalizadas",
+      "Identidade visual unificada",
+      "Entrega em até 3 dias úteis",
+      "Suporte pós-entrega"
+    ],
+    images: [
+      "oklch(70% 0.12 160)", 
+      "oklch(75% 0.15 130)", 
+      "oklch(65% 0.10 170)"
+    ],
     reviews: [
-      { name: "Marina K.", role: "Marketing", text: "Os troféus para o nosso evento foram um sucesso absoluto!", stars: 5 }
+      { name: "Fernanda R.", role: "Influenciadora", 
+        text: "Meu feed nunca ficou tão bonito! Profissionalismo de verdade.", stars: 5 },
+      { name: "André T.", role: "Empreendedor", 
+        text: "Vale cada centavo. Qualidade incrível e entrega no prazo.", stars: 5 }
     ]
   },
   {
-    id: 5, name: "Acessórios & Gadgets", category: "Utilidade",
-    material: "ABS", customization: "Média", price: "A partir de R$ 25",
+    id: 4, name: "Identidade Visual", 
+    category: "Design",
+    material: "Digital", customization: "Total", 
+    price: "A partir de R$ 497",
+    badge: "EXCLUSIVO",
+    color: "oklch(68% 0.19 45)",
+    description: "Criação completa da identidade visual da sua marca, logo, paleta de cores, tipografia e manual de uso para garantir consistência em todos os canais.",
+    details: [
+      "Logo em todos os formatos",
+      "Manual de marca completo",
+      "Paleta de cores e tipografia",
+      "Prazo de 5 a 7 dias úteis"
+    ],
+    images: [
+      "oklch(68% 0.19 45)", 
+      "oklch(60% 0.22 55)", 
+      "oklch(75% 0.15 40)"
+    ],
+    reviews: [
+      { name: "Marina K.", role: "CEO", 
+        text: "Nossa marca ficou irreconhecível, no bom sentido! Simplesmente incrível.", 
+        stars: 5 }
+    ]
+  },
+  {
+    id: 5, name: "Post Estático", 
+    category: "Social Mídia",
+    material: "Digital", customization: "Média", 
+    price: "A partir de R$ 29",
     badge: null,
     color: "oklch(60% 0.18 300)",
-    description: "Suportes de celular, organizadores, capas e acessórios funcionais que unem design e praticidade no dia a dia.",
-    details: ["Alta resistência", "Cores variadas", "Prazo 1–3 dias", "Garantia 6 meses"],
-    images: ["oklch(60% 0.18 300)", "oklch(50% 0.22 290)", "oklch(65% 0.15 310)"],
+    description: "Posts individuais para feed do Instagram e Facebook com design criativo e alinhado à identidade visual da sua marca.",
+    details: [
+      "Arte única personalizada",
+      "Formato quadrado e retrato",
+      "Entrega em até 12h",
+      "Arquivo em PNG de alta resolução"
+    ],
+    images: [
+      "oklch(60% 0.18 300)", 
+      "oklch(50% 0.22 290)", 
+      "oklch(65% 0.15 310)"
+    ],
     reviews: [
-      { name: "Bruno A.", role: "Desenvolvedor", text: "Suporte perfeito! Exatamente o que precisava e encaixou perfeitamente.", stars: 4 }
+      { name: "Bruno A.", role: "Comerciante", 
+        text: "Rápido, bonito e barato. Melhor custo-benefício que já vi!", 
+        stars: 5 }
     ]
   },
   {
-    id: 6, name: "Arte & Escultura", category: "Arte",
-    material: "Resina", customization: "Total", price: "A partir de R$ 120",
-    badge: "EXCLUSIVO",
+    id: 6, name: "Design para Anúncios", 
+    category: "Design",
+    material: "Digital", customization: "Alta", 
+    price: "A partir de R$ 89",
+    badge: null,
     color: "oklch(55% 0.20 10)",
-    description: "Esculturas e obras de arte criadas por impressão 3D de alta definição em resina. Para colecionadores e amantes de arte.",
-    details: ["Resolução 0.025mm", "Acabamento artístico", "Certificado de autenticidade", "Moldura inclusa"],
-    images: ["oklch(55% 0.20 10)", "oklch(50% 0.22 350)", "oklch(60% 0.18 20)"],
+    description: "Criativos profissionais para campanhas de tráfego pago no Google, Meta Ads, TikTok e outras plataformas. Artes otimizadas para conversão.",
+    details: [
+      "Formatos para todas as plataformas",
+      "Foco em conversão e CTR",
+      "Entrega em até 48h",
+      "Até 3 variações inclusas"
+    ],
+    images: [
+      "oklch(55% 0.20 10)", 
+      "oklch(50% 0.22 350)", 
+      "oklch(60% 0.18 20)"
+    ],
     reviews: [
-      { name: "Sofia L.", role: "Artista", text: "Perfeição absoluta. A textura e o detalhe são simplesmente incríveis.", stars: 5 }
+      { name: "Sofia L.", role: "Gestora de Tráfego", 
+        text: "CTR disparou depois que comecei a usar os criativos da flat. Top demais!", 
+        stars: 5 }
     ]
   }
 ];
@@ -151,8 +228,6 @@ const Navbar = ({ onQuote }) => {
 
   const links = [
     { label: "Produtos", href: "#produtos" },
-    { label: "Como Funciona", href: "#como-funciona" },
-    { label: "Portfólio", href: "#portfolio" },
     { label: "Sobre", href: "#sobre" },
   ];
 
@@ -171,17 +246,19 @@ const Navbar = ({ onQuote }) => {
         height: 68,
       }}>
         {/* Logo */}
-        <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }} onClick={() => window.scrollTo({top:0,behavior:"smooth"})}>
-          <div style={{
-            width: 36, height: 36, borderRadius: 8,
-            background: "var(--purple)",
-            display: "flex", alignItems: "center", justifyContent: "center"
-          }}>
-            <Icon name="cube" size={18} color="#fff" />
-          </div>
-          <span style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 20, color: "var(--purple)" }}>
-            BILI<span style={{ color: "var(--orange)" }}>NHO</span>
-          </span>
+        <div 
+          style={{ display: "flex", alignItems: "center", cursor: "pointer" }} 
+          onClick={() => window.scrollTo({top:0,behavior:"smooth"})}>
+          <img 
+            src="public/logo-flat.png" 
+            alt="flat. a sua agência digital"
+            className="logo-img"
+            style={{ 
+              height: 38,
+              width: "auto",
+              objectFit: "contain",
+            }}
+          />
         </div>
 
         {/* Desktop links */}
@@ -200,7 +277,7 @@ const Navbar = ({ onQuote }) => {
 
         {/* CTA */}
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-          <button onClick={onQuote} style={{
+          <button onClick={() => window.open("https://wa.me/5579999990966", "_blank")} style={{
             background: "var(--orange)", color: "#fff",
             border: "none", borderRadius: 99,
             padding: "10px 22px",
@@ -239,6 +316,7 @@ const Navbar = ({ onQuote }) => {
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
+          .logo-img { height: 28px !important; }
         }
       `}</style>
     </nav>
@@ -264,7 +342,7 @@ const Hero = ({ onQuote, tweaks }) => {
         backgroundSize: "40px 40px",
       }} />
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+      <div className="hero-grid" style={{ maxWidth: 1200, margin: "0 auto", width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
         {/* Left */}
         <div style={{ position: "relative", zIndex: 1 }}>
           <div style={{
@@ -292,11 +370,11 @@ const Hero = ({ onQuote, tweaks }) => {
             maxWidth: 480, marginBottom: 36,
             fontFamily: "var(--font-body)",
           }}>
-            Envie sua ideia, nós criamos. Miniaturas, peças técnicas, decoração e brindes personalizados — do projeto à entrega, com qualidade profissional.
+            Envie sua ideia, nós criamos. Miniaturas, peças técnicas, decoração e brindes personalizados, do projeto à entrega, com qualidade profissional.
           </p>
 
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 48 }}>
-            <button onClick={onQuote} style={{
+            <button onClick={() => window.open("https://wa.me/5579999990966", "_blank")} style={{
               background: "var(--orange)", color: "#fff", border: "none",
               borderRadius: 99, padding: "15px 32px",
               fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 15,
@@ -338,7 +416,7 @@ const Hero = ({ onQuote, tweaks }) => {
         </div>
 
         {/* Right — 3D visual */}
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}>
+        <div className="hero-visual" style={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}>
           {/* Glow blob */}
           <div style={{
             position: "absolute", width: 300, height: 300, borderRadius: "50%",
@@ -406,7 +484,7 @@ const Hero = ({ onQuote, tweaks }) => {
         background: "white", borderTop: "1px solid var(--gray-100)",
         padding: "20px 24px",
       }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "center", gap: "clamp(24px, 5vw, 80px)", flexWrap: "wrap" }}>
+        <div className="stats-bar" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "center", gap: "clamp(24px, 5vw, 80px)", flexWrap: "wrap" }}>
           {[
             { value: "+500", label: "Projetos entregues" },
             { value: "4.9★", label: "Avaliação média" },
@@ -423,7 +501,21 @@ const Hero = ({ onQuote, tweaks }) => {
 
       <style>{`
         @media (max-width: 768px) {
-          section > div > div:nth-child(2) { display: none; }
+          .hero-grid { 
+            grid-template-columns: 1fr !important; 
+          }
+          .hero-visual { 
+            display: none !important; 
+          }
+          .hero-badges {
+            flex-direction: column !important;
+            gap: 8px !important;
+          }
+          .stats-bar {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 16px !important;
+          }
         }
       `}</style>
     </section>
@@ -467,8 +559,8 @@ const FloatingChip = ({ top, bottom, left, right, delay, label, icon }) => {
 };
 
 // ─── FILTERS ──────────────────────────────────────────────
-const CATEGORIES = ["Todos", "Decoração", "Industrial", "Corporativo", "Utilidade", "Arte"];
-const MATERIALS = ["Todos", "PLA", "PLA+", "PETG", "ABS", "Resina"];
+const CATEGORIES = ["Todos", "Social Mídia", "Design"];
+const MATERIALS = ["Todos", "Digital"];
 const CUSTOMIZATIONS = ["Todos", "Alta", "Média", "Total"];
 
 const Filters = ({ activeCategory, setCategory, activeMaterial, setMaterial, activeCustomization, setCustomization, priceFilter, setPriceFilter }) => {
@@ -583,10 +675,16 @@ const ProductCard = ({ product, onClick }) => {
         <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 16, color: "var(--text)", marginBottom: 4 }}>{product.name}</h3>
         <p style={{ fontSize: 13, color: "var(--gray-400)", marginBottom: 14, lineHeight: 1.5 }}>Material: {product.material} · {product.customization} personalização</p>
 
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div>
+        <div style={{ 
+          display: "flex", 
+          alignItems: "center", 
+          justifyContent: "space-between",
+          gap: 12,
+          flexWrap: "wrap",
+        }}>
+          <div style={{ minWidth: 0, flex: 1 }}>
             <div style={{ fontSize: 11, color: "var(--gray-400)", fontWeight: 500, marginBottom: 1 }}>Preço</div>
-            <div style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 16, color: "var(--purple)" }}>{product.price}</div>
+            <div style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 15, color: "var(--purple)", whiteSpace: "nowrap" }}>{product.price}</div>
           </div>
           <button style={{
             background: hovered ? "var(--orange)" : "var(--purple)",
@@ -594,6 +692,7 @@ const ProductCard = ({ product, onClick }) => {
             padding: "9px 18px", fontSize: 13, fontWeight: 600,
             fontFamily: "var(--font-head)", cursor: "pointer",
             transition: "all 0.2s",
+            flexShrink: 0,
           }}>Ver Detalhes</button>
         </div>
       </div>
@@ -604,9 +703,6 @@ const ProductCard = ({ product, onClick }) => {
 // ─── PRODUCT DETAIL MODAL ──────────────────────────────────────────────
 const ProductModal = ({ product, onClose, onQuote }) => {
   const [activeImage, setActiveImage] = React.useState(0);
-  const [material, setMaterial] = React.useState(product.material);
-  const [size, setSize] = React.useState("Médio");
-  const [finish, setFinish] = React.useState("Padrão");
 
   React.useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -638,7 +734,7 @@ const ProductModal = ({ product, onClose, onQuote }) => {
           <Icon name="x" size={16} color="var(--gray-600)" />
         </button>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
+        <div className="modal-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
           {/* Images */}
           <div style={{ padding: 28 }}>
             <div style={{
@@ -671,7 +767,7 @@ const ProductModal = ({ product, onClose, onQuote }) => {
           </div>
 
           {/* Details */}
-          <div style={{ padding: "28px 28px 28px 0" }}>
+          <div className="modal-details" style={{ padding: "28px 28px 28px 0" }}>
             <div style={{ display: "flex", gap: 8, marginBottom: 12, flexWrap: "wrap" }}>
               <Badge text={product.badge || "DISPONÍVEL"} />
               <span style={{ fontSize: 12, color: "var(--gray-400)", alignSelf: "center" }}>{product.category}</span>
@@ -695,38 +791,7 @@ const ProductModal = ({ product, onClose, onQuote }) => {
               </div>
             </div>
 
-            {/* Customization */}
-            <div style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "var(--gray-400)", letterSpacing: "0.06em", marginBottom: 8 }}>PERSONALIZAÇÃO</div>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                {["Pequeno", "Médio", "Grande", "Extra"].map(s => (
-                  <button key={s} onClick={() => setSize(s)} style={{
-                    padding: "7px 14px", borderRadius: 8, fontSize: 12, fontWeight: 600,
-                    fontFamily: "var(--font-head)", cursor: "pointer",
-                    background: size === s ? "var(--purple)" : "var(--gray-50)",
-                    color: size === s ? "white" : "var(--gray-600)",
-                    border: `1.5px solid ${size === s ? "var(--purple)" : "var(--gray-200)"}`,
-                    transition: "all 0.15s",
-                  }}>{s}</button>
-                ))}
-              </div>
-            </div>
 
-            <div style={{ marginBottom: 24 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "var(--gray-400)", letterSpacing: "0.06em", marginBottom: 8 }}>ACABAMENTO</div>
-              <div style={{ display: "flex", gap: 8 }}>
-                {["Padrão", "Lixado", "Pintado"].map(f => (
-                  <button key={f} onClick={() => setFinish(f)} style={{
-                    padding: "7px 14px", borderRadius: 8, fontSize: 12, fontWeight: 600,
-                    fontFamily: "var(--font-head)", cursor: "pointer",
-                    background: finish === f ? "var(--orange)" : "var(--gray-50)",
-                    color: finish === f ? "white" : "var(--gray-600)",
-                    border: `1.5px solid ${finish === f ? "var(--orange)" : "var(--gray-200)"}`,
-                    transition: "all 0.15s",
-                  }}>{f}</button>
-                ))}
-              </div>
-            </div>
 
             {/* Price */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
@@ -736,19 +801,72 @@ const ProductModal = ({ product, onClose, onQuote }) => {
               </div>
             </div>
 
-            <button onClick={() => { onClose(); onQuote(); }} style={{
-              width: "100%", background: "var(--orange)", color: "white",
-              border: "none", borderRadius: 12, padding: "14px",
-              fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 15,
-              cursor: "pointer", transition: "all 0.2s",
-              boxShadow: "0 4px 16px oklch(68% 0.19 45 / 0.35)",
-              display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = "var(--orange-hover)"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "var(--orange)"; }}
-            >
-              <Icon name="send" size={16} color="#fff" /> Pedir Orçamento Agora
-            </button>
+            <div style={{ display: "flex", gap: 10 }}>
+
+              <button 
+                onClick={() => window.open("https://wa.me/5579999990966", "_blank")}
+                style={{
+                  flex: 1,
+                  background: "white", 
+                  color: "var(--purple)",
+                  border: "2px solid var(--purple)", 
+                  borderRadius: 12, 
+                  padding: "14px",
+                  fontFamily: "var(--font-head)", 
+                  fontWeight: 700, 
+                  fontSize: 14,
+                  cursor: "pointer", 
+                  transition: "all 0.2s",
+                  display: "flex", 
+                  alignItems: "center", 
+                  justifyContent: "center", 
+                  gap: 8,
+                }}
+                onMouseEnter={e => { 
+                  e.currentTarget.style.background = "var(--purple)"; 
+                  e.currentTarget.style.color = "white"; 
+                }}
+                onMouseLeave={e => { 
+                  e.currentTarget.style.background = "white"; 
+                  e.currentTarget.style.color = "var(--purple)"; 
+                }}
+              >
+                <Icon name="whatsapp" size={16} color="currentColor" />
+                Fazer Orçamento
+              </button>
+
+              <button 
+                onClick={() => window.open("https://wa.me/5579999990966", "_blank")}
+                style={{
+                  flex: 1,
+                  background: "var(--orange)", 
+                  color: "white",
+                  border: "none", 
+                  borderRadius: 12, 
+                  padding: "14px",
+                  fontFamily: "var(--font-head)", 
+                  fontWeight: 700, 
+                  fontSize: 14,
+                  cursor: "pointer", 
+                  transition: "all 0.2s",
+                  boxShadow: "0 4px 16px oklch(68% 0.19 45 / 0.35)",
+                  display: "flex", 
+                  alignItems: "center", 
+                  justifyContent: "center", 
+                  gap: 8,
+                }}
+                onMouseEnter={e => { 
+                  e.currentTarget.style.background = "var(--orange-hover)"; 
+                }}
+                onMouseLeave={e => { 
+                  e.currentTarget.style.background = "var(--orange)"; 
+                }}
+              >
+                <Icon name="whatsapp" size={16} color="white" />
+                Finalizar Compra
+              </button>
+
+            </div>
           </div>
         </div>
 
@@ -779,6 +897,16 @@ const ProductModal = ({ product, onClose, onQuote }) => {
             </div>
           </div>
         )}
+        <style>{`
+          @media (max-width: 768px) {
+            .modal-grid {
+              grid-template-columns: 1fr !important;
+            }
+            .modal-details {
+              padding: 0 28px 28px !important;
+            }
+          }
+        `}</style>
       </div>
     </div>
   );
@@ -803,10 +931,10 @@ const ProductsSection = ({ onQuote }) => {
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
 
         <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "var(--orange)", fontFamily: "var(--font-head)", marginBottom: 12 }}>CATÁLOGO DE PRODUTOS</div>
-          <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 44px)", color: "var(--text)", marginBottom: 14 }}>O que podemos criar para você</h2>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "var(--orange)", fontFamily: "var(--font-head)", marginBottom: 12 }}>NOSSOS SERVIÇOS</div>
+          <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 44px)", color: "var(--text)", marginBottom: 14 }}>Design que gera resultado</h2>
           <p style={{ fontSize: 16, color: "var(--gray-600)", maxWidth: 540, margin: "0 auto" }}>
-            Cada projeto é único. Escolha uma categoria e descubra como transformamos ideias em objetos reais.
+            Escolha o serviço ideal para sua marca e descubra como transformamos ideias em design que vende.
           </p>
         </div>
 
@@ -822,10 +950,22 @@ const ProductsSection = ({ onQuote }) => {
             <p style={{ marginTop: 16, fontFamily: "var(--font-head)" }}>Nenhum produto encontrado com esses filtros.</p>
           </div>
         ) : (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 24 }}>
+          <div className="products-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
             {filtered.map(p => <ProductCard key={p.id} product={p} onClick={setSelectedProduct} />)}
           </div>
         )}
+        <style>{`
+          @media (max-width: 1024px) {
+            .products-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+            }
+          }
+          @media (max-width: 640px) {
+            .products-grid {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}</style>
       </div>
 
       {selectedProduct && (
@@ -835,191 +975,35 @@ const ProductsSection = ({ onQuote }) => {
   );
 };
 
-// ─── HOW IT WORKS ──────────────────────────────────────────────
-const HowItWorks = () => {
-  const steps = [
-    { num: "01", icon: "pencil", title: "Envie sua ideia", desc: "Descreva o que imagina — foto, sketch, referência ou apenas uma descrição. Quanto mais detalhe, melhor.", time: "Resposta em até 2h" },
-    { num: "02", icon: "cube", title: "Modelagem 3D", desc: "Nossa equipe cria o modelo digital preciso, com visualização prévia para sua aprovação antes de imprimir.", time: "1–3 dias úteis" },
-    { num: "03", icon: "print", title: "Impressão", desc: "Produção com impressoras de alta precisão e materiais premium. Qualidade garantida em cada camada.", time: "1–5 dias úteis" },
-    { num: "04", icon: "truck", title: "Entrega", desc: "Embalagem protetora e envio rastreável para todo o Brasil. Seu projeto chega perfeito na sua porta.", time: "2–7 dias úteis" },
-  ];
 
-  return (
-    <section id="como-funciona" style={{ padding: "80px 24px", background: "var(--purple-dark)" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-
-        <div style={{ textAlign: "center", marginBottom: 56 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "oklch(68% 0.19 45)", fontFamily: "var(--font-head)", marginBottom: 12 }}>PROCESSO</div>
-          <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 44px)", color: "white", marginBottom: 14 }}>
-            Do conceito à realidade
-          </h2>
-          <p style={{ fontSize: 16, color: "oklch(75% 0.08 280)", maxWidth: 480, margin: "0 auto" }}>
-            Um processo simples, transparente e totalmente personalizado para cada projeto.
-          </p>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 24, position: "relative" }}>
-          {steps.map((step, i) => (
-            <StepCard key={step.num} step={step} index={i} total={steps.length} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const StepCard = ({ step, index, total }) => {
-  const [hovered, setHovered] = React.useState(false);
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        background: hovered ? "oklch(28% 0.15 280)" : "oklch(22% 0.10 280)",
-        borderRadius: 20, padding: "28px 24px",
-        border: `1px solid ${hovered ? "oklch(45% 0.22 280 / 0.6)" : "oklch(35% 0.12 280)"}`,
-        transition: "all 0.25s",
-        transform: hovered ? "translateY(-4px)" : "none",
-        position: "relative",
-      }}>
-      <div style={{ fontSize: 48, fontFamily: "var(--font-head)", fontWeight: 800, color: "oklch(35% 0.15 280)", lineHeight: 1, marginBottom: 16 }}>{step.num}</div>
-      <div style={{
-        width: 44, height: 44, borderRadius: 12,
-        background: hovered ? "var(--orange)" : "oklch(40% 0.20 280)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        marginBottom: 16, transition: "background 0.25s",
-      }}>
-        <Icon name={step.icon} size={20} color="white" />
-      </div>
-      <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 18, color: "white", marginBottom: 10 }}>{step.title}</h3>
-      <p style={{ fontSize: 14, color: "oklch(65% 0.08 280)", lineHeight: 1.6, marginBottom: 16 }}>{step.desc}</p>
-      <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "oklch(30% 0.12 280)", borderRadius: 99, padding: "5px 12px" }}>
-        <div style={{ width: 6, height: 6, borderRadius: "50%", background: "oklch(55% 0.22 160)" }} />
-        <span style={{ fontSize: 11, color: "oklch(65% 0.08 280)", fontWeight: 600, fontFamily: "var(--font-head)" }}>{step.time}</span>
-      </div>
-    </div>
-  );
-};
-
-// ─── PORTFOLIO ──────────────────────────────────────────────
-const PortfolioSection = () => {
-  const [active, setActive] = React.useState(null);
-
-  return (
-    <section id="portfolio" style={{ padding: "80px 24px", background: "white" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "var(--orange)", fontFamily: "var(--font-head)", marginBottom: 12 }}>PORTFÓLIO</div>
-          <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 44px)", color: "var(--text)", marginBottom: 14 }}>Projetos que ganharam vida</h2>
-          <p style={{ fontSize: 16, color: "var(--gray-600)", maxWidth: 480, margin: "0 auto" }}>Uma seleção de trabalhos que mostram a variedade e qualidade do que fazemos.</p>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 28 }}>
-          {PORTFOLIO.map(item => (
-            <PortfolioCard key={item.id} item={item} isActive={active === item.id} onHover={setActive} />
-          ))}
-        </div>
-
-        {/* Big featured project */}
-        <div style={{
-          marginTop: 32, borderRadius: 20, overflow: "hidden",
-          background: `linear-gradient(135deg, var(--purple-dark) 0%, oklch(30% 0.18 280) 100%)`,
-          display: "flex", alignItems: "center", gap: 48,
-          padding: "40px 48px", flexWrap: "wrap",
-        }}>
-          <div style={{ flex: 1, minWidth: 240 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "var(--orange)", fontFamily: "var(--font-head)", marginBottom: 12 }}>PROJETO DESTAQUE</div>
-            <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 28, color: "white", marginBottom: 12 }}>Linha completa para GameOn Summit 2024</h3>
-            <p style={{ fontSize: 15, color: "oklch(75% 0.08 280)", lineHeight: 1.7, marginBottom: 24 }}>
-              Mais de 200 peças impressas em 5 dias — troféus, brindes e cenografia para o maior evento de games do Brasil.
-            </p>
-            <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-              {[["200+", "Peças"], ["5", "Dias"], ["4", "Materiais"]].map(([v, l]) => (
-                <div key={l}>
-                  <div style={{ fontFamily: "var(--font-head)", fontWeight: 800, fontSize: 28, color: "var(--orange)" }}>{v}</div>
-                  <div style={{ fontSize: 12, color: "oklch(60% 0.08 280)", fontWeight: 500 }}>{l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div style={{ flex: 1, minWidth: 200, display: "flex", justifyContent: "center" }}>
-            <div style={{
-              width: 200, height: 160, borderRadius: 16,
-              background: "oklch(38% 0.20 280)", display: "flex", flexDirection: "column",
-              alignItems: "center", justifyContent: "center", gap: 12,
-              border: "1px solid oklch(50% 0.18 280)",
-            }}>
-              <div style={{ display: "flex", gap: 10 }}>
-                {["var(--orange)", "var(--purple-light)", "oklch(55% 0.20 160)"].map((c, i) => (
-                  <div key={i} style={{ width: 40, height: 40, borderRadius: 10, background: c, boxShadow: `0 8px 20px ${c}55` }} />
-                ))}
-              </div>
-              <div style={{ fontSize: 12, color: "oklch(65% 0.08 280)", fontFamily: "var(--font-head)", fontWeight: 600 }}>Coleção GameOn 2024</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const PortfolioCard = ({ item, isActive, onHover }) => (
-  <div
-    onMouseEnter={() => onHover(item.id)}
-    onMouseLeave={() => onHover(null)}
-    style={{
-      borderRadius: 16, overflow: "hidden",
-      boxShadow: isActive ? "var(--shadow-lg)" : "var(--shadow-sm)",
-      transform: isActive ? "translateY(-4px)" : "none",
-      transition: "all 0.25s",
-      border: "1px solid var(--gray-100)",
-    }}>
-    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", height: 180 }}>
-      <div style={{ background: item.before, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 8 }}>
-        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", color: "var(--gray-400)" }}>ANTES</span>
-        <div style={{ width: 48, height: 48, borderRadius: 10, background: "white", opacity: 0.3 }} />
-      </div>
-      <div style={{ background: item.after, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 8 }}>
-        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", color: "rgba(255,255,255,0.7)" }}>DEPOIS</span>
-        <div style={{ width: 48, height: 48, borderRadius: 10, background: "white", opacity: 0.8, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <Icon name="cube" size={24} color={item.after} />
-        </div>
-      </div>
-    </div>
-    <div style={{ padding: "16px 18px", background: "white" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-        <div>
-          <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 15, color: "var(--text)", marginBottom: 3 }}>{item.title}</h3>
-          <p style={{ fontSize: 12, color: "var(--gray-400)" }}>{item.client}</p>
-        </div>
-        <Badge text={item.tag} />
-      </div>
-    </div>
-  </div>
-);
 
 // ─── ABOUT ──────────────────────────────────────────────
 const AboutSection = () => {
   const diffs = [
-    { icon: "cube", title: "Precisão Industrial", desc: "Impressoras de última geração com tolerância de 0.1mm. Qualidade profissional em cada projeto." },
-    { icon: "send", title: "Entrega Rápida", desc: "Produção expressa disponível. A maioria dos projetos fica pronta em 24–48 horas." },
-    { icon: "pencil", title: "Personalização Total", desc: "Desde o primeiro contato até a entrega, cada detalhe é pensado para você. Nada é genérico." },
+    { icon: "cube", title: "Precisão Industrial", 
+      desc: "Impressoras de última geração com tolerância de 0.1mm. Qualidade profissional em cada projeto." },
+    { icon: "send", title: "Entrega Rápida", 
+      desc: "Produção expressa disponível. A maioria dos projetos fica pronta em 24–48 horas." },
+    { icon: "pencil", title: "Personalização Total", 
+      desc: "Desde o primeiro contato até a entrega, cada detalhe é pensado para você. Nada é genérico." },
+    { icon: "truck", title: "Entregamos para Todo o Brasil", 
+      desc: "Atendemos clientes de norte a sul do país. Envio rápido e seguro para qualquer estado brasileiro." },
   ];
 
   return (
     <section id="sobre" style={{ padding: "80px 24px", background: "var(--gray-50)" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+      <div className="about-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
 
         <div>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "var(--orange)", fontFamily: "var(--font-head)", marginBottom: 12 }}>SOBRE A BILINHO</div>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "var(--orange)", fontFamily: "var(--font-head)", marginBottom: 12 }}>SOBRE A FLAT.</div>
           <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(28px, 3.5vw, 40px)", color: "var(--text)", marginBottom: 20, lineHeight: 1.2 }}>
-            Especializados em transformar ideias em objetos reais
+            Especializados em transformar ideias em design que vende
           </h2>
           <p style={{ fontSize: 15, color: "var(--gray-600)", lineHeight: 1.8, marginBottom: 16 }}>
-            A BILINHO nasceu da paixão pela fabricação digital. Somos especialistas em impressão 3D sob demanda, atendendo desde criadores independentes até grandes empresas.
+            A flat. nasceu da paixão pelo design digital. Somos especialistas em criação de conteúdo visual, atendendo desde empreendedores independentes até grandes empresas.
           </p>
           <p style={{ fontSize: 15, color: "var(--gray-600)", lineHeight: 1.8, marginBottom: 36 }}>
-            Com equipamentos de ponta e uma equipe apaixonada, entregamos projetos que vão além da expectativa — porque para nós, cada peça conta uma história.
+            Com criatividade e estratégia, entregamos projetos que vão além da expectativa, porque para nós, cada arte conta uma história.
           </p>
 
           <div style={{ display: "flex", gap: 28, flexWrap: "wrap" }}>
@@ -1054,6 +1038,14 @@ const AboutSection = () => {
             </div>
           ))}
         </div>
+        <style>{`
+          @media (max-width: 768px) {
+            .about-grid {
+              grid-template-columns: 1fr !important;
+              gap: 40px !important;
+            }
+          }
+        `}</style>
       </div>
     </section>
   );
@@ -1085,7 +1077,7 @@ const ReviewsSection = () => {
           </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 20 }}>
+        <div className="reviews-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 20 }}>
           {reviews.map((r, i) => (
             <div key={i} style={{
               background: "var(--gray-50)", borderRadius: 16, padding: "22px",
@@ -1115,6 +1107,13 @@ const ReviewsSection = () => {
             </div>
           ))}
         </div>
+        <style>{`
+          @media (max-width: 768px) {
+            .reviews-grid {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}</style>
       </div>
     </section>
   );
@@ -1158,7 +1157,7 @@ const CtaSection = ({ onQuote }) => (
       </p>
 
       <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-        <button onClick={onQuote} style={{
+        <button onClick={() => window.open("https://wa.me/5579999990966", "_blank")} style={{
           background: "var(--orange)", color: "white", border: "none",
           borderRadius: 99, padding: "16px 36px",
           fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 16,
@@ -1193,53 +1192,55 @@ const CtaSection = ({ onQuote }) => (
 const Footer = () => (
   <footer style={{ background: "oklch(12% 0.08 280)", padding: "56px 24px 28px" }}>
     <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 48, marginBottom: 48 }}>
+      <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 48, marginBottom: 48 }}>
 
         {/* Brand */}
-        <div>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 8, background: "var(--purple)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Icon name="cube" size={18} color="#fff" />
-            </div>
-            <span style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 20, color: "white" }}>
-              BILI<span style={{ color: "var(--orange)" }}>NHO</span>
-            </span>
-          </div>
+        <div className="footer-brand">
+          <img 
+            src="public/logo-flat.png" 
+            alt="flat. a sua agência digital"
+            style={{ 
+              height: 44,
+              width: "auto",
+              objectFit: "contain",
+              marginBottom: 12,
+              display: "block",
+            }}
+          />
           <p style={{ fontSize: 14, color: "oklch(55% 0.06 280)", lineHeight: 1.8, marginBottom: 20 }}>
-            Especialistas em impressão 3D sob demanda. Transformamos ideias em objetos reais com precisão, qualidade e rapidez.
+            Especialistas em design digital. Transformamos ideias em arte com criatividade, qualidade e resultado.
           </p>
           <div style={{ display: "flex", gap: 12 }}>
-            {["instagram", "whatsapp"].map(s => (
-              <a key={s} href="#" style={{
-                width: 36, height: 36, borderRadius: 8,
-                background: "oklch(20% 0.08 280)", border: "1px solid oklch(25% 0.08 280)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                transition: "all 0.2s", color: "oklch(55% 0.06 280)",
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = "var(--purple)"; e.currentTarget.style.borderColor = "var(--purple)"; }}
-              onMouseLeave={e => { e.currentTarget.style.background = "oklch(20% 0.08 280)"; e.currentTarget.style.borderColor = "oklch(25% 0.08 280)"; }}
-              >
-                <Icon name={s} size={16} color="white" />
-              </a>
-            ))}
+            <a href="https://instagram.com/flat.agdigital" target="_blank" rel="noopener noreferrer" style={{
+              width: 36, height: 36, borderRadius: 8,
+              background: "oklch(20% 0.08 280)", border: "1px solid oklch(25% 0.08 280)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              transition: "all 0.2s", color: "oklch(55% 0.06 280)",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = "var(--purple)"; e.currentTarget.style.borderColor = "var(--purple)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "oklch(20% 0.08 280)"; e.currentTarget.style.borderColor = "oklch(25% 0.08 280)"; }}
+            >
+              <Icon name="instagram" size={16} color="white" />
+            </a>
+            <a href="https://wa.me/5579999990966" target="_blank" rel="noopener noreferrer" style={{
+              width: 36, height: 36, borderRadius: 8,
+              background: "oklch(20% 0.08 280)", border: "1px solid oklch(25% 0.08 280)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              transition: "all 0.2s", color: "oklch(55% 0.06 280)",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = "var(--purple)"; e.currentTarget.style.borderColor = "var(--purple)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "oklch(20% 0.08 280)"; e.currentTarget.style.borderColor = "oklch(25% 0.08 280)"; }}
+            >
+              <Icon name="whatsapp" size={16} color="white" />
+            </a>
           </div>
         </div>
 
         {/* Links */}
         <div>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "oklch(45% 0.08 280)", marginBottom: 16, fontFamily: "var(--font-head)" }}>NAVEGAÇÃO</div>
-          {["Produtos", "Como Funciona", "Portfólio", "Sobre Nós"].map(l => (
+          {["Produtos", "Sobre Nós"].map(l => (
             <a key={l} href={`#${l.toLowerCase().replace(/\s/g,"-")}`} style={{ display: "block", fontSize: 14, color: "oklch(55% 0.06 280)", textDecoration: "none", marginBottom: 10, transition: "color 0.15s" }}
-              onMouseEnter={e => e.target.style.color = "white"} onMouseLeave={e => e.target.style.color = "oklch(55% 0.06 280)"}
-            >{l}</a>
-          ))}
-        </div>
-
-        {/* Products */}
-        <div>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "oklch(45% 0.08 280)", marginBottom: 16, fontFamily: "var(--font-head)" }}>PRODUTOS</div>
-          {["Miniaturas", "Peças Técnicas", "Decoração", "Brindes", "Arte & Escultura"].map(l => (
-            <a key={l} href="#produtos" style={{ display: "block", fontSize: 14, color: "oklch(55% 0.06 280)", textDecoration: "none", marginBottom: 10, transition: "color 0.15s" }}
               onMouseEnter={e => e.target.style.color = "white"} onMouseLeave={e => e.target.style.color = "oklch(55% 0.06 280)"}
             >{l}</a>
           ))}
@@ -1249,8 +1250,9 @@ const Footer = () => (
         <div>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "oklch(45% 0.08 280)", marginBottom: 16, fontFamily: "var(--font-head)" }}>CONTATO</div>
           {[
-            { icon: "whatsapp", text: "(00) 0 0000-0000" },
-            { icon: "mail", text: "ola@bilinho.com" },
+            { icon: "whatsapp", text: "(79) 9 9999-0966" },
+            { icon: "whatsapp", text: "(79) 9 9948-4696" },
+            { icon: "mail", text: "flat3digital@gmail.com" },
             { icon: "location", text: "Brasil · Todo o país" },
           ].map(c => (
             <div key={c.text} style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 12 }}>
@@ -1262,9 +1264,20 @@ const Footer = () => (
       </div>
 
       <div style={{ borderTop: "1px solid oklch(20% 0.06 280)", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-        <span style={{ fontSize: 13, color: "oklch(38% 0.05 280)" }}>© 2026 BILINHO. Todos os direitos reservados.</span>
-        <span style={{ fontSize: 13, color: "oklch(38% 0.05 280)" }}>Impressão 3D · Qualidade Garantida</span>
+        <span style={{ fontSize: 13, color: "oklch(38% 0.05 280)" }}>© 2026 flat. Todos os direitos reservados.</span>
+        <span style={{ fontSize: 13, color: "oklch(38% 0.05 280)" }}>Design Digital · Qualidade Garantida</span>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 32px !important;
+          }
+          .footer-brand {
+            grid-column: 1 / -1 !important;
+          }
+        }
+      `}</style>
     </div>
   </footer>
 );
@@ -1458,8 +1471,8 @@ const App = () => {
       <Navbar onQuote={() => setQuoteOpen(true)} />
       <Hero onQuote={() => setQuoteOpen(true)} tweaks={tweaks} />
       <ProductsSection onQuote={() => setQuoteOpen(true)} />
-      <HowItWorks />
-      <PortfolioSection />
+
+
       {tweaks.showReviews && <ReviewsSection />}
       <AboutSection />
       <CtaSection onQuote={() => setQuoteOpen(true)} />

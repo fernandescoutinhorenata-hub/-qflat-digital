@@ -1,7 +1,7 @@
 {
-  "name": "bilinho-3d-printing",
+  "name": "flat-agencia-digital",
   "version": "1.0.0",
-  "description": "Portfólio e marketplace de impressão 3D sob demanda",
+  "description": "Site oficial da flat. agência digital — design, social mídia e identidade visual",
   "main": "index.html",
   "scripts": {
     "dev": "npx serve -p 3000",
@@ -22,6 +22,6 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/bilinho-3d-printing.git"
+    "url": "https://github.com/YOUR_USERNAME/flat-agencia-digital.git"
   }
 }
