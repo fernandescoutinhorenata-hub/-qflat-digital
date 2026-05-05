@@ -1239,7 +1239,7 @@ const Footer = () => (
         {/* Brand */}
         <div className="footer-brand">
           <img 
-            src="https://res.cloudinary.com/dzo5tqghf/image/upload/v1778016623/01_-_LOGO_FLAT_dom9us.png" 
+            src="https://res.cloudinary.com/dzo5tqghf/image/upload/v1778017655/01_-_LOGO_FLAT_LAR_cifjyd.png" 
             alt="flat. a sua agência digital"
             style={{ 
               height: 44,
