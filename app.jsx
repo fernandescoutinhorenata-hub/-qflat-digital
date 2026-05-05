@@ -46,12 +46,28 @@ function parseCSV(text) {
       price: obj.price,
       badge: obj.badge || null,
       color: obj.color,
+      image: obj.image,
       description: obj.description,
       details: obj.details ? obj.details.split("|") : [],
       images: [obj.color, obj.color, obj.color],
       reviews: []
     };
   });
+}
+
+function getDriveImage(url) {
+  if (!url) return null;
+  
+  // Extrai o ID do link do Google Drive
+  const match = url.match(
+    /(?:id=|\/d\/)([a-zA-Z0-9_-]{10,})/
+  );
+  if (!match) return url;
+  
+  const id = match[1];
+  
+  // Usa thumbnail do Google que não tem CORS
+  return `https://drive.google.com/thumbnail?id=${id}&sz=w800`;
 }
 
 
@@ -521,20 +537,49 @@ const ProductCard = ({ product, onClick }) => {
 
       {/* Image area */}
       <div style={{
-        height: 180, background: `linear-gradient(135deg, ${product.color}33 0%, ${product.color}66 100%)`,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        position: "relative", overflow: "hidden",
+        height: 180,
+        background: product.image 
+          ? "var(--gray-50)" 
+          : `linear-gradient(135deg, 
+              ${product.color}33 0%, 
+              ${product.color}66 100%)`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        overflow: "hidden",
       }}>
-        {/* Abstract 3D shape */}
+        {product.image ? (
+          <img
+            src={getDriveImage(product.image)}
+            alt={product.name}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              transform: hovered ? "scale(1.05)" : "scale(1)",
+              transition: "transform 0.3s",
+            }}
+            onError={e => {
+              e.target.style.display = "none";
+              e.target.nextSibling.style.display = "flex";
+            }}
+          />
+        ) : null}
         <div style={{
           width: 100, height: 100, borderRadius: 18,
           background: product.color,
           boxShadow: `0 12px 32px ${product.color}66`,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          transform: hovered ? "rotate(6deg) scale(1.08)" : "rotate(3deg) scale(1)",
+          display: product.image ? "none" : "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          transform: hovered ?
+            "rotate(6deg) scale(1.08)" :
+            "rotate(3deg) scale(1)",
           transition: "transform 0.3s",
         }}>
-          <Icon name="cube" size={36} color="rgba(255,255,255,0.85)" />
+          <Icon name="cube" size={36}
+            color="rgba(255,255,255,0.85)" />
         </div>
 
         {product.badge && (
