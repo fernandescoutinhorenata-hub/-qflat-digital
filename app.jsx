@@ -557,6 +557,7 @@ const ProductCard = ({ product, onClick }) => {
               width: "100%",
               height: "100%",
               objectFit: "cover",
+              objectPosition: "center",
               transform: hovered ? "scale(1.05)" : "scale(1)",
               transition: "transform 0.3s",
             }}
@@ -664,28 +665,72 @@ const ProductModal = ({ product, onClose, onQuote }) => {
           <div style={{ padding: 28 }}>
             <div style={{
               height: 280, borderRadius: 16, marginBottom: 12,
-              background: `linear-gradient(135deg, ${product.images[activeImage]}33, ${product.images[activeImage]}88)`,
-              display: "flex", alignItems: "center", justifyContent: "center",
+              background: product.image 
+                ? "var(--gray-50)" 
+                : `linear-gradient(135deg, 
+                    ${product.images[activeImage]}33, 
+                    ${product.images[activeImage]}88)`,
+              display: "flex", alignItems: "center", 
+              justifyContent: "center",
+              overflow: "hidden",
             }}>
-              <div style={{
-                width: 120, height: 120, borderRadius: 20,
-                background: product.images[activeImage],
-                boxShadow: `0 16px 40px ${product.images[activeImage]}55`,
-                display: "flex", alignItems: "center", justifyContent: "center",
-              }}>
-                <Icon name="cube" size={48} color="rgba(255,255,255,0.85)" />
-              </div>
+              {product.image ? (
+                <img
+                  src={getDriveImage(product.image)}
+                  alt={product.name}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    borderRadius: 16,
+                  }}
+                />
+              ) : (
+                <div style={{
+                  width: 120, height: 120, borderRadius: 20,
+                  background: product.images[activeImage],
+                  boxShadow: `0 16px 40px 
+                    ${product.images[activeImage]}55`,
+                  display: "flex", alignItems: "center", 
+                  justifyContent: "center",
+                }}>
+                  <Icon name="cube" size={48} 
+                    color="rgba(255,255,255,0.85)" />
+                </div>
+              )}
             </div>
             <div style={{ display: "flex", gap: 8 }}>
               {product.images.map((img, i) => (
-                <div key={i} onClick={() => setActiveImage(i)} style={{
-                  flex: 1, height: 60, borderRadius: 10,
-                  background: `linear-gradient(135deg, ${img}44, ${img}88)`,
-                  border: `2px solid ${activeImage === i ? "var(--purple)" : "var(--gray-100)"}`,
-                  cursor: "pointer", transition: "border 0.15s",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
-                  <div style={{ width: 28, height: 28, borderRadius: 6, background: img }} />
+                <div key={i} onClick={() => setActiveImage(i)} 
+                  style={{
+                    flex: 1, height: 60, borderRadius: 10,
+                    background: product.image 
+                      ? "var(--gray-50)"
+                      : `linear-gradient(135deg, ${img}44, ${img}88)`,
+                    border: `2px solid ${activeImage === i 
+                      ? "var(--purple)" : "var(--gray-100)"}`,
+                    cursor: "pointer", 
+                    transition: "border 0.15s",
+                    display: "flex", alignItems: "center", 
+                    justifyContent: "center",
+                    overflow: "hidden",
+                  }}>
+                  {product.image ? (
+                    <img
+                      src={getDriveImage(product.image)}
+                      alt={product.name}
+                      style={{
+                        width: "100%", height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : (
+                    <div style={{ 
+                      width: 28, height: 28, 
+                      borderRadius: 6, background: img 
+                    }} />
+                  )}
                 </div>
               ))}
             </div>
