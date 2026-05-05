@@ -449,11 +449,10 @@ const FloatingChip = ({ top, bottom, left, right, delay, label, icon }) => {
 };
 
 // ─── FILTERS ──────────────────────────────────────────────
-const CATEGORIES = ["Todos", "Social Mídia", "Design"];
-const MATERIALS = ["Todos", "Digital"];
+const CATEGORIES = ["Todos", "Personalizados 3D", "Social Mídia"];
 const CUSTOMIZATIONS = ["Todos", "Alta", "Média", "Total"];
 
-const Filters = ({ activeCategory, setCategory, activeMaterial, setMaterial, activeCustomization, setCustomization, priceFilter, setPriceFilter }) => {
+const Filters = ({ activeCategory, setCategory, activeCustomization, setCustomization, priceFilter, setPriceFilter }) => {
   const [open, setOpen] = React.useState(false);
 
   const chipStyle = (active) => ({
@@ -487,15 +486,6 @@ const Filters = ({ activeCategory, setCategory, activeMaterial, setMaterial, act
 
       {open && (
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: "var(--gray-400)", fontFamily: "var(--font-head)", letterSpacing: "0.06em", marginRight: 4 }}>MATERIAL</span>
-            {MATERIALS.map(m => (
-              <button key={m} style={chipStyle(activeMaterial === m)} onClick={() => setMaterial(m)}
-                onMouseEnter={e => { if (activeMaterial !== m) { e.currentTarget.style.borderColor = "var(--purple)"; e.currentTarget.style.color = "var(--purple)"; } }}
-                onMouseLeave={e => { if (activeMaterial !== m) { e.currentTarget.style.borderColor = "var(--gray-200)"; e.currentTarget.style.color = "var(--gray-600)"; } }}
-              >{m}</button>
-            ))}
-          </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "var(--gray-400)", fontFamily: "var(--font-head)", letterSpacing: "0.06em", marginRight: 4 }}>PERSONALIZAÇÃO</span>
             {CUSTOMIZATIONS.map(c => (
@@ -805,7 +795,6 @@ const ProductModal = ({ product, onClose, onQuote }) => {
 // ─── PRODUCTS SECTION ──────────────────────────────────────────────
 const ProductsSection = ({ onQuote }) => {
   const [activeCategory, setCategory] = React.useState("Todos");
-  const [activeMaterial, setMaterial] = React.useState("Todos");
   const [activeCustomization, setCustomization] = React.useState("Todos");
   const [selectedProduct, setSelectedProduct] = React.useState(null);
 
@@ -828,7 +817,6 @@ const ProductsSection = ({ onQuote }) => {
 
   const filtered = PRODUCTS.filter(p => {
     if (activeCategory !== "Todos" && p.category !== activeCategory) return false;
-    if (activeMaterial !== "Todos" && p.material !== activeMaterial) return false;
     if (activeCustomization !== "Todos" && p.customization !== activeCustomization) return false;
     return true;
   });
@@ -847,7 +835,6 @@ const ProductsSection = ({ onQuote }) => {
 
         <Filters
           activeCategory={activeCategory} setCategory={setCategory}
-          activeMaterial={activeMaterial} setMaterial={setMaterial}
           activeCustomization={activeCustomization} setCustomization={setCustomization}
         />
 
