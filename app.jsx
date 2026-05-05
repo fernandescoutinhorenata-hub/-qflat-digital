@@ -12,160 +12,50 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "animationsEnabled": true
 }/*EDITMODE-END*/;
 
-// ─── DATA ──────────────────────────────────────────────
-const PRODUCTS = [
-  {
-    id: 1, name: "Flyer Promocional", 
-    category: "Social Mídia",
-    material: "Digital", customization: "Alta", 
-    price: "A partir de R$ 49",
-    badge: "POPULAR",
-    color: "oklch(72% 0.18 280)",
-    description: "Flyers digitais criativos e impactantes para divulgar promoções, eventos e campanhas. Layout profissional com identidade visual da sua marca.",
-    details: [
-      "Formato para Instagram, Facebook e WhatsApp",
-      "Até 2 revisões inclusas",
-      "Entrega em até 24h",
-      "Arquivo em PNG e PDF"
-    ],
-    images: [
-      "oklch(72% 0.18 280)", 
-      "oklch(60% 0.22 300)", 
-      "oklch(68% 0.19 45)"
-    ],
-    reviews: [
-      { name: "Carlos M.", role: "Empresário", 
-        text: "Flyer incrível! Aumentou muito o engajamento das minhas postagens.", stars: 5 },
-      { name: "Patrícia L.", role: "Lojista", 
-        text: "Entrega rápida e qualidade surpreendente. Super recomendo!", stars: 5 }
-    ]
-  },
-  {
-    id: 2, name: "Banner Digital", 
-    category: "Social Mídia",
-    material: "Digital", customization: "Alta", 
-    price: "A partir de R$ 69",
-    badge: "PRO",
-    color: "oklch(55% 0.14 220)",
-    description: "Banners profissionais para campanhas digitais, anúncios pagos e comunicação visual da sua marca nas redes sociais.",
-    details: [
-      "Formatos Feed, Stories e Cover",
-      "Adaptação para múltiplas plataformas",
-      "Entrega em até 24h",
-      "Arquivo editável incluso"
-    ],
-    images: [
-      "oklch(55% 0.14 220)", 
-      "oklch(45% 0.10 200)", 
-      "oklch(65% 0.08 210)"
-    ],
-    reviews: [
-      { name: "Rodrigo S.", role: "Marketing", 
-        text: "Banners com qualidade de agência grande. Resultado excelente!", stars: 5 }
-    ]
-  },
-  {
-    id: 3, name: "Pack de Social Mídia", 
-    category: "Social Mídia",
-    material: "Digital", customization: "Total", 
-    price: "A partir de R$ 149",
-    badge: "NOVO",
-    color: "oklch(70% 0.12 160)",
-    description: "Pacote completo de peças para redes sociais. Feed, Stories, Reels cover, Destaques e muito mais, tudo com identidade visual consistente.",
-    details: [
-      "10 artes personalizadas",
-      "Identidade visual unificada",
-      "Entrega em até 3 dias úteis",
-      "Suporte pós-entrega"
-    ],
-    images: [
-      "oklch(70% 0.12 160)", 
-      "oklch(75% 0.15 130)", 
-      "oklch(65% 0.10 170)"
-    ],
-    reviews: [
-      { name: "Fernanda R.", role: "Influenciadora", 
-        text: "Meu feed nunca ficou tão bonito! Profissionalismo de verdade.", stars: 5 },
-      { name: "André T.", role: "Empreendedor", 
-        text: "Vale cada centavo. Qualidade incrível e entrega no prazo.", stars: 5 }
-    ]
-  },
-  {
-    id: 4, name: "Identidade Visual", 
-    category: "Design",
-    material: "Digital", customization: "Total", 
-    price: "A partir de R$ 497",
-    badge: "EXCLUSIVO",
-    color: "oklch(68% 0.19 45)",
-    description: "Criação completa da identidade visual da sua marca, logo, paleta de cores, tipografia e manual de uso para garantir consistência em todos os canais.",
-    details: [
-      "Logo em todos os formatos",
-      "Manual de marca completo",
-      "Paleta de cores e tipografia",
-      "Prazo de 5 a 7 dias úteis"
-    ],
-    images: [
-      "oklch(68% 0.19 45)", 
-      "oklch(60% 0.22 55)", 
-      "oklch(75% 0.15 40)"
-    ],
-    reviews: [
-      { name: "Marina K.", role: "CEO", 
-        text: "Nossa marca ficou irreconhecível, no bom sentido! Simplesmente incrível.", 
-        stars: 5 }
-    ]
-  },
-  {
-    id: 5, name: "Post Estático", 
-    category: "Social Mídia",
-    material: "Digital", customization: "Média", 
-    price: "A partir de R$ 29",
-    badge: null,
-    color: "oklch(60% 0.18 300)",
-    description: "Posts individuais para feed do Instagram e Facebook com design criativo e alinhado à identidade visual da sua marca.",
-    details: [
-      "Arte única personalizada",
-      "Formato quadrado e retrato",
-      "Entrega em até 12h",
-      "Arquivo em PNG de alta resolução"
-    ],
-    images: [
-      "oklch(60% 0.18 300)", 
-      "oklch(50% 0.22 290)", 
-      "oklch(65% 0.15 310)"
-    ],
-    reviews: [
-      { name: "Bruno A.", role: "Comerciante", 
-        text: "Rápido, bonito e barato. Melhor custo-benefício que já vi!", 
-        stars: 5 }
-    ]
-  },
-  {
-    id: 6, name: "Design para Anúncios", 
-    category: "Design",
-    material: "Digital", customization: "Alta", 
-    price: "A partir de R$ 89",
-    badge: null,
-    color: "oklch(55% 0.20 10)",
-    description: "Criativos profissionais para campanhas de tráfego pago no Google, Meta Ads, TikTok e outras plataformas. Artes otimizadas para conversão.",
-    details: [
-      "Formatos para todas as plataformas",
-      "Foco em conversão e CTR",
-      "Entrega em até 48h",
-      "Até 3 variações inclusas"
-    ],
-    images: [
-      "oklch(55% 0.20 10)", 
-      "oklch(50% 0.22 350)", 
-      "oklch(60% 0.18 20)"
-    ],
-    reviews: [
-      { name: "Sofia L.", role: "Gestora de Tráfego", 
-        text: "CTR disparou depois que comecei a usar os criativos da flat. Top demais!", 
-        stars: 5 }
-    ]
-  }
-];
+const SHEETS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSfodiat6mVYPYdcsbt2LkO3quUTdDTya3dl0JZHDYDvmwZExJAk9rO3GtNmrmnQ00ukjnf_A4ppvVA/pub?output=csv";
+
+function parseCSV(text) {
+  const lines = text.trim().split("\n");
+  const headers = lines[0].split(",").map(h => 
+    h.trim().replace(/^"|"$/g, ""));
+  return lines.slice(1).map(line => {
+    const values = [];
+    let current = "";
+    let inQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+      if (line[i] === '"') {
+        inQuotes = !inQuotes;
+      } else if (line[i] === "," && !inQuotes) {
+        values.push(current.trim());
+        current = "";
+      } else {
+        current += line[i];
+      }
+    }
+    values.push(current.trim());
+    const obj = {};
+    headers.forEach((h, i) => {
+      obj[h] = values[i] || "";
+    });
+    return {
+      id: Number(obj.id),
+      name: obj.name,
+      category: obj.category,
+      material: obj.material,
+      customization: obj.customization,
+      price: obj.price,
+      badge: obj.badge || null,
+      color: obj.color,
+      description: obj.description,
+      details: obj.details ? obj.details.split("|") : [],
+      images: [obj.color, obj.color, obj.color],
+      reviews: []
+    };
+  });
+}
+
+
+
 
 const PORTFOLIO = [
   { id: 1, title: "Réplica de Arquitetura", client: "Studio AR", before: "oklch(85% 0.03 280)", after: "oklch(50% 0.20 280)", tag: "Maquete" },
@@ -919,6 +809,23 @@ const ProductsSection = ({ onQuote }) => {
   const [activeCustomization, setCustomization] = React.useState("Todos");
   const [selectedProduct, setSelectedProduct] = React.useState(null);
 
+  const [PRODUCTS, setProducts] = React.useState([]);
+  const [loadingProducts, setLoadingProducts] = React.useState(true);
+
+  React.useEffect(() => {
+    fetch(SHEETS_URL)
+      .then(res => res.text())
+      .then(text => {
+        const parsed = parseCSV(text);
+        setProducts(parsed);
+        setLoadingProducts(false);
+      })
+      .catch(err => {
+        console.error("Erro ao carregar produtos:", err);
+        setLoadingProducts(false);
+      });
+  }, []);
+
   const filtered = PRODUCTS.filter(p => {
     if (activeCategory !== "Todos" && p.category !== activeCategory) return false;
     if (activeMaterial !== "Todos" && p.material !== activeMaterial) return false;
@@ -944,14 +851,61 @@ const ProductsSection = ({ onQuote }) => {
           activeCustomization={activeCustomization} setCustomization={setCustomization}
         />
 
-        {filtered.length === 0 ? (
-          <div style={{ textAlign: "center", padding: "60px 0", color: "var(--gray-400)" }}>
-            <Icon name="filter" size={40} color="var(--gray-200)" />
-            <p style={{ marginTop: 16, fontFamily: "var(--font-head)" }}>Nenhum produto encontrado com esses filtros.</p>
+        {loadingProducts ? (
+          <div style={{ 
+            textAlign: "center", 
+            padding: "80px 0",
+            color: "var(--gray-400)" 
+          }}>
+            <div style={{
+              width: 48, height: 48, borderRadius: "50%",
+              border: "3px solid var(--gray-200)",
+              borderTopColor: "var(--purple)",
+              margin: "0 auto 16px",
+              animation: "spin 0.8s linear infinite",
+            }} />
+            <p style={{ 
+              fontFamily: "var(--font-head)", 
+              fontSize: 15 
+            }}>
+              Carregando produtos...
+            </p>
+            <style>{`
+              @keyframes spin {
+                to { transform: rotate(360deg); }
+              }
+            `}</style>
+          </div>
+        ) : filtered.length === 0 ? (
+          <div style={{ 
+            textAlign: "center", 
+            padding: "60px 0", 
+            color: "var(--gray-400)" 
+          }}>
+            <Icon name="filter" size={40} 
+              color="var(--gray-200)" />
+            <p style={{ 
+              marginTop: 16, 
+              fontFamily: "var(--font-head)" 
+            }}>
+              Nenhum produto encontrado.
+            </p>
           </div>
         ) : (
-          <div className="products-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
-            {filtered.map(p => <ProductCard key={p.id} product={p} onClick={setSelectedProduct} />)}
+          <div 
+            className="products-grid"
+            style={{ 
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)", 
+              gap: 24 
+            }}>
+            {filtered.map(p => 
+              <ProductCard 
+                key={p.id} 
+                product={p} 
+                onClick={setSelectedProduct} 
+              />
+            )}
           </div>
         )}
         <style>{`
@@ -966,6 +920,7 @@ const ProductsSection = ({ onQuote }) => {
             }
           }
         `}</style>
+
       </div>
 
       {selectedProduct && (
