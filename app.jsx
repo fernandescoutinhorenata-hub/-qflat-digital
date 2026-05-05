@@ -185,20 +185,6 @@ const Navbar = ({ onQuote }) => {
 
         {/* CTA */}
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-          <button onClick={() => {
-            const msg = `Olá! Gostaria de saber mais sobre os serviços da flat.`;
-            window.open(`https://wa.me/5579999990966?text=${encodeURIComponent(msg)}`, "_blank");
-          }} style={{
-            background: "var(--orange)", color: "#fff",
-            border: "none", borderRadius: 99,
-            padding: "10px 22px",
-            fontFamily: "var(--font-head)", fontWeight: 600, fontSize: 14,
-            cursor: "pointer", transition: "all 0.2s",
-            boxShadow: "0 2px 12px oklch(68% 0.19 45 / 0.35)",
-          }}
-          onMouseEnter={e => { e.target.style.background = "var(--orange-hover)"; e.target.style.transform = "translateY(-1px)"; }}
-          onMouseLeave={e => { e.target.style.background = "var(--orange)"; e.target.style.transform = ""; }}
-          >Orçamento Grátis →</button>
           <button onClick={() => setMobileOpen(!mobileOpen)} style={{
             background: "none", border: "none", cursor: "pointer", padding: 4, display: "none"
           }} className="mobile-menu-btn">
