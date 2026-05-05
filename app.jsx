@@ -46,7 +46,7 @@ function parseCSV(text) {
       price: obj.price,
       badge: obj.badge || null,
       color: obj.color,
-      image: obj.image,
+      image: obj.image || null,
       description: obj.description,
       details: obj.details ? obj.details.split("|") : [],
       images: [obj.color, obj.color, obj.color],
@@ -851,6 +851,8 @@ const ProductsSection = ({ onQuote }) => {
       .then(res => res.text())
       .then(text => {
         const parsed = parseCSV(text);
+        console.log("Primeiro produto:", parsed[0]);
+        console.log("Colunas:", Object.keys(parsed[0]));
         setProducts(parsed);
         setLoadingProducts(false);
       })
