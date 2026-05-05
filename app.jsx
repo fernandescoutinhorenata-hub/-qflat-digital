@@ -158,7 +158,7 @@ const Navbar = ({ onQuote }) => {
           style={{ display: "flex", alignItems: "center", cursor: "pointer" }} 
           onClick={() => window.scrollTo({top:0,behavior:"smooth"})}>
           <img 
-            src="public/logo-flat.png" 
+            src="https://res.cloudinary.com/dzo5tqghf/image/upload/v1778016623/01_-_LOGO_FLAT_dom9us.png" 
             alt="flat. a sua agência digital"
             className="logo-img"
             style={{ 
@@ -1262,7 +1262,7 @@ const Footer = () => (
         {/* Brand */}
         <div className="footer-brand">
           <img 
-            src="public/logo-flat.png" 
+            src="https://res.cloudinary.com/dzo5tqghf/image/upload/v1778016623/01_-_LOGO_FLAT_dom9us.png" 
             alt="flat. a sua agência digital"
             style={{ 
               height: 44,
