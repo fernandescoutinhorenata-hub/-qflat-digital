@@ -185,7 +185,10 @@ const Navbar = ({ onQuote }) => {
 
         {/* CTA */}
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-          <button onClick={() => window.open("https://wa.me/5579999990966", "_blank")} style={{
+          <button onClick={() => {
+            const msg = `Olá! Gostaria de saber mais sobre os serviços da flat.`;
+            window.open(`https://wa.me/5579999990966?text=${encodeURIComponent(msg)}`, "_blank");
+          }} style={{
             background: "var(--orange)", color: "#fff",
             border: "none", borderRadius: 99,
             padding: "10px 22px",
@@ -805,7 +808,10 @@ const ProductModal = ({ product, onClose, onQuote }) => {
             <div style={{ display: "flex", gap: 10 }}>
 
               <button 
-                onClick={() => window.open("https://wa.me/5579999990966", "_blank")}
+                onClick={() => {
+                  const msg = `Olá! Gostaria de fazer um orçamento para: *${product.name}*\nPreço: ${product.price}`;
+                  window.open(`https://wa.me/5579999990966?text=${encodeURIComponent(msg)}`, "_blank");
+                }}
                 style={{
                   flex: 1,
                   background: "white", 
@@ -837,7 +843,10 @@ const ProductModal = ({ product, onClose, onQuote }) => {
               </button>
 
               <button 
-                onClick={() => window.open("https://wa.me/5579999990966", "_blank")}
+                onClick={() => {
+                  const msg = `Olá! Gostaria de finalizar a compra do: *${product.name}*\nPreço: ${product.price}`;
+                  window.open(`https://wa.me/5579999990966?text=${encodeURIComponent(msg)}`, "_blank");
+                }}
                 style={{
                   flex: 1,
                   background: "var(--orange)", 
@@ -1222,7 +1231,10 @@ const CtaSection = ({ onQuote }) => (
       </p>
 
       <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-        <button onClick={() => window.open("https://wa.me/5579999990966", "_blank")} style={{
+        <button onClick={() => {
+          const msg = `Olá! Gostaria de saber mais sobre os serviços da flat.`;
+          window.open(`https://wa.me/5579999990966?text=${encodeURIComponent(msg)}`, "_blank");
+        }} style={{
           background: "var(--orange)", color: "white", border: "none",
           borderRadius: 99, padding: "16px 36px",
           fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 16,
