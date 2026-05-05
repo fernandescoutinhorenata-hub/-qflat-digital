@@ -242,16 +242,6 @@ const Hero = ({ onQuote, tweaks }) => {
       <div className="hero-grid" style={{ maxWidth: 1200, margin: "0 auto", width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
         {/* Left */}
         <div style={{ position: "relative", zIndex: 1 }}>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            background: "oklch(68% 0.19 45 / 0.12)", color: "var(--orange)",
-            padding: "6px 14px", borderRadius: 99, marginBottom: 24,
-            fontSize: 12, fontWeight: 700, fontFamily: "var(--font-head)", letterSpacing: "0.06em",
-            border: "1px solid oklch(68% 0.19 45 / 0.25)",
-          }}>
-            ✦ IMPRESSÃO 3D SOB DEMANDA
-          </div>
-
           <h1 style={{
             fontFamily: "var(--font-head)", fontWeight: 700,
             fontSize: "clamp(36px, 5vw, 60px)", lineHeight: 1.1,
