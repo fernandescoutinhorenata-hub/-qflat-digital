@@ -1195,11 +1195,13 @@ const CtaSection = ({ onQuote }) => (
 
     <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center", position: "relative" }}>
       <div style={{
-        display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 24,
-        background: "oklch(68% 0.19 45 / 0.15)", color: "var(--orange)",
-        padding: "7px 16px", borderRadius: 99, fontSize: 12, fontWeight: 700,
-        fontFamily: "var(--font-head)", letterSpacing: "0.06em",
-        border: "1px solid oklch(68% 0.19 45 / 0.3)",
+        fontSize: 11,
+        fontWeight: 700,
+        letterSpacing: "0.1em",
+        color: "var(--orange)",
+        fontFamily: "var(--font-head)",
+        marginBottom: 16,
+        textAlign: "center",
       }}>
         ✦ PRONTO PARA COMEÇAR?
       </div>
@@ -1216,7 +1218,7 @@ const CtaSection = ({ onQuote }) => (
         Orçamento grátis em até 2 horas. Sem compromisso. Sem complicação. Só qualidade.
       </p>
 
-      <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <button onClick={() => {
           const msg = `Olá! Gostaria de saber mais sobre os serviços da flat.`;
           window.open(`https://wa.me/5579999990966?text=${encodeURIComponent(msg)}`, "_blank");
@@ -1233,19 +1235,6 @@ const CtaSection = ({ onQuote }) => (
         >
           <Icon name="send" size={17} color="#fff" /> Solicitar orçamento grátis
         </button>
-
-        <a href="https://wa.me/5500000000000" style={{
-          background: "transparent", color: "white",
-          border: "2px solid rgba(255,255,255,0.25)", borderRadius: 99,
-          padding: "14px 28px", textDecoration: "none",
-          fontFamily: "var(--font-head)", fontWeight: 600, fontSize: 15,
-          transition: "all 0.2s", display: "inline-flex", alignItems: "center", gap: 8,
-        }}
-        onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.08)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)"; }}
-        onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)"; }}
-        >
-          <Icon name="whatsapp" size={16} color="white" /> WhatsApp
-        </a>
       </div>
     </div>
   </section>
