@@ -47,6 +47,8 @@ function parseCSV(text) {
       badge: obj.badge || null,
       color: obj.color,
       image: obj.image || null,
+      image2: obj.image2 || null,
+      image3: obj.image3 || null,
       description: obj.description,
       details: obj.details ? obj.details.split("|") : [],
       images: [obj.color, obj.color, obj.color],
@@ -674,65 +676,94 @@ const ProductModal = ({ product, onClose, onQuote }) => {
               justifyContent: "center",
               overflow: "hidden",
             }}>
-              {product.image ? (
-                <img
-                  src={getDriveImage(product.image)}
-                  alt={product.name}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center",
-                    borderRadius: 16,
-                  }}
-                />
-              ) : (
-                <div style={{
-                  width: 120, height: 120, borderRadius: 20,
-                  background: product.images[activeImage],
-                  boxShadow: `0 16px 40px 
-                    ${product.images[activeImage]}55`,
-                  display: "flex", alignItems: "center", 
-                  justifyContent: "center",
-                }}>
-                  <Icon name="cube" size={48} 
-                    color="rgba(255,255,255,0.85)" />
-                </div>
-              )}
+              {(() => {
+                const allImages = [
+                  product.image,
+                  product.image2,
+                  product.image3
+                ].filter(Boolean);
+
+                const currentImage = allImages.length > 0
+                  ? allImages[activeImage] || allImages[0]
+                  : null;
+
+                return currentImage ? (
+                  <img
+                    src={getDriveImage(currentImage)}
+                    alt={product.name}
+                    style={{
+                      width: "100%", height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "center",
+                      borderRadius: 16,
+                    }}
+                  />
+                ) : (
+                  <div style={{
+                    width: 120, height: 120, borderRadius: 20,
+                    background: product.images[activeImage],
+                    boxShadow: `0 16px 40px 
+                      ${product.images[activeImage]}55`,
+                    display: "flex", alignItems: "center",
+                    justifyContent: "center",
+                  }}>
+                    <Icon name="cube" size={48}
+                      color="rgba(255,255,255,0.85)" />
+                  </div>
+                );
+              })()}
             </div>
             <div style={{ display: "flex", gap: 8 }}>
-              {product.images.map((img, i) => (
-                <div key={i} onClick={() => setActiveImage(i)} 
-                  style={{
-                    flex: 1, height: 60, borderRadius: 10,
-                    background: product.image 
-                      ? "var(--gray-50)"
-                      : `linear-gradient(135deg, ${img}44, ${img}88)`,
-                    border: `2px solid ${activeImage === i 
-                      ? "var(--purple)" : "var(--gray-100)"}`,
-                    cursor: "pointer", 
-                    transition: "border 0.15s",
-                    display: "flex", alignItems: "center", 
-                    justifyContent: "center",
-                    overflow: "hidden",
-                  }}>
-                  {product.image ? (
-                    <img
-                      src={getDriveImage(product.image)}
-                      alt={product.name}
-                      style={{
+              {(() => {
+                const allImages = [
+                  product.image,
+                  product.image2,
+                  product.image3
+                ].filter(Boolean);
+
+                const displayImages = allImages.length > 0 
+                  ? allImages 
+                  : product.images;
+
+                return displayImages.map((img, i) => (
+                  <div 
+                    key={i} 
+                    onClick={() => setActiveImage(i)}
+                    style={{
+                      flex: 1, height: 60, borderRadius: 10,
+                      border: `2px solid ${activeImage === i 
+                        ? "var(--purple)" : "var(--gray-100)"}`,
+                      cursor: "pointer",
+                      transition: "border 0.15s",
+                      overflow: "hidden",
+                      background: "var(--gray-50)",
+                    }}>
+                    {allImages.length > 0 ? (
+                      <img
+                        src={getDriveImage(img)}
+                        alt={`${product.name} ${i + 1}`}
+                        style={{
+                          width: "100%", height: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    ) : (
+                      <div style={{
                         width: "100%", height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : (
-                    <div style={{ 
-                      width: 28, height: 28, 
-                      borderRadius: 6, background: img 
-                    }} />
-                  )}
-                </div>
-              ))}
+                        background: `linear-gradient(135deg, 
+                          ${img}44, ${img}88)`,
+                        display: "flex", alignItems: "center",
+                        justifyContent: "center",
+                      }}>
+                        <div style={{ 
+                          width: 28, height: 28,
+                          borderRadius: 6, background: img 
+                        }} />
+                      </div>
+                    )}
+                  </div>
+                ));
+              })()}
             </div>
           </div>
 
