@@ -59,9 +59,15 @@ function parseCSV(text) {
   });
 }
 
-function getDriveImage(url) {
+function getProductImage(url) {
   if (!url) return null;
   
+  if (url.includes("cloudinary.com")) {
+    return url
+      .replace("/upload/", "/upload/f_auto,q_auto,w_800/")
+      .replace("/upload/f_auto,q_auto/", "/upload/f_auto,q_auto,w_800/");
+  }
+
   // Extrai o ID do link do Google Drive
   const match = url.match(
     /(?:id=|\/d\/)([a-zA-Z0-9_-]{10,})/
@@ -163,6 +169,7 @@ const Navbar = ({ onQuote }) => {
             src="https://res.cloudinary.com/dzo5tqghf/image/upload/v1778016623/01_-_LOGO_FLAT_dom9us.png" 
             alt="flat. a sua agência digital"
             className="logo-img"
+            loading="lazy"
             style={{ 
               height: 38,
               width: "auto",
@@ -534,8 +541,9 @@ const ProductCard = ({ product, onClick }) => {
       }}>
         {product.image ? (
           <img
-            src={getDriveImage(product.image)}
+            src={getProductImage(product.image)}
             alt={product.name}
+            loading="lazy"
             style={{
               width: "100%",
               height: "100%",
@@ -670,8 +678,9 @@ const ProductModal = ({ product, onClose, onQuote }) => {
 
                 return currentImage ? (
                   <img
-                    src={getDriveImage(currentImage)}
+                    src={getProductImage(currentImage)}
                     alt={product.name}
+                    loading="lazy"
                     style={{
                       width: "100%", height: "100%",
                       objectFit: "cover",
@@ -721,8 +730,9 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                     }}>
                     {allImages.length > 0 ? (
                       <img
-                        src={getDriveImage(img)}
+                        src={getProductImage(img)}
                         alt={`${product.name} ${i + 1}`}
+                        loading="lazy"
                         style={{
                           width: "100%", height: "100%",
                           objectFit: "cover",
@@ -1318,6 +1328,7 @@ const Footer = () => (
           <img 
             src="https://res.cloudinary.com/dzo5tqghf/image/upload/v1778017655/01_-_LOGO_FLAT_LAR_cifjyd.png" 
             alt="flat. a sua agência digital"
+            loading="lazy"
             style={{ 
               height: 44,
               width: "auto",
