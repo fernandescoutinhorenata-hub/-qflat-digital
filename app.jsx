@@ -1010,11 +1010,6 @@ const ProductsSection = ({ onQuote }) => {
           </p>
         </div>
 
-        <Filters
-          activeCategory={activeCategory} setCategory={setCategory}
-          activeCustomization={activeCustomization} setCustomization={setCustomization}
-        />
-
         {activeCategory !== "Pronta Entrega" && (
           <MaisVendidosSection 
             products={PRODUCTS} 
@@ -1022,6 +1017,11 @@ const ProductsSection = ({ onQuote }) => {
             onSelectProduct={setSelectedProduct}
           />
         )}
+
+        <Filters
+          activeCategory={activeCategory} setCategory={setCategory}
+          activeCustomization={activeCustomization} setCustomization={setCustomization}
+        />
 
         {loadingProducts ? (
           <div style={{ 
