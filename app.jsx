@@ -448,7 +448,7 @@ const FloatingChip = ({ top, bottom, left, right, delay, label, icon }) => {
 };
 
 // ─── FILTERS ──────────────────────────────────────────────
-const CATEGORIES = ["Todos", "Pronta Entrega", "Personalizados 3D", "Social Mídia"];
+const CATEGORIES = ["Todos", "Pronta Entrega", "Personalizados 3D", "Social Mídia", "Páginas de Vendas"];
 const CUSTOMIZATIONS = ["Todos", "Alta", "Média", "Total"];
 
 const Filters = ({ activeCategory, setCategory, activeCustomization, setCustomization, priceFilter, setPriceFilter }) => {
