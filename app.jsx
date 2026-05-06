@@ -83,26 +83,6 @@ const PORTFOLIO = [
   { id: 3, title: "Troféu Corporativo", client: "GameOn Summit", before: "oklch(85% 0.03 45)", after: "oklch(60% 0.22 45)", tag: "Brinde" },
 ];
 
-const LANDING_PAGES = [
-  {
-    id: 1,
-    name: "Página de Vendas Premium",
-    category: "Conversão",
-    description: "Landing page profissional de alta conversão para vender produtos ou serviços. Design moderno, responsivo e otimizado para resultados.",
-    price: "A partir de R$ 297",
-    badge: "MAIS VENDIDO",
-    color: "oklch(45% 0.22 280)",
-    includes: [
-      "Design 100% personalizado",
-      "Responsivo para mobile",
-      "Integração com WhatsApp",
-      "Entrega em até 5 dias úteis",
-      "1 revisão inclusa",
-    ],
-    image: null,
-  }
-];
-
 // ─── ICONS ──────────────────────────────────────────────
 const Icon = ({ name, size = 20, color = "currentColor" }) => {
   const icons = {
@@ -122,8 +102,6 @@ const Icon = ({ name, size = 20, color = "currentColor" }) => {
     close: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>,
     location: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>,
     mail: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
-    layout: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>,
-    "check-circle": <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>,
   };
   return icons[name] || null;
 };
@@ -160,7 +138,6 @@ const Navbar = ({ onQuote }) => {
 
   const links = [
     { label: "Produtos", href: "#produtos" },
-    { label: "Páginas de Vendas", href: "#paginas-vendas" },
     { label: "Sobre", href: "#sobre" },
   ];
 
@@ -1127,224 +1104,6 @@ const ProductsSection = ({ onQuote }) => {
 
 
 
-function LandingPageCard({ page }) {
-  const [hovered, setHovered] = React.useState(false);
-  
-  const handleWhatsApp = () => {
-    const msg = `Olá! Tenho interesse na: *${page.name}*\nPreço: ${page.price}`;
-    window.open(
-      `https://wa.me/5579999990966?text=${encodeURIComponent(msg)}`,
-      "_blank"
-    );
-  };
-
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        background: "var(--white)",
-        borderRadius: 20,
-        border: "1.5px solid var(--gray-100)",
-        overflow: "hidden",
-        transition: "all 0.3s",
-        transform: hovered 
-          ? "translateY(-6px)" : "translateY(0)",
-        boxShadow: hovered 
-          ? "var(--shadow-lg)" : "var(--shadow-sm)",
-        display: "flex",
-        flexDirection: "column",
-      }}>
-
-      {/* Imagem/Visual */}
-      <div style={{
-        height: 200,
-        background: page.image
-          ? "var(--gray-50)"
-          : `linear-gradient(135deg, 
-              ${page.color}22, ${page.color}55)`,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        position: "relative",
-        overflow: "hidden",
-      }}>
-        {page.image ? (
-          <img src={page.image} alt={page.name}
-            style={{ width: "100%", height: "100%",
-              objectFit: "cover" }} />
-        ) : (
-          <div style={{
-            width: 80, height: 80, borderRadius: 16,
-            background: page.color,
-            display: "flex", alignItems: "center",
-            justifyContent: "center",
-            boxShadow: `0 12px 32px ${page.color}66`,
-            transform: hovered 
-              ? "scale(1.08)" : "scale(1)",
-            transition: "transform 0.3s",
-          }}>
-            <Icon name="layout" size={32}
-              color="rgba(255,255,255,0.9)" />
-          </div>
-        )}
-        {page.badge && (
-          <div style={{
-            position: "absolute", top: 12, left: 12,
-            background: "var(--orange)",
-            color: "white", fontSize: 10,
-            fontWeight: 700, padding: "4px 10px",
-            borderRadius: 99,
-            fontFamily: "var(--font-head)",
-            letterSpacing: "0.05em",
-          }}>
-            {page.badge}
-          </div>
-        )}
-      </div>
-
-      {/* Conteúdo */}
-      <div style={{ padding: "20px 20px 24px",
-        display: "flex", flexDirection: "column",
-        flex: 1, gap: 12 }}>
-        
-        <div>
-          <div style={{ fontSize: 11,
-            color: "var(--orange)", fontWeight: 600,
-            letterSpacing: "0.06em", marginBottom: 6,
-            fontFamily: "var(--font-head)",
-          }}>
-            {page.category}
-          </div>
-          <h3 style={{
-            fontFamily: "var(--font-head)",
-            fontSize: 17, fontWeight: 700,
-            color: "var(--text)", marginBottom: 8,
-          }}>
-            {page.name}
-          </h3>
-          <p style={{ fontSize: 13,
-            color: "var(--gray-600)", lineHeight: 1.6,
-          }}>
-            {page.description}
-          </p>
-        </div>
-
-        {/* Inclui */}
-        <div style={{ display: "flex",
-          flexDirection: "column", gap: 6 }}>
-          {page.includes.map((item, i) => (
-            <div key={i} style={{ display: "flex",
-              alignItems: "center", gap: 8,
-              fontSize: 12, color: "var(--gray-600)",
-            }}>
-              <Icon name="check-circle" size={14}
-                color="var(--purple)" />
-              {item}
-            </div>
-          ))}
-        </div>
-
-        {/* Rodapé */}
-        <div style={{ marginTop: "auto",
-          paddingTop: 16,
-          borderTop: "1px solid var(--gray-100)",
-          display: "flex", alignItems: "center",
-          justifyContent: "space-between", gap: 12,
-        }}>
-          <div>
-            <div style={{ fontSize: 11,
-              color: "var(--gray-400)",
-              fontWeight: 500, marginBottom: 2,
-            }}>Investimento</div>
-            <div style={{
-              fontFamily: "var(--font-head)",
-              fontWeight: 700, fontSize: 15,
-              color: "var(--purple)",
-            }}>
-              {page.price}
-            </div>
-          </div>
-          <button onClick={handleWhatsApp}
-            style={{
-              background: hovered 
-                ? "var(--orange)" : "var(--purple)",
-              color: "white", border: "none",
-              borderRadius: 99, padding: "9px 18px",
-              fontSize: 13, fontWeight: 600,
-              fontFamily: "var(--font-head)",
-              cursor: "pointer",
-              transition: "all 0.2s",
-              display: "flex", alignItems: "center",
-              gap: 6, flexShrink: 0,
-            }}>
-            <Icon name="whatsapp" size={14}
-              color="white" />
-            Quero essa
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PaginasVendasSection() {
-  return (
-    <section id="paginas-vendas" style={{
-      padding: "80px 0",
-      background: "var(--gray-50)",
-    }}>
-      <div style={{
-        maxWidth: 1200, margin: "0 auto",
-        padding: "0 24px",
-      }}>
-        {/* Cabeçalho */}
-        <div style={{ textAlign: "center",
-          marginBottom: 48 }}>
-          <div style={{
-            fontSize: 12, fontWeight: 700,
-            letterSpacing: "0.08em",
-            color: "var(--orange)",
-            fontFamily: "var(--font-head)",
-            marginBottom: 12,
-            textTransform: "uppercase",
-          }}>
-            🚀 PÁGINAS DE VENDAS
-          </div>
-          <h2 style={{
-            fontFamily: "var(--font-head)",
-            fontSize: "clamp(28px, 3vw, 40px)",
-            fontWeight: 800,
-            color: "var(--text)",
-            marginBottom: 16,
-          }}>
-            Landing pages que convertem
-          </h2>
-          <p style={{
-            color: "var(--gray-600)",
-            fontSize: 16, maxWidth: 520,
-            margin: "0 auto", lineHeight: 1.7,
-          }}>
-            Páginas profissionais criadas para transformar visitantes em clientes. Design estratégico e foco em resultado.
-          </p>
-        </div>
-
-        {/* Grid */}
-        <div className="products-grid" style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: 24,
-        }}>
-          {LANDING_PAGES.map(page => (
-            <LandingPageCard key={page.id} 
-              page={page} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ─── ABOUT ──────────────────────────────────────────────
 const AboutSection = () => {
   const diffs = [
@@ -1831,7 +1590,6 @@ const App = () => {
       <Navbar onQuote={() => setQuoteOpen(true)} />
       <Hero onQuote={() => setQuoteOpen(true)} tweaks={tweaks} />
       <ProductsSection onQuote={() => setQuoteOpen(true)} />
-      <PaginasVendasSection />
 
 
       {tweaks.showReviews && <ReviewsSection />}
