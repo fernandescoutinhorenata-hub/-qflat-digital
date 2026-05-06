@@ -909,13 +909,14 @@ function MaisVendidosSection({ products, onQuote, onSelectProduct }) {
 
   return (
     <section style={{
-      padding: "60px 0 0",
-      background: "transparent",
+      padding: "80px 0 60px",
+      background: "var(--white)",
     }}>
       <div style={{
         maxWidth: 1200, margin: "0 auto",
+        padding: "0 24px",
       }}>
-        <div style={{ marginBottom: 32 }}>
+        <div style={{ marginBottom: 40 }}>
           <div style={{
             fontSize: 12, fontWeight: 700,
             letterSpacing: "0.08em",
