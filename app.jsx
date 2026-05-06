@@ -52,7 +52,9 @@ function parseCSV(text) {
       description: obj.description,
       details: obj.details ? obj.details.split("|") : [],
       images: [obj.color, obj.color, obj.color],
-      reviews: []
+      reviews: [],
+      pronta_entrega: obj.pronta_entrega === "sim",
+      mais_vendido: obj.mais_vendido === "sim",
     };
   });
 }
@@ -446,7 +448,7 @@ const FloatingChip = ({ top, bottom, left, right, delay, label, icon }) => {
 };
 
 // ─── FILTERS ──────────────────────────────────────────────
-const CATEGORIES = ["Todos", "Personalizados 3D", "Social Mídia"];
+const CATEGORIES = ["Todos", "Pronta Entrega", "Personalizados 3D", "Social Mídia"];
 const CUSTOMIZATIONS = ["Todos", "Alta", "Média", "Total"];
 
 const Filters = ({ activeCategory, setCategory, activeCustomization, setCustomization, priceFilter, setPriceFilter }) => {
@@ -898,6 +900,68 @@ const ProductModal = ({ product, onClose, onQuote }) => {
   );
 };
 
+function MaisVendidosSection({ products, onQuote, onSelectProduct }) {
+  const maisVendidos = products.filter(
+    p => p.mais_vendido
+  );
+  
+  if (maisVendidos.length === 0) return null;
+
+  return (
+    <section style={{
+      padding: "60px 0 0",
+      background: "transparent",
+    }}>
+      <div style={{
+        maxWidth: 1200, margin: "0 auto",
+      }}>
+        <div style={{ marginBottom: 32 }}>
+          <div style={{
+            fontSize: 12, fontWeight: 700,
+            letterSpacing: "0.08em",
+            color: "var(--orange)",
+            fontFamily: "var(--font-head)",
+            marginBottom: 8,
+            textTransform: "uppercase",
+          }}>
+            ⭐ MAIS VENDIDOS
+          </div>
+          <h2 style={{
+            fontFamily: "var(--font-head)",
+            fontSize: "clamp(24px, 3vw, 32px)",
+            fontWeight: 700,
+            color: "var(--text)",
+            marginBottom: 8,
+          }}>
+            Os favoritos dos nossos clientes
+          </h2>
+          <p style={{
+            color: "var(--gray-600)",
+            fontSize: 15,
+          }}>
+            Produtos com maior procura e 
+            avaliações incríveis.
+          </p>
+        </div>
+
+        <div className="products-grid" style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: 24,
+        }}>
+          {maisVendidos.map(p => (
+            <ProductCard
+              key={p.id}
+              product={p}
+              onClick={onSelectProduct}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── PRODUCTS SECTION ──────────────────────────────────────────────
 const ProductsSection = ({ onQuote }) => {
   const [activeCategory, setCategory] = React.useState("Todos");
@@ -924,7 +988,11 @@ const ProductsSection = ({ onQuote }) => {
   }, []);
 
   const filtered = PRODUCTS.filter(p => {
-    if (activeCategory !== "Todos" && p.category !== activeCategory) return false;
+    if (activeCategory === "Pronta Entrega") {
+      if (!p.pronta_entrega) return false;
+    } else if (activeCategory !== "Todos" && p.category !== activeCategory) {
+      return false;
+    }
     if (activeCustomization !== "Todos" && p.customization !== activeCustomization) return false;
     return true;
   });
@@ -945,6 +1013,14 @@ const ProductsSection = ({ onQuote }) => {
           activeCategory={activeCategory} setCategory={setCategory}
           activeCustomization={activeCustomization} setCustomization={setCustomization}
         />
+
+        {activeCategory !== "Pronta Entrega" && (
+          <MaisVendidosSection 
+            products={PRODUCTS} 
+            onQuote={onQuote}
+            onSelectProduct={setSelectedProduct}
+          />
+        )}
 
         {loadingProducts ? (
           <div style={{ 
