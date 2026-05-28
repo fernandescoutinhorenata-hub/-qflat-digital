@@ -1,3 +1,8 @@
+import React from 'react';
+import {
+  useTweaks, TweaksPanel, TweakSection, TweakRadio, TweakText, TweakToggle, TweakColor
+} from './tweaks-panel';
+
 // BILINHO - 3D Print Marketplace Portfolio
 // Visual system: Space Grotesk + Inter, Purple/White/Orange palette
 
@@ -1542,7 +1547,7 @@ const QuoteModal = ({ onClose }) => {
                   flex: 1, background: "var(--gray-100)", color: "var(--gray-600)", border: "none",
                   borderRadius: 99, padding: "13px",
                   fontFamily: "var(--font-head)", fontWeight: 600, fontSize: 15, cursor: "pointer",
-                }}>← Voltar</button>
+                }}>{/* eslint-disable-next-line react/no-unescaped-entities */}← Voltar</button>
               )}
               <button
                 onClick={() => step < 3 ? setStep(step + 1) : handleSubmit()}
@@ -1586,7 +1591,7 @@ const InputField = ({ label, placeholder, value, onChange }) => (
 );
 
 // ─── APP ROOT ──────────────────────────────────────────────
-const App = () => {
+export const App = () => {
   const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
   const [quoteOpen, setQuoteOpen] = React.useState(false);
 
@@ -1624,6 +1629,3 @@ const App = () => {
     </div>
   );
 };
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);

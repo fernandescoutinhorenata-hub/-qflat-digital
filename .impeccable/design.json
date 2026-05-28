@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-28T02:07:00Z",
+  "title": "Design System: Qflat Digital",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Alquimia Púrpura",
+        "canonical": "oklch(45% 0.22 280)",
+        "tonalRamp": [
+          "oklch(15% 0.08 280)",
+          "oklch(25% 0.14 280)",
+          "oklch(35% 0.18 280)",
+          "oklch(45% 0.22 280)",
+          "oklch(55% 0.18 280)",
+          "oklch(70% 0.12 280)",
+          "oklch(85% 0.06 280)",
+          "oklch(95% 0.02 280)"
+        ]
+      },
+      "accent": {
+        "role": "accent",
+        "displayName": "Chama Rápida",
+        "canonical": "oklch(68% 0.19 45)",
+        "tonalRamp": [
+          "oklch(20% 0.07 45)",
+          "oklch(35% 0.12 45)",
+          "oklch(50% 0.16 45)",
+          "oklch(68% 0.19 45)",
+          "oklch(75% 0.15 45)",
+          "oklch(84% 0.11 45)",
+          "oklch(92% 0.06 45)",
+          "oklch(97% 0.02 45)"
+        ]
+      },
+      "neutral-bg": {
+        "role": "background",
+        "displayName": "Branco Puro",
+        "canonical": "oklch(100% 0.005 280)"
+      },
+      "neutral-fg": {
+        "role": "foreground",
+        "displayName": "Preto Alquímico",
+        "canonical": "oklch(18% 0.04 280)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Geométrica Display",
+        "purpose": "Manchetes de destaque e chamadas principais de seções."
+      },
+      "body": {
+        "displayName": "Clara Leitura Body",
+        "purpose": "Textos gerais e parágrafos descritivos de alta legibilidade."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ds-shadow-lifted",
+        "value": "0 12px 32px oklch(45% 0.22 280 / 0.12)",
+        "purpose": "Elevação tátil marcante para grandes modais e containers."
+      },
+      {
+        "name": "ds-shadow-micro",
+        "value": "0 4px 12px oklch(45% 0.22 280 / 0.06)",
+        "purpose": "Sombra sutil em estado de repouso de botões e cards."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ds-ease-exponential",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Transição veloz e polida para hover, translações e opacidade."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "640px" },
+      { "name": "tablet", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Botão primário chamativo para ações de conversão e orçamentos.",
+      "html": "<button class=\"ds-btn-primary\">SOLICITAR ORÇAMENTO</button>",
+      "css": ".ds-btn-primary { background: #f97316; color: #fff; padding: 14px 28px; border: none; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25); } .ds-btn-primary:hover { background: #ea580c; transform: translateY(-2px); box-shadow: 0 12px 24px rgba(249, 115, 22, 0.4); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Botão secundário outline para ações secundárias ou de navegação.",
+      "html": "<button class=\"ds-btn-secondary\">VER PRODUTOS</button>",
+      "css": ".ds-btn-secondary { background: transparent; color: #7c3aed; padding: 12px 24px; border: 1.5px solid #7c3aed; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-secondary:hover { background: rgba(124, 58, 237, 0.08); transform: translateY(-2px); }"
+    },
+    {
+      "name": "Product Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Card de produto responsivo com cantos definidos e bordas sutis.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-img\"></div><div class=\"ds-card-body\"><h3 class=\"ds-card-title\">Miniatura Customizada</h3><p class=\"ds-card-desc\">Material: PLA Premium · Total personalização</p><button class=\"ds-btn-primary\" style=\"padding: 10px 20px; font-size: 12px;\">VER DETALHES</button></div></div>",
+      "css": ".ds-card { background: #fff; border-radius: 6px; border: 1px solid #f0edf5; overflow: hidden; font-family: 'Inter', sans-serif; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.06); transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); } .ds-card:hover { transform: translateY(-4px); border-color: rgba(124, 58, 237, 0.25); box-shadow: 0 12px 32px rgba(124, 58, 237, 0.12); } .ds-card-img { height: 140px; background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(124, 58, 237, 0.15)); } .ds-card-body { padding: 20px; } .ds-card-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; color: #110b1a; margin: 0 0 6px 0; } .ds-card-desc { font-size: 13px; color: #807c8a; margin: 0 0 16px 0; line-height: 1.5; } .ds-btn-primary { background: #f97316; color: #fff; border: none; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Precision Alchemy (Alquimia de Precisão)",
+    "overview": "O sistema de design visual da flat. representa o equilíbrio perfeito entre o rigor técnico da manufatura física 3D e a expressividade livre da agência digital. Adota uma postura Restrita e Editorial, com cantos vivos moderados (4px a 12px), tipografia geométrica imponente e caixas de texto com espaçamento clássico, elevando a percepção de craft e agilidade de entrega.",
+    "keyCharacteristics": [
+      "Estética editorial sofisticada com tipografia marcante.",
+      "Cantos vivos semi-retangulares (eliminando formas circulares/pílulas genéricas).",
+      "Sombras físicas táteis e reativas a estados de interação.",
+      "Contraste absoluto e pureza de tokens para entrega rápida e clara de informação."
+    ],
+    "rules": [
+      {
+        "name": "The 10% Accent Rule",
+        "body": "A cor de destaque Accent (#f97316) deve ocupar no máximo 10% da área visível de qualquer seção ou tela. Seu papel é direcionar o olhar para ações cruciais (CTAs), não preencher layouts.",
+        "section": "colors"
+      },
+      {
+        "name": "The Contrast Rule",
+        "body": "Nenhum texto no site deve ficar abaixo da taxa de contraste de 4.5:1 exigida pelo padrão WCAG AA. O uso de cinzas claros e lavados sobre fundos brancos é estritamente proibido.",
+        "section": "colors"
+      },
+      {
+        "name": "The Editorial Title Rule",
+        "body": "Títulos e subtítulos principais de seções devem possuir um forte contraste de escala (mínimo de 1.25x entre níveis) e usar capitalização ou variações de peso geométrico para evitar layouts visualmente monótonos.",
+        "section": "typography"
+      },
+      {
+        "name": "The Interactive Elevation Rule",
+        "body": "Superfícies são levemente elevadas ou planas em repouso. Sombras mais profundas e nítidas surgem apenas como resposta ativa de estado (hover, focus), simulando a atração física ao clique do usuário.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar cantos vivos e semi-retangulares (rounded.sm / 4px) para botões, inputs e formulários interativos.",
+      "Do manter todos os textos principais em total conformidade com a taxa de contraste mínima de 4.5:1 (WCAG AA).",
+      "Do concentrar a cor de destaque Chama Rápida (#f97316) apenas nos botões de conversão e elementos de ação chave.",
+      "Do usar transições exponenciais suaves e rápidas (0.2s) para reforçar a sensação de agilidade e precisão."
+    ],
+    "donts": [
+      "Don't criar botões no estilo pílula com cantos completamente arredondados (rounded: 99px), evitando clichês de IA.",
+      "Don't utilizar degradês artificiais de cor em textos (background-clip: text) ou glassmorphism borrado decorativo.",
+      "Don't sobrecarregar o site com layouts repetitivos de grades de cards idênticos ou grandes blocos cinzas sem cuidado visual.",
+      "Don't usar sombras escuras, saturadas ou pesadas que pareçam sujas; todas as elevações devem usar opacidades extremamente baixas."
+    ]
+  }
+}
