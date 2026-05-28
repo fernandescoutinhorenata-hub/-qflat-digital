@@ -169,7 +169,11 @@ const Navbar = ({ onQuote }) => {
         {/* Logo */}
         <div 
           style={{ display: "flex", alignItems: "center", cursor: "pointer" }} 
-          onClick={() => window.scrollTo({top:0,behavior:"smooth"})}>
+          role="button"
+          tabIndex={0}
+          aria-label="Voltar para o topo"
+          onClick={() => window.scrollTo({top:0,behavior:"smooth"})}
+          onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); window.scrollTo({top:0,behavior:"smooth"}); } }}>
           <img 
             src="https://res.cloudinary.com/dzo5tqghf/image/upload/v1778016623/01_-_LOGO_FLAT_dom9us.png" 
             alt="flat. a sua agência digital"
@@ -521,6 +525,10 @@ const ProductCard = ({ product, onClick }) => {
       onClick={() => onClick(product)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      role="button"
+      tabIndex={0}
+      aria-label={`Ver detalhes de ${product.name}`}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(product); } }}
       style={{
         background: "white", borderRadius: 20,
         border: `1.5px solid ${hovered ? "oklch(45% 0.22 280 / 0.30)" : "var(--gray-100)"}`,
@@ -721,9 +729,10 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                   : product.images;
 
                 return displayImages.map((img, i) => (
-                  <div 
+                  <button 
                     key={i} 
                     onClick={() => setActiveImage(i)}
+                    aria-label={`Ver imagem ${i + 1} de ${product.name}`}
                     style={{
                       flex: 1, height: 60, borderRadius: 10,
                       border: `2px solid ${activeImage === i 
@@ -732,6 +741,7 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                       transition: "border 0.15s",
                       overflow: "hidden",
                       background: "var(--gray-50)",
+                      padding: 0,
                     }}>
                     {allImages.length > 0 ? (
                       <img
@@ -757,7 +767,7 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                         }} />
                       </div>
                     )}
-                  </div>
+                  </button>
                 ));
               })()}
             </div>
@@ -986,21 +996,30 @@ const ProductsSection = ({ onQuote }) => {
 
   const [PRODUCTS, setProducts] = React.useState([]);
   const [loadingProducts, setLoadingProducts] = React.useState(true);
+  const [error, setError] = React.useState(null);
 
-  React.useEffect(() => {
+  const loadProducts = () => {
+    setLoadingProducts(true);
+    setError(null);
     fetch(SHEETS_URL)
-      .then(res => res.text())
+      .then(res => {
+        if (!res.ok) throw new Error("Erro na rede do servidor");
+        return res.text();
+      })
       .then(text => {
         const parsed = parseCSV(text);
-        console.log("Primeiro produto:", parsed[0]);
-        console.log("Colunas:", Object.keys(parsed[0]));
         setProducts(parsed);
         setLoadingProducts(false);
       })
       .catch(err => {
         console.error("Erro ao carregar produtos:", err);
+        setError("Não foi possível carregar os produtos. Verifique sua conexão e tente novamente.");
         setLoadingProducts(false);
       });
+  };
+
+  React.useEffect(() => {
+    loadProducts();
   }, []);
 
   const filtered = PRODUCTS.filter(p => {
@@ -1062,6 +1081,43 @@ const ProductsSection = ({ onQuote }) => {
                 to { transform: rotate(360deg); }
               }
             `}</style>
+          </div>
+        ) : error ? (
+          <div style={{ 
+            textAlign: "center", 
+            padding: "60px 24px", 
+            color: "var(--text)" 
+          }}>
+            <div style={{ 
+              width: 48, height: 48, borderRadius: "50%", background: "oklch(95% 0.05 10 / 0.15)",
+              display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px"
+            }}>
+              <Icon name="x" size={20} color="oklch(45% 0.22 10)" />
+            </div>
+            <p style={{ 
+              fontFamily: "var(--font-head)", 
+              fontSize: 16,
+              fontWeight: 600,
+              color: "var(--text)"
+            }}>
+              {error}
+            </p>
+            <button onClick={loadProducts} style={{
+              marginTop: 18,
+              background: "var(--purple)",
+              color: "white",
+              border: "none",
+              borderRadius: 4,
+              padding: "10px 24px",
+              fontFamily: "var(--font-head)",
+              fontWeight: 600,
+              fontSize: 14,
+              cursor: "pointer",
+              transition: "all 0.2s"
+            }}
+            onMouseEnter={e => e.currentTarget.style.transform = "translateY(-1px)"}
+            onMouseLeave={e => e.currentTarget.style.transform = ""}
+            >Tentar Novamente</button>
           </div>
         ) : filtered.length === 0 ? (
           <div style={{ 
@@ -1422,6 +1478,7 @@ const QuoteModal = ({ onClose }) => {
   const [step, setStep] = React.useState(1);
   const [formData, setFormData] = React.useState({ name: "", email: "", whatsapp: "", type: "", description: "" });
   const [submitted, setSubmitted] = React.useState(false);
+  const [validationError, setValidationError] = React.useState("");
 
   const types = ["Miniatura Personalizada", "Peça Técnica", "Decoração", "Brinde Corporativo", "Arte & Escultura", "Outro"];
 
@@ -1430,7 +1487,32 @@ const QuoteModal = ({ onClose }) => {
     return () => { document.body.style.overflow = ""; };
   }, []);
 
+  const handleNext = () => {
+    setValidationError("");
+    if (step === 1) {
+      if (!formData.name.trim()) {
+        setValidationError("Por favor, informe o seu nome.");
+        return;
+      }
+      if (!formData.whatsapp.trim()) {
+        setValidationError("Por favor, informe seu número de WhatsApp.");
+        return;
+      }
+    } else if (step === 2) {
+      if (!formData.type) {
+        setValidationError("Por favor, selecione uma categoria de projeto.");
+        return;
+      }
+    }
+    setStep(step + 1);
+  };
+
   const handleSubmit = () => {
+    setValidationError("");
+    if (!formData.description.trim() || formData.description.trim().length < 10) {
+      setValidationError("Por favor, descreva sua ideia com pelo menos 10 caracteres.");
+      return;
+    }
     setSubmitted(true);
   };
 
@@ -1493,10 +1575,26 @@ const QuoteModal = ({ onClose }) => {
               {step === 3 && "Descreva sua ideia"}
             </h3>
             <p style={{ fontSize: 14, color: "var(--gray-400)", marginBottom: 24 }}>
-              {step === 1 && "Como podemos te contatar?"}
-              {step === 2 && "Qual tipo de projeto?"}
-              {step === 3 && "Mais detalhes, melhor o orçamento"}
+               {step === 1 && "Como podemos te contatar?"}
+               {step === 2 && "Qual tipo de projeto?"}
+               {step === 3 && "Mais detalhes, melhor o orçamento"}
             </p>
+
+            {validationError && (
+              <div style={{
+                background: "oklch(95% 0.05 10 / 0.15)",
+                border: "1.5px solid oklch(55% 0.20 10)",
+                color: "oklch(45% 0.22 10)",
+                borderRadius: 8,
+                padding: "10px 14px",
+                fontSize: 13,
+                fontWeight: 600,
+                marginBottom: 20,
+                fontFamily: "var(--font-body)",
+              }}>
+                ⚠️ {validationError}
+              </div>
+            )}
 
             {step === 1 && (
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -1550,7 +1648,7 @@ const QuoteModal = ({ onClose }) => {
                 }}>{/* eslint-disable-next-line react/no-unescaped-entities */}← Voltar</button>
               )}
               <button
-                onClick={() => step < 3 ? setStep(step + 1) : handleSubmit()}
+                onClick={() => step < 3 ? handleNext() : handleSubmit()}
                 style={{
                   flex: 2, background: "var(--orange)", color: "white", border: "none",
                   borderRadius: 99, padding: "13px",
