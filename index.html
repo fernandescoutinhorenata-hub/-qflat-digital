@@ -70,6 +70,11 @@
       --shadow-lg: 0 12px 48px oklch(45% 0.22 280 / 0.18);
 
       --hero-gradient: radial-gradient(ellipse 80% 60% at 60% 30%, oklch(92% 0.08 280) 0%, oklch(98% 0.02 280) 55%, var(--bg-primary) 100%);
+      
+      /* Transições Exponenciais de Luxo (DESIGN.md) */
+      --transition-smooth: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-physics: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fade: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* Mídia nativa do sistema operacional */
@@ -160,7 +165,34 @@
       color: var(--text-primary);
       background: var(--bg-primary);
       overflow-x: hidden;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: var(--transition-fade);
+    }
+
+    /* Keyframes de Animação Exponencial (impeccable animate) */
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.96) translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+    @keyframes overlayFadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .animate-overlay {
+      animation: overlayFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .animate-modal {
+      animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     /* Scrollbar */

@@ -194,7 +194,7 @@ const Navbar = ({ onQuote }) => {
             <a key={l.label} href={l.href} style={{
               fontFamily: "var(--font-head)", fontWeight: 500, fontSize: 15,
               color: "var(--text-secondary)", textDecoration: "none",
-              transition: "color 0.2s",
+              transition: "var(--transition-smooth)",
             }}
             onMouseEnter={e => e.target.style.color = "var(--purple)"}
             onMouseLeave={e => e.target.style.color = "var(--text-secondary)"}
@@ -284,7 +284,7 @@ const Hero = ({ onQuote, tweaks }) => {
               background: "var(--orange)", color: "#fff", border: "none",
               borderRadius: 4, padding: "15px 32px",
               fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14,
-              cursor: "pointer", transition: "all 0.25s",
+              cursor: "pointer", transition: "var(--transition-smooth)",
               boxShadow: "0 4px 16px oklch(68% 0.19 45 / 0.30)",
               display: "flex", alignItems: "center", gap: 8,
               textTransform: "uppercase",
@@ -300,12 +300,12 @@ const Hero = ({ onQuote, tweaks }) => {
               border: "2px solid var(--purple)", borderRadius: 4,
               padding: "13px 28px", textDecoration: "none",
               fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14,
-              transition: "all 0.2s", display: "inline-flex", alignItems: "center",
+              transition: "var(--transition-smooth)", display: "inline-flex", alignItems: "center",
               textTransform: "uppercase",
               letterSpacing: "0.08em"
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = "var(--purple-pale)"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
+            onMouseEnter={e => { e.currentTarget.style.background = "var(--purple-pale)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.transform = ""; }}
             >Ver Produtos</a>
           </div>
 
@@ -552,7 +552,7 @@ const Filters = ({ activeCategory, setCategory, activeCustomization, setCustomiz
     borderColor: active ? "var(--purple)" : "var(--border-subtle)",
     background: active ? "var(--purple)" : "var(--bg-primary)",
     color: active ? "white" : "var(--text-secondary)",
-    transition: "all 0.15s", whiteSpace: "nowrap",
+    transition: "var(--transition-smooth)", whiteSpace: "nowrap",
   });
 
   return (
@@ -560,7 +560,10 @@ const Filters = ({ activeCategory, setCategory, activeCustomization, setCustomiz
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
         <Icon name="filter" size={16} color="var(--text-muted)" />
         <span style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14, color: "var(--text-primary)" }}>Filtros</span>
-        <button onClick={() => setOpen(!open)} style={{ marginLeft: "auto", background: "none", border: "none", cursor: "pointer", fontSize: 12, color: "var(--purple)", fontWeight: 600, fontFamily: "var(--font-head)" }}>
+        <button onClick={() => setOpen(!open)} style={{ marginLeft: "auto", background: "none", border: "none", cursor: "pointer", fontSize: 12, color: "var(--purple)", fontWeight: 600, fontFamily: "var(--font-head)", transition: "var(--transition-smooth)" }}
+          onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-1px)"; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = ""; }}
+        >
           {open ? "Recolher ▲" : "Expandir ▼"}
         </button>
       </div>
@@ -568,9 +571,15 @@ const Filters = ({ activeCategory, setCategory, activeCustomization, setCustomiz
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: open ? 20 : 0 }}>
         <span style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", fontFamily: "var(--font-head)", letterSpacing: "0.06em", alignSelf: "center", marginRight: 4 }}>CATEGORIA</span>
         {CATEGORIES.map(c => (
-          <button key={c} style={chipStyle(activeCategory === c)} onClick={() => setCategory(c)}
-            onMouseEnter={e => { if (activeCategory !== c) { e.currentTarget.style.borderColor = "var(--purple)"; e.currentTarget.style.color = "var(--purple)"; } }}
-            onMouseLeave={e => { if (activeCategory !== c) { e.currentTarget.style.borderColor = "var(--border-subtle)"; e.currentTarget.style.color = "var(--text-secondary)"; } }}
+          <button key={c} style={{ ...chipStyle(activeCategory === c), display: "inline-block" }} onClick={() => setCategory(c)}
+            onMouseEnter={e => { 
+              if (activeCategory !== c) { e.currentTarget.style.borderColor = "var(--purple)"; e.currentTarget.style.color = "var(--purple)"; }
+              e.currentTarget.style.transform = "translateY(-2px)";
+            }}
+            onMouseLeave={e => { 
+              if (activeCategory !== c) { e.currentTarget.style.borderColor = "var(--border-subtle)"; e.currentTarget.style.color = "var(--text-secondary)"; }
+              e.currentTarget.style.transform = "";
+            }}
           >{c}</button>
         ))}
       </div>
@@ -580,9 +589,15 @@ const Filters = ({ activeCategory, setCategory, activeCustomization, setCustomiz
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", fontFamily: "var(--font-head)", letterSpacing: "0.06em", marginRight: 4 }}>PERSONALIZAÇÃO</span>
             {CUSTOMIZATIONS.map(c => (
-              <button key={c} style={chipStyle(activeCustomization === c)} onClick={() => setCustomization(c)}
-                onMouseEnter={e => { if (activeCustomization !== c) { e.currentTarget.style.borderColor = "var(--purple)"; e.currentTarget.style.color = "var(--purple)"; } }}
-                onMouseLeave={e => { if (activeCustomization !== c) { e.currentTarget.style.borderColor = "var(--border-subtle)"; e.currentTarget.style.color = "var(--text-secondary)"; } }}
+              <button key={c} style={{ ...chipStyle(activeCustomization === c), display: "inline-block" }} onClick={() => setCustomization(c)}
+                onMouseEnter={e => { 
+                  if (activeCustomization !== c) { e.currentTarget.style.borderColor = "var(--purple)"; e.currentTarget.style.color = "var(--purple)"; }
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={e => { 
+                  if (activeCustomization !== c) { e.currentTarget.style.borderColor = "var(--border-subtle)"; e.currentTarget.style.color = "var(--text-secondary)"; }
+                  e.currentTarget.style.transform = "";
+                }}
               >{c}</button>
             ))}
           </div>
@@ -609,7 +624,7 @@ const ProductCard = ({ product, onClick }) => {
         background: "var(--card-bg)", borderRadius: "var(--radius-md)",
         border: `1.5px solid ${hovered ? "var(--purple)" : "var(--border-color)"}`,
         overflow: "hidden", cursor: "pointer",
-        transition: "all 0.25s cubic-bezier(.22,1,.36,1)",
+        transition: "var(--transition-physics)",
         transform: hovered ? "translateY(-4px)" : "translateY(0)",
         boxShadow: hovered ? "var(--shadow-lg)" : "var(--shadow-sm)",
       }}>
@@ -697,7 +712,7 @@ const ProductCard = ({ product, onClick }) => {
             color: "white", border: "none", borderRadius: "var(--radius-sm)",
             padding: "9px 18px", fontSize: 12, fontWeight: 700,
             fontFamily: "var(--font-head)", cursor: "pointer",
-            transition: "all 0.2s",
+            transition: "var(--transition-smooth)",
             flexShrink: 0,
             textTransform: "uppercase",
             letterSpacing: "0.08em"
@@ -723,14 +738,17 @@ const ProductModal = ({ product, onClose, onQuote }) => {
       background: "rgba(18, 6, 36, 0.65)", backdropFilter: "blur(8px)",
       display: "flex", alignItems: "center", justifyContent: "center",
       padding: 20,
-    }} onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+    }} 
+    className="animate-overlay"
+    onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
 
       <div style={{
         background: "var(--modal-bg)", borderRadius: "var(--radius-lg)", width: "100%", maxWidth: 860,
         maxHeight: "90vh", overflow: "auto",
         boxShadow: "var(--shadow-lg)",
         position: "relative",
-      }}>
+      }}
+      className="animate-modal">
 
         {/* Close */}
         <button onClick={onClose} style={{
@@ -902,7 +920,7 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                   fontWeight: 700, 
                   fontSize: 13,
                   cursor: "pointer", 
-                  transition: "all 0.2s",
+                  transition: "var(--transition-smooth)",
                   display: "flex", 
                   alignItems: "center", 
                   justifyContent: "center", 
@@ -913,10 +931,12 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                 onMouseEnter={e => { 
                   e.currentTarget.style.background = "var(--purple)"; 
                   e.currentTarget.style.color = "var(--bg-primary)"; 
+                  e.currentTarget.style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={e => { 
                   e.currentTarget.style.background = "var(--bg-primary)"; 
                   e.currentTarget.style.color = "var(--purple)"; 
+                  e.currentTarget.style.transform = "";
                 }}
               >
                 <Icon name="whatsapp" size={16} color="currentColor" />
@@ -939,20 +959,22 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                   fontWeight: 700, 
                   fontSize: 13,
                   cursor: "pointer", 
-                  transition: "all 0.2s",
+                  transition: "var(--transition-smooth)",
                   boxShadow: "0 4px 12px oklch(68% 0.19 45 / 0.25)",
                   display: "flex", 
                   alignItems: "center", 
                   justifyContent: "center", 
                   gap: 8,
                   textTransform: "uppercase",
-                  letterSpacing: "0.06em"
+                  letterSpacing: "0.08em"
                 }}
                 onMouseEnter={e => { 
                   e.currentTarget.style.background = "var(--orange-hover)"; 
+                  e.currentTarget.style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={e => { 
                   e.currentTarget.style.background = "var(--orange)"; 
+                  e.currentTarget.style.transform = "";
                 }}
               >
                 <Icon name="whatsapp" size={16} color="white" />
@@ -1278,10 +1300,10 @@ const AboutSection = () => {
               display: "flex", gap: 18, alignItems: "flex-start",
               border: "1px solid var(--border-color)",
               boxShadow: "var(--shadow-sm)",
-              transition: "all 0.2s",
+              transition: "var(--transition-physics)",
             }}
-            onMouseEnter={e => { e.currentTarget.style.transform = "translateX(4px)"; e.currentTarget.style.borderColor = "var(--purple)"; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.borderColor = "var(--border-color)"; }}
+            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.borderColor = "var(--purple)"; e.currentTarget.style.boxShadow = "var(--shadow-md)"; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.boxShadow = "var(--shadow-sm)"; }}
             >
               <div style={{ width: 44, height: 44, borderRadius: 12, background: "var(--purple-pale)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <Icon name={d.icon} size={20} color="var(--purple)" />
@@ -1394,7 +1416,7 @@ const ReviewsSection = () => {
             let cardStyle = {
               borderRadius: "var(--radius-lg)",
               padding: "32px",
-              transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+              transition: "var(--transition-physics)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
@@ -1582,7 +1604,7 @@ const CtaSection = ({ onQuote }) => (
           background: "var(--orange)", color: "white", border: "none",
           borderRadius: 4, padding: "16px 36px",
           fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 15,
-          cursor: "pointer", transition: "all 0.25s",
+          cursor: "pointer", transition: "var(--transition-smooth)",
           boxShadow: "0 4px 16px oklch(68% 0.19 45 / 0.30)",
           display: "flex", alignItems: "center", gap: 10,
           textTransform: "uppercase",
@@ -1626,10 +1648,10 @@ const Footer = () => (
               width: 36, height: 36, borderRadius: 8,
               background: "oklch(20% 0.08 280)", border: "1px solid oklch(25% 0.08 280)",
               display: "flex", alignItems: "center", justifyContent: "center",
-              transition: "all 0.2s", color: "oklch(55% 0.06 280)",
+              transition: "var(--transition-smooth)", color: "oklch(55% 0.06 280)",
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = "var(--purple)"; e.currentTarget.style.borderColor = "var(--purple)"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "oklch(20% 0.08 280)"; e.currentTarget.style.borderColor = "oklch(25% 0.08 280)"; }}
+            onMouseEnter={e => { e.currentTarget.style.background = "var(--purple)"; e.currentTarget.style.borderColor = "var(--purple)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "oklch(20% 0.08 280)"; e.currentTarget.style.borderColor = "oklch(25% 0.08 280)"; e.currentTarget.style.transform = ""; }}
             >
               <Icon name="instagram" size={16} color="white" />
             </a>
@@ -1637,10 +1659,10 @@ const Footer = () => (
               width: 36, height: 36, borderRadius: 8,
               background: "oklch(20% 0.08 280)", border: "1px solid oklch(25% 0.08 280)",
               display: "flex", alignItems: "center", justifyContent: "center",
-              transition: "all 0.2s", color: "oklch(55% 0.06 280)",
+              transition: "var(--transition-smooth)", color: "oklch(55% 0.06 280)",
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = "var(--purple)"; e.currentTarget.style.borderColor = "var(--purple)"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "oklch(20% 0.08 280)"; e.currentTarget.style.borderColor = "oklch(25% 0.08 280)"; }}
+            onMouseEnter={e => { e.currentTarget.style.background = "var(--purple)"; e.currentTarget.style.borderColor = "var(--purple)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "oklch(20% 0.08 280)"; e.currentTarget.style.borderColor = "oklch(25% 0.08 280)"; e.currentTarget.style.transform = ""; }}
             >
               <Icon name="whatsapp" size={16} color="white" />
             </a>
@@ -1741,13 +1763,16 @@ const QuoteModal = ({ onClose }) => {
       position: "fixed", inset: 0, zIndex: 3000,
       background: "rgba(18, 6, 36, 0.75)", backdropFilter: "blur(10px)",
       display: "flex", alignItems: "center", justifyContent: "center", padding: 20,
-    }} onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
+    }} 
+    className="animate-overlay"
+    onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
 
       <div style={{
         background: "var(--modal-bg)", borderRadius: "var(--radius-lg)", width: "100%", maxWidth: 480,
         padding: "36px", boxShadow: "var(--shadow-lg)",
         position: "relative",
-      }}>
+      }}
+      className="animate-modal">
         <button onClick={onClose} style={{
           position: "absolute", top: 16, right: 16,
           background: "var(--bg-tertiary)", border: "none", borderRadius: "50%",
@@ -1833,7 +1858,7 @@ const QuoteModal = ({ onClose }) => {
                     background: formData.type === t ? "var(--purple)" : "var(--bg-secondary)",
                     color: formData.type === t ? "white" : "var(--text-secondary)",
                     border: `1.5px solid ${formData.type === t ? "var(--purple)" : "var(--border-subtle)"}`,
-                    transition: "all 0.15s",
+                    transition: "var(--transition-smooth)",
                   }}>{t}</button>
                 ))}
               </div>
@@ -1866,8 +1891,12 @@ const QuoteModal = ({ onClose }) => {
                   flex: 1, background: "var(--bg-tertiary)", color: "var(--text-secondary)", border: "none",
                   borderRadius: "var(--radius-sm)", padding: "13px",
                   fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14, cursor: "pointer",
-                  textTransform: "uppercase", letterSpacing: "0.06em"
-                }}>{/* eslint-disable-next-line react/no-unescaped-entities */}← Voltar</button>
+                  textTransform: "uppercase", letterSpacing: "0.06em",
+                  transition: "var(--transition-smooth)"
+                }}
+                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = ""; }}
+                >{/* eslint-disable-next-line react/no-unescaped-entities */}← Voltar</button>
               )}
               <button
                 onClick={() => step < 3 ? handleNext() : handleSubmit()}
@@ -1876,12 +1905,18 @@ const QuoteModal = ({ onClose }) => {
                   borderRadius: "var(--radius-sm)", padding: "13px",
                   fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14, cursor: "pointer",
                   boxShadow: "0 4px 12px oklch(68% 0.19 45 / 0.25)",
-                  transition: "all 0.2s",
+                  transition: "var(--transition-smooth)",
                   textTransform: "uppercase",
                   letterSpacing: "0.08em"
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = "var(--orange-hover)"; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "var(--orange)"; }}
+                onMouseEnter={e => { 
+                  e.currentTarget.style.background = "var(--orange-hover)"; 
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={e => { 
+                  e.currentTarget.style.background = "var(--orange)"; 
+                  e.currentTarget.style.transform = "";
+                }}
               >
                 {step < 3 ? "Continuar →" : "Enviar solicitação ✦"}
               </button>
