@@ -391,24 +391,100 @@ const Hero = ({ onQuote, tweaks }) => {
       <div style={{
         position: "absolute", bottom: 0, left: 0, right: 0,
         background: "var(--bg-primary)", borderTop: "1px solid var(--border-color)",
-        padding: "20px 24px",
+        padding: "24px 24px",
       }}>
-        <div className="stats-bar" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "center", gap: "clamp(24px, 5vw, 80px)", flexWrap: "wrap" }}>
-          {[
-            { value: "+500", label: "Projetos entregues" },
-            { value: "4.9★", label: "Avaliação média" },
-            { value: "48h", label: "Prazo médio" },
-            { value: "100%", label: "Personalizado" },
-          ].map(s => (
-            <div key={s.label} style={{ textAlign: "center" }}>
-              <div style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 22, color: "var(--purple)" }}>{s.value}</div>
-              <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 2, fontWeight: 500 }}>{s.label}</div>
-            </div>
-          ))}
+        <div className="stats-bar" style={{ 
+          maxWidth: 1200, 
+          margin: "0 auto", 
+          display: "grid", 
+          gridTemplateColumns: "1.2fr 2fr", 
+          gap: 40,
+          alignItems: "center" 
+        }}>
+          {/* Esquerda: Texto institucional técnico */}
+          <div style={{ minWidth: 0 }} className="stats-editorial">
+            <span style={{ 
+              fontFamily: "var(--font-head)", 
+              fontSize: 10, 
+              fontWeight: 700, 
+              letterSpacing: "0.12em", 
+              color: "var(--text-muted)",
+              display: "block",
+              marginBottom: 4,
+              textTransform: "uppercase"
+            }}>FICHA TÉCNICA LAB / QFLAT.</span>
+            <p style={{ 
+              fontSize: 12, 
+              color: "var(--text-secondary)", 
+              lineHeight: 1.5,
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.02em"
+            }}>
+              Manufatura física e design sob demanda com tolerância técnica de 0.1mm e acabamento manual calibrado.
+            </p>
+          </div>
+
+          {/* Direita: Grid de Dados de precisão com divisores verticais de blueprint */}
+          <div style={{ 
+            display: "grid", 
+            gridTemplateColumns: "repeat(4, 1fr)", 
+            gap: 16
+          }} className="stats-data-grid">
+            {[
+              { value: "+500", label: "Projetos entregues" },
+              { value: "4.9★", label: "Avaliação média" },
+              { value: "48h", label: "Prazo médio" },
+              { value: "100%", label: "Personalizado" },
+            ].map((s, idx) => (
+              <div key={s.label} style={{ 
+                paddingLeft: idx > 0 ? 20 : 0, 
+                borderLeft: idx > 0 ? "1px solid var(--border-color)" : "none",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center"
+              }} className="stats-item">
+                <div style={{ 
+                  fontFamily: "var(--font-head)", 
+                  fontWeight: 700, 
+                  fontSize: 24, 
+                  color: "var(--purple)",
+                  lineHeight: 1
+                }}>{s.value}</div>
+                <div style={{ 
+                  fontSize: 11, 
+                  color: "var(--text-muted)", 
+                  marginTop: 6, 
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.04em",
+                  lineHeight: 1.2
+                }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       <style>{`
+        @media (max-width: 900px) {
+          .stats-bar {
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+          }
+          .stats-editorial {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+          }
+          .stats-data-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 20px !important;
+          }
+          .stats-item {
+            padding-left: 0 !important;
+            border-left: none !important;
+          }
+        }
         @media (max-width: 768px) {
           .hero-grid { 
             grid-template-columns: 1fr !important; 
@@ -419,11 +495,6 @@ const Hero = ({ onQuote, tweaks }) => {
           .hero-badges {
             flex-direction: column !important;
             gap: 8px !important;
-          }
-          .stats-bar {
-            display: grid !important;
-            grid-template-columns: 1fr 1fr !important;
-            gap: 16px !important;
           }
         }
       `}</style>
@@ -1238,67 +1309,228 @@ const AboutSection = () => {
 // ─── REVIEWS ──────────────────────────────────────────────
 const ReviewsSection = () => {
   const reviews = [
-    { name: "Lucas M.", role: "Designer Gráfico", text: "A qualidade das miniaturas é absurda. Enviei uma foto e recebi algo melhor do que imaginava. Atendimento impecável do início ao fim.", stars: 5 },
-    { name: "Carla F.", role: "Arquiteta", text: "Usei para maquetes de projetos de arquitetura. Precisão perfeita, entrega dentro do prazo e o acabamento superou minhas expectativas.", stars: 5 },
-    { name: "Rodrigo S.", role: "Engenheiro Mecânico", text: "Peças técnicas com dimensional correto. A equipe entendeu perfeitamente a especificação. Indicaria para qualquer projeto industrial.", stars: 5 },
-    { name: "Marina K.", role: "Gerente de Marketing", text: "Brindes exclusivos para nosso evento. A reação dos convidados foi incrível. Com certeza voltaremos a trabalhar juntos.", stars: 5 },
-    { name: "Bruno A.", role: "Desenvolvedor", text: "Fiz um case personalizado para o meu setup. Ficou exatamente como eu havia pedido, com encaixe perfeito.", stars: 4 },
-    { name: "Sofia L.", role: "Artista Visual", text: "A escultura em resina é simplesmente de outro nível. Detalhamento que eu nunca achei que fosse possível. Arte de verdade.", stars: 5 },
+    { 
+      name: "Lucas M.", 
+      role: "Designer Gráfico", 
+      text: "A qualidade das miniaturas é absurda. Enviei uma foto e recebi algo melhor do que imaginava. Atendimento impecável do início ao fim.", 
+      stars: 5,
+      styleType: "featured" // 2 colunas, fundo púrpura suave
+    },
+    { 
+      name: "Carla F.", 
+      role: "Arquiteta", 
+      text: "Usei para maquetes de projetos de arquitetura. Precisão perfeita, entrega dentro do prazo e o acabamento superou minhas expectativas.", 
+      stars: 5,
+      styleType: "minimal" // Sem borda, cinza suave
+    },
+    { 
+      name: "Rodrigo S.", 
+      role: "Engenheiro Mecânico", 
+      text: "Peças técnicas com dimensional correto. A equipe entendeu perfeitamente a especificação. Indicaria para qualquer projeto industrial.", 
+      stars: 5,
+      styleType: "blueprint" // Borda púrpura sólida, cantos retos
+    },
+    { 
+      name: "Marina K.", 
+      role: "Gerente de Marketing", 
+      text: "Brindes exclusivos para nosso evento. A reação dos convidados foi incrível. Com certeza voltaremos a trabalhar juntos.", 
+      stars: 5,
+      styleType: "journal" // Linha lateral, transparente
+    },
+    { 
+      name: "Bruno A.", 
+      role: "Desenvolvedor", 
+      text: "Fiz um case personalizado para o meu setup. Ficou exatamente como eu havia pedido, com encaixe perfeito.", 
+      stars: 4,
+      styleType: "compact" // Caixa cinza reativa normal
+    },
+    { 
+      name: "Sofia L.", 
+      role: "Artista Visual", 
+      text: "A escultura em resina é simplesmente de outro nível. Detalhamento que eu nunca achei que fosse possível. Arte de verdade física de altíssima fidelidade.", 
+      stars: 5,
+      styleType: "featured-dark" // 2 colunas, fundo texturizado elegante
+    },
   ];
 
   return (
-    <section style={{ padding: "80px 24px", background: "var(--bg-primary)" }}>
+    <section style={{ padding: "100px 24px", background: "var(--bg-primary)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "var(--orange)", fontFamily: "var(--font-head)", marginBottom: 12 }}>AVALIAÇÕES</div>
-          <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 44px)", color: "var(--text-primary)", marginBottom: 8 }}>O que nossos clientes dizem</h2>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+        
+        {/* Editorial Header */}
+        <div style={{ 
+          display: "grid", 
+          gridTemplateColumns: "1.2fr 1fr", 
+          gap: 40, 
+          marginBottom: 64,
+          alignItems: "flex-end"
+        }} className="reviews-header">
+          <div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: "var(--orange)", fontFamily: "var(--font-head)", marginBottom: 12, textTransform: "uppercase" }}>✦ CRÍTICAS E AVALIAÇÕES</div>
+            <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(30px, 4vw, 48px)", color: "var(--text-primary)", lineHeight: 1.1, textWrap: "balance" }}>
+              O que nossos clientes dizem
+            </h2>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }} className="reviews-summary-stats">
             <div style={{ display: "flex", gap: 3 }}>
               {[...Array(5)].map((_, i) => <Icon key={i} name="star" size={18} color="var(--orange)" />)}
             </div>
-            <span style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 16, color: "var(--text-primary)" }}>4.9</span>
-            <span style={{ fontSize: 13, color: "var(--text-muted)" }}>de 5 · 120+ avaliações</span>
+            <p style={{ fontSize: 14, color: "var(--text-secondary)", fontWeight: 500, fontFamily: "var(--font-head)" }}>
+              <strong>4.9 de 5</strong> com base em 120+ projetos entregues em todo o Brasil.
+            </p>
           </div>
         </div>
 
-        <div className="reviews-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 20 }}>
-          {reviews.map((r, i) => (
-            <div key={i} style={{
-              background: "var(--bg-secondary)", borderRadius: "var(--radius-lg)", padding: "22px",
-              border: "1px solid var(--border-color)", transition: "all 0.2s",
-            }}
-            onMouseEnter={e => { e.currentTarget.style.boxShadow = "var(--shadow-md)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-            onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = ""; }}
-            >
-              <div style={{ display: "flex", gap: 3, marginBottom: 14 }}>
-                {[...Array(r.stars)].map((_, j) => <Icon key={j} name="star" size={14} color="var(--orange)" />)}
-                {[...Array(5-r.stars)].map((_, j) => <Icon key={j} name="star" size={14} color="var(--border-subtle)" />)}
-              </div>
-              <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 18, fontStyle: "italic" }}>"{r.text}"</p>
-              <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                <div style={{
-                  width: 36, height: 36, borderRadius: "50%",
-                  background: "var(--purple)", display: "flex", alignItems: "center", justifyContent: "center",
-                  flexShrink: 0,
-                }}>
-                  <span style={{ fontSize: 14, color: "white", fontWeight: 700, fontFamily: "var(--font-head)" }}>{r.name[0]}</span>
-                </div>
-                <div>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", fontFamily: "var(--font-head)" }}>{r.name}</div>
-                  <div style={{ fontSize: 11, color: "var(--text-muted)" }}>{r.role}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <style>{`
-          @media (max-width: 768px) {
-            .reviews-grid {
-              grid-template-columns: 1fr !important;
+        {/* Asymmetric Grid */}
+        <div className="reviews-asymmetric-grid" style={{ 
+          display: "grid", 
+          gridTemplateColumns: "repeat(3, 1fr)", 
+          gap: 24 
+        }}>
+          {reviews.map((r, i) => {
+            const isFeatured = r.styleType === "featured" || r.styleType === "featured-dark";
+            
+            // Estilos específicos para cada tipo de card
+            let cardStyle = {
+              borderRadius: "var(--radius-lg)",
+              padding: "32px",
+              transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              position: "relative",
+              overflow: "hidden"
+            };
+            
+            if (r.styleType === "featured") {
+              cardStyle = {
+                ...cardStyle,
+                background: "var(--purple-pale)",
+                gridColumn: "span 2",
+                border: "1px solid var(--border-subtle)"
+              };
+            } else if (r.styleType === "featured-dark") {
+              cardStyle = {
+                ...cardStyle,
+                background: "var(--bg-secondary)",
+                border: "1.5px solid var(--purple)",
+                gridColumn: "span 2"
+              };
+            } else if (r.styleType === "minimal") {
+              cardStyle = {
+                ...cardStyle,
+                background: "var(--bg-secondary)",
+                borderRadius: "var(--radius-sm)",
+                border: "1px solid transparent"
+              };
+            } else if (r.styleType === "blueprint") {
+              cardStyle = {
+                ...cardStyle,
+                background: "transparent",
+                border: "1.5px solid var(--purple)",
+                borderRadius: "var(--radius-sm)"
+              };
+            } else if (r.styleType === "journal") {
+              cardStyle = {
+                ...cardStyle,
+                background: "transparent",
+                borderLeft: "4px solid var(--purple)",
+                borderRadius: 0,
+                padding: "16px 0 16px 24px",
+                borderTop: "none", borderRight: "none", borderBottom: "none"
+              };
+            } else { // compact
+              cardStyle = {
+                ...cardStyle,
+                background: "var(--bg-secondary)",
+                border: "1px solid var(--border-color)"
+              };
             }
-          }
-        `}</style>
+
+            return (
+              <div 
+                key={i} 
+                style={cardStyle}
+                className={`review-card ${r.styleType}`}
+                onMouseEnter={e => {
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                  if (r.styleType === "blueprint" || r.styleType === "featured-dark") {
+                    e.currentTarget.style.boxShadow = "var(--shadow-md)";
+                  } else if (r.styleType !== "journal") {
+                    e.currentTarget.style.boxShadow = "var(--shadow-sm)";
+                  }
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.transform = "";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                {/* Citations block */}
+                <div>
+                  <div style={{ display: "flex", gap: 3, marginBottom: 16 }}>
+                    {[...Array(r.stars)].map((_, j) => <Icon key={j} name="star" size={12} color="var(--orange)" />)}
+                    {[...Array(5-r.stars)].map((_, j) => <Icon key={j} name="star" size={12} color="var(--border-subtle)" />)}
+                  </div>
+                  
+                  <p style={{ 
+                    fontSize: isFeatured ? 17 : 14, 
+                    color: "var(--text-primary)", 
+                    lineHeight: 1.6, 
+                    marginBottom: 24, 
+                    fontStyle: "italic",
+                    fontWeight: isFeatured ? 500 : 400,
+                    textWrap: "pretty"
+                  }}>
+                    "{r.text}"
+                  </p>
+                </div>
+
+                {/* Perfil do cliente */}
+                <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                  <div style={{
+                    width: 38, height: 38, borderRadius: "50%",
+                    background: "var(--purple)", display: "flex", alignItems: "center", justifyContent: "center",
+                    flexShrink: 0,
+                    boxShadow: "var(--shadow-sm)"
+                  }}>
+                    <span style={{ fontSize: 13, color: "white", fontWeight: 700, fontFamily: "var(--font-head)" }}>{r.name[0]}</span>
+                  </div>
+                  <div>
+                    <div style={{ 
+                      fontSize: 12, 
+                      fontWeight: 700, 
+                      color: "var(--text-primary)", 
+                      fontFamily: "var(--font-head)",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em"
+                    }}>{r.name}</div>
+                    <div style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 500 }}>{r.role}</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
+      <style>{`
+        @media (max-width: 1024px) {
+          .reviews-asymmetric-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .reviews-header {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+          .reviews-asymmetric-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .review-card.featured, .review-card.featured-dark {
+            grid-column: span 1 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
