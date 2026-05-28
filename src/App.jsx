@@ -7,6 +7,7 @@ import {
 // Visual system: Space Grotesk + Inter, Purple/White/Orange palette
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "sistema",
   "primaryColor": "#7c3aed",
   "accentColor": "#f97316",
   "darkBg": "#1a0a2e",
@@ -125,7 +126,7 @@ const Badge = ({ text }) => {
     NOVO: { bg: "oklch(55% 0.20 160)", color: "#fff" },
     EXCLUSIVO: { bg: "oklch(55% 0.20 10)", color: "#fff" },
   };
-  const c = colors[text] || { bg: "var(--gray-200)", color: "var(--gray-800)" };
+  const c = colors[text] || { bg: "var(--border-subtle)", color: "var(--text-secondary)" };
   return (
     <span style={{
       display: "inline-block", padding: "3px 10px",
@@ -155,9 +156,9 @@ const Navbar = ({ onQuote }) => {
   return (
     <nav style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
-      background: scrolled ? "rgba(255,255,255,0.95)" : "transparent",
+      background: scrolled ? "var(--navbar-bg)" : "transparent",
       backdropFilter: scrolled ? "blur(16px)" : "none",
-      borderBottom: scrolled ? "1px solid oklch(88% 0.015 280)" : "1px solid transparent",
+      borderBottom: scrolled ? "1px solid var(--border-subtle)" : "1px solid transparent",
       transition: "all 0.3s ease",
       padding: "0 24px",
     }}>
@@ -192,11 +193,11 @@ const Navbar = ({ onQuote }) => {
           {links.map(l => (
             <a key={l.label} href={l.href} style={{
               fontFamily: "var(--font-head)", fontWeight: 500, fontSize: 15,
-              color: "var(--gray-600)", textDecoration: "none",
+              color: "var(--text-secondary)", textDecoration: "none",
               transition: "color 0.2s",
             }}
             onMouseEnter={e => e.target.style.color = "var(--purple)"}
-            onMouseLeave={e => e.target.style.color = "var(--gray-600)"}
+            onMouseLeave={e => e.target.style.color = "var(--text-secondary)"}
             >{l.label}</a>
           ))}
         </div>
@@ -214,14 +215,14 @@ const Navbar = ({ onQuote }) => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div style={{
-          background: "#fff", padding: "16px 24px 24px",
-          borderTop: "1px solid var(--gray-100)",
+          background: "var(--bg-primary)", padding: "16px 24px 24px",
+          borderTop: "1px solid var(--border-color)",
           display: "flex", flexDirection: "column", gap: 16,
         }}>
           {links.map(l => (
             <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)} style={{
               fontFamily: "var(--font-head)", fontWeight: 600, fontSize: 16,
-              color: "var(--text)", textDecoration: "none",
+              color: "var(--text-primary)", textDecoration: "none",
             }}>{l.label}</a>
           ))}
         </div>
@@ -245,7 +246,7 @@ const Hero = ({ onQuote, tweaks }) => {
   return (
     <section style={{
       minHeight: "100vh",
-      background: `radial-gradient(ellipse 80% 60% at 60% 30%, oklch(92% 0.08 280) 0%, oklch(98% 0.02 280) 55%, white 100%)`,
+      background: "var(--hero-gradient)",
       display: "flex", alignItems: "center",
       padding: "100px 24px 60px",
       position: "relative", overflow: "hidden",
@@ -253,7 +254,7 @@ const Hero = ({ onQuote, tweaks }) => {
       {/* Grid pattern */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
-        backgroundImage: `linear-gradient(oklch(45% 0.22 280 / 0.04) 1px, transparent 1px), linear-gradient(90deg, oklch(45% 0.22 280 / 0.04) 1px, transparent 1px)`,
+        backgroundImage: `linear-gradient(oklch(45% 0.22 280 / 0.03) 1px, transparent 1px), linear-gradient(90deg, oklch(45% 0.22 280 / 0.03) 1px, transparent 1px)`,
         backgroundSize: "40px 40px",
       }} />
 
@@ -263,7 +264,7 @@ const Hero = ({ onQuote, tweaks }) => {
           <h1 style={{
             fontFamily: "var(--font-head)", fontWeight: 700,
             fontSize: "clamp(36px, 5vw, 60px)", lineHeight: 1.1,
-            color: "var(--text)", marginBottom: 20,
+            color: "var(--text-primary)", marginBottom: 20,
             textWrap: "balance",
           }}>
             {tweaks.heroTitle}<br />
@@ -271,7 +272,7 @@ const Hero = ({ onQuote, tweaks }) => {
           </h1>
 
           <p style={{
-            fontSize: 17, lineHeight: 1.7, color: "var(--gray-600)",
+            fontSize: 17, lineHeight: 1.7, color: "var(--text-secondary)",
             maxWidth: 480, marginBottom: 36,
             fontFamily: "var(--font-body)",
           }}>
@@ -296,15 +297,15 @@ const Hero = ({ onQuote, tweaks }) => {
             </button>
             <a href="#produtos" style={{
               background: "transparent", color: "var(--purple)",
-              border: "2px solid oklch(45% 0.22 280 / 0.3)", borderRadius: 4,
+              border: "2px solid var(--purple)", borderRadius: 4,
               padding: "13px 28px", textDecoration: "none",
               fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14,
               transition: "all 0.2s", display: "inline-flex", alignItems: "center",
               textTransform: "uppercase",
               letterSpacing: "0.08em"
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = "oklch(45% 0.22 280 / 0.06)"; e.currentTarget.style.borderColor = "var(--purple)"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "oklch(45% 0.22 280 / 0.3)"; }}
+            onMouseEnter={e => { e.currentTarget.style.background = "var(--purple-pale)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
             >Ver Produtos</a>
           </div>
 
@@ -318,7 +319,7 @@ const Hero = ({ onQuote, tweaks }) => {
                 <div style={{ width: 18, height: 18, borderRadius: 99, background: "oklch(55% 0.20 160 / 0.15)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <Icon name="check" size={11} color="oklch(45% 0.22 160)" />
                 </div>
-                <span style={{ fontSize: 13, color: "var(--gray-600)", fontWeight: 500 }}>{item.text}</span>
+                <span style={{ fontSize: 13, color: "var(--text-secondary)", fontWeight: 500 }}>{item.text}</span>
               </div>
             ))}
           </div>
@@ -339,11 +340,10 @@ const Hero = ({ onQuote, tweaks }) => {
             onMouseLeave={() => setHovered(false)}
             style={{
               width: 280, height: 280,
-              background: "white",
-              borderRadius: 28,
-              boxShadow: hovered
-                ? "0 32px 80px oklch(45% 0.22 280 / 0.30), 0 0 0 1px oklch(45% 0.22 280 / 0.15)"
-                : "0 20px 60px oklch(45% 0.22 280 / 0.18), 0 0 0 1px oklch(45% 0.22 280 / 0.08)",
+              background: "var(--card-bg)",
+              borderRadius: 12,
+              border: hovered ? "1px solid var(--purple)" : "1px solid var(--border-color)",
+              boxShadow: hovered ? "var(--shadow-lg)" : "var(--shadow-md)",
               transform: hovered ? "translateY(-8px) rotate(1deg)" : "translateY(0) rotate(0deg)",
               transition: "all 0.4s cubic-bezier(.22,1,.36,1)",
               display: "flex", flexDirection: "column",
@@ -367,15 +367,15 @@ const Hero = ({ onQuote, tweaks }) => {
             </div>
 
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 15, color: "var(--text)" }}>Impressão em Camadas</div>
-              <div style={{ fontSize: 12, color: "var(--gray-400)", marginTop: 2 }}>PRECISÃO 0.1mm</div>
+              <div style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 15, color: "var(--text-primary)" }}>Impressão em Camadas</div>
+              <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 2 }}>PRECISÃO 0.1mm</div>
             </div>
 
             {/* Orange badge */}
             <div style={{
               position: "absolute", bottom: 16, right: 16,
               background: "var(--orange)", color: "#fff",
-              borderRadius: 99, padding: "5px 12px",
+              borderRadius: 4, padding: "5px 12px",
               fontSize: 11, fontWeight: 700, fontFamily: "var(--font-head)",
             }}>PERSONALIZADO</div>
           </div>
@@ -390,7 +390,7 @@ const Hero = ({ onQuote, tweaks }) => {
       {/* Stats bar */}
       <div style={{
         position: "absolute", bottom: 0, left: 0, right: 0,
-        background: "white", borderTop: "1px solid var(--gray-100)",
+        background: "var(--bg-primary)", borderTop: "1px solid var(--border-color)",
         padding: "20px 24px",
       }}>
         <div className="stats-bar" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "center", gap: "clamp(24px, 5vw, 80px)", flexWrap: "wrap" }}>
@@ -402,7 +402,7 @@ const Hero = ({ onQuote, tweaks }) => {
           ].map(s => (
             <div key={s.label} style={{ textAlign: "center" }}>
               <div style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 22, color: "var(--purple)" }}>{s.value}</div>
-              <div style={{ fontSize: 12, color: "var(--gray-400)", marginTop: 2, fontWeight: 500 }}>{s.label}</div>
+              <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 2, fontWeight: 500 }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -444,13 +444,14 @@ const FloatingChip = ({ top, bottom, left, right, delay, label, icon }) => {
     ...(bottom !== undefined && { bottom }),
     ...(left !== undefined && { left }),
     ...(right !== undefined && { right }),
-    background: "white",
+    background: "var(--card-bg)",
     borderRadius: 99,
     padding: "8px 14px",
     display: "flex", alignItems: "center", gap: 8,
-    boxShadow: "0 4px 16px oklch(45% 0.22 280 / 0.15), 0 0 0 1px oklch(88% 0.015 280)",
+    boxShadow: "var(--shadow-sm)",
+    border: "1px solid var(--border-subtle)",
     fontSize: 12, fontWeight: 600, fontFamily: "var(--font-head)",
-    color: "var(--text)", whiteSpace: "nowrap",
+    color: "var(--text-primary)", whiteSpace: "nowrap",
     opacity: visible ? 1 : 0,
     transform: visible ? "translateY(0)" : "translateY(8px)",
     transition: "all 0.5s cubic-bezier(.22,1,.36,1)",
@@ -477,28 +478,28 @@ const Filters = ({ activeCategory, setCategory, activeCustomization, setCustomiz
   const chipStyle = (active) => ({
     padding: "7px 16px", borderRadius: 99, fontSize: 13, fontWeight: 600,
     fontFamily: "var(--font-head)", cursor: "pointer", border: "1.5px solid",
-    borderColor: active ? "var(--purple)" : "var(--gray-200)",
-    background: active ? "var(--purple)" : "white",
-    color: active ? "white" : "var(--gray-600)",
+    borderColor: active ? "var(--purple)" : "var(--border-subtle)",
+    background: active ? "var(--purple)" : "var(--bg-primary)",
+    color: active ? "white" : "var(--text-secondary)",
     transition: "all 0.15s", whiteSpace: "nowrap",
   });
 
   return (
-    <div style={{ background: "white", border: "1px solid var(--gray-100)", borderRadius: 20, padding: "20px 24px", marginBottom: 32, boxShadow: "var(--shadow-sm)" }}>
+    <div style={{ background: "var(--card-bg)", border: "1px solid var(--border-color)", borderRadius: "var(--radius-lg)", padding: "20px 24px", marginBottom: 32, boxShadow: "var(--shadow-sm)" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-        <Icon name="filter" size={16} color="var(--gray-400)" />
-        <span style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14, color: "var(--text)" }}>Filtros</span>
+        <Icon name="filter" size={16} color="var(--text-muted)" />
+        <span style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14, color: "var(--text-primary)" }}>Filtros</span>
         <button onClick={() => setOpen(!open)} style={{ marginLeft: "auto", background: "none", border: "none", cursor: "pointer", fontSize: 12, color: "var(--purple)", fontWeight: 600, fontFamily: "var(--font-head)" }}>
           {open ? "Recolher ▲" : "Expandir ▼"}
         </button>
       </div>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: open ? 20 : 0 }}>
-        <span style={{ fontSize: 11, fontWeight: 700, color: "var(--gray-400)", fontFamily: "var(--font-head)", letterSpacing: "0.06em", alignSelf: "center", marginRight: 4 }}>CATEGORIA</span>
+        <span style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", fontFamily: "var(--font-head)", letterSpacing: "0.06em", alignSelf: "center", marginRight: 4 }}>CATEGORIA</span>
         {CATEGORIES.map(c => (
           <button key={c} style={chipStyle(activeCategory === c)} onClick={() => setCategory(c)}
             onMouseEnter={e => { if (activeCategory !== c) { e.currentTarget.style.borderColor = "var(--purple)"; e.currentTarget.style.color = "var(--purple)"; } }}
-            onMouseLeave={e => { if (activeCategory !== c) { e.currentTarget.style.borderColor = "var(--gray-200)"; e.currentTarget.style.color = "var(--gray-600)"; } }}
+            onMouseLeave={e => { if (activeCategory !== c) { e.currentTarget.style.borderColor = "var(--border-subtle)"; e.currentTarget.style.color = "var(--text-secondary)"; } }}
           >{c}</button>
         ))}
       </div>
@@ -506,11 +507,11 @@ const Filters = ({ activeCategory, setCategory, activeCustomization, setCustomiz
       {open && (
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: "var(--gray-400)", fontFamily: "var(--font-head)", letterSpacing: "0.06em", marginRight: 4 }}>PERSONALIZAÇÃO</span>
+            <span style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", fontFamily: "var(--font-head)", letterSpacing: "0.06em", marginRight: 4 }}>PERSONALIZAÇÃO</span>
             {CUSTOMIZATIONS.map(c => (
               <button key={c} style={chipStyle(activeCustomization === c)} onClick={() => setCustomization(c)}
                 onMouseEnter={e => { if (activeCustomization !== c) { e.currentTarget.style.borderColor = "var(--purple)"; e.currentTarget.style.color = "var(--purple)"; } }}
-                onMouseLeave={e => { if (activeCustomization !== c) { e.currentTarget.style.borderColor = "var(--gray-200)"; e.currentTarget.style.color = "var(--gray-600)"; } }}
+                onMouseLeave={e => { if (activeCustomization !== c) { e.currentTarget.style.borderColor = "var(--border-subtle)"; e.currentTarget.style.color = "var(--text-secondary)"; } }}
               >{c}</button>
             ))}
           </div>
@@ -534,8 +535,8 @@ const ProductCard = ({ product, onClick }) => {
       aria-label={`Ver detalhes de ${product.name}`}
       onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(product); } }}
       style={{
-        background: "white", borderRadius: 6,
-        border: `1.5px solid ${hovered ? "oklch(45% 0.22 280 / 0.30)" : "var(--gray-100)"}`,
+        background: "var(--card-bg)", borderRadius: "var(--radius-md)",
+        border: `1.5px solid ${hovered ? "var(--purple)" : "var(--border-color)"}`,
         overflow: "hidden", cursor: "pointer",
         transition: "all 0.25s cubic-bezier(.22,1,.36,1)",
         transform: hovered ? "translateY(-4px)" : "translateY(0)",
@@ -546,7 +547,7 @@ const ProductCard = ({ product, onClick }) => {
       <div style={{
         height: 180,
         background: product.image 
-          ? "var(--gray-50)" 
+          ? "var(--bg-secondary)" 
           : `linear-gradient(135deg, 
               ${product.color}33 0%, 
               ${product.color}66 100%)`,
@@ -576,7 +577,7 @@ const ProductCard = ({ product, onClick }) => {
           />
         ) : null}
         <div style={{
-          width: 100, height: 100, borderRadius: 18,
+          width: 100, height: 100, borderRadius: "var(--radius-lg)",
           background: product.color,
           boxShadow: `0 12px 32px ${product.color}66`,
           display: product.image ? "none" : "flex",
@@ -599,15 +600,15 @@ const ProductCard = ({ product, onClick }) => {
 
         <div style={{
           position: "absolute", top: 12, right: 12,
-          background: "white", borderRadius: 99, padding: "4px 10px",
-          fontSize: 11, fontWeight: 600, color: "var(--gray-600)", fontFamily: "var(--font-head)",
+          background: "var(--bg-primary)", borderRadius: 99, padding: "4px 10px",
+          fontSize: 11, fontWeight: 600, color: "var(--text-secondary)", fontFamily: "var(--font-head)",
         }}>{product.category}</div>
       </div>
 
       {/* Content */}
       <div style={{ padding: "16px 18px 18px" }}>
-        <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 16, color: "var(--text)", marginBottom: 4 }}>{product.name}</h3>
-        <p style={{ fontSize: 13, color: "var(--gray-400)", marginBottom: 14, lineHeight: 1.5 }}>Material: {product.material} · {product.customization} personalização</p>
+        <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 16, color: "var(--text-primary)", marginBottom: 4 }}>{product.name}</h3>
+        <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 14, lineHeight: 1.5 }}>Material: {product.material} · {product.customization} personalização</p>
 
         <div style={{ 
           display: "flex", 
@@ -617,12 +618,12 @@ const ProductCard = ({ product, onClick }) => {
           flexWrap: "wrap",
         }}>
           <div style={{ minWidth: 0, flex: 1 }}>
-            <div style={{ fontSize: 11, color: "var(--gray-400)", fontWeight: 500, marginBottom: 1 }}>Preço</div>
+            <div style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 500, marginBottom: 1 }}>Preço</div>
             <div style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 15, color: "var(--purple)", whiteSpace: "nowrap" }}>{product.price}</div>
           </div>
           <button style={{
             background: hovered ? "var(--orange)" : "var(--purple)",
-            color: "white", border: "none", borderRadius: 4,
+            color: "white", border: "none", borderRadius: "var(--radius-sm)",
             padding: "9px 18px", fontSize: 12, fontWeight: 700,
             fontFamily: "var(--font-head)", cursor: "pointer",
             transition: "all 0.2s",
@@ -654,20 +655,20 @@ const ProductModal = ({ product, onClose, onQuote }) => {
     }} onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
 
       <div style={{
-        background: "white", borderRadius: 24, width: "100%", maxWidth: 860,
+        background: "var(--modal-bg)", borderRadius: "var(--radius-lg)", width: "100%", maxWidth: 860,
         maxHeight: "90vh", overflow: "auto",
-        boxShadow: "0 32px 80px rgba(0,0,0,0.35)",
+        boxShadow: "var(--shadow-lg)",
         position: "relative",
       }}>
 
         {/* Close */}
         <button onClick={onClose} style={{
           position: "absolute", top: 16, right: 16, zIndex: 10,
-          background: "var(--gray-100)", border: "none", borderRadius: "50%",
+          background: "var(--bg-tertiary)", border: "none", borderRadius: "50%",
           width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center",
           cursor: "pointer",
         }}>
-          <Icon name="x" size={16} color="var(--gray-600)" />
+          <Icon name="x" size={16} color="var(--text-secondary)" />
         </button>
 
         <div className="modal-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
@@ -676,7 +677,7 @@ const ProductModal = ({ product, onClose, onQuote }) => {
             <div style={{
               height: 280, borderRadius: 16, marginBottom: 12,
               background: product.image 
-                ? "var(--gray-50)" 
+                ? "var(--bg-secondary)" 
                 : `linear-gradient(135deg, 
                     ${product.images[activeImage]}33, 
                     ${product.images[activeImage]}88)`,
@@ -742,11 +743,11 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                     style={{
                       flex: 1, height: 60, borderRadius: 10,
                       border: `2px solid ${activeImage === i 
-                        ? "var(--purple)" : "var(--gray-100)"}`,
+                        ? "var(--purple)" : "var(--border-color)"}`,
                       cursor: "pointer",
                       transition: "border 0.15s",
                       overflow: "hidden",
-                      background: "var(--gray-50)",
+                      background: "var(--bg-secondary)",
                       padding: 0,
                     }}>
                     {allImages.length > 0 ? (
@@ -783,33 +784,31 @@ const ProductModal = ({ product, onClose, onQuote }) => {
           <div className="modal-details" style={{ padding: "28px 28px 28px 0" }}>
             <div style={{ display: "flex", gap: 8, marginBottom: 12, flexWrap: "wrap" }}>
               <Badge text={product.badge || "DISPONÍVEL"} />
-              <span style={{ fontSize: 12, color: "var(--gray-400)", alignSelf: "center" }}>{product.category}</span>
+              <span style={{ fontSize: 12, color: "var(--text-muted)", alignSelf: "center" }}>{product.category}</span>
             </div>
 
-            <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 24, color: "var(--text)", marginBottom: 10 }}>{product.name}</h2>
-            <p style={{ fontSize: 14, color: "var(--gray-600)", lineHeight: 1.7, marginBottom: 20 }}>{product.description}</p>
+            <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 24, color: "var(--text-primary)", marginBottom: 10 }}>{product.name}</h2>
+            <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{product.description}</p>
 
             {/* Includes */}
             <div style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "var(--gray-400)", letterSpacing: "0.06em", marginBottom: 8 }}>INCLUI</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "var(--text-muted)", letterSpacing: "0.06em", marginBottom: 8 }}>INCLUI</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                 {product.details.map(d => (
                   <div key={d} style={{ display: "flex", gap: 8, alignItems: "center" }}>
                     <div style={{ width: 16, height: 16, borderRadius: "50%", background: "oklch(55% 0.20 160 / 0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                       <Icon name="check" size={9} color="oklch(45% 0.22 160)" />
                     </div>
-                    <span style={{ fontSize: 13, color: "var(--gray-600)" }}>{d}</span>
+                    <span style={{ fontSize: 13, color: "var(--text-secondary)" }}>{d}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-
-
             {/* Price */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
               <div>
-                <div style={{ fontSize: 11, color: "var(--gray-400)" }}>Investimento</div>
+                <div style={{ fontSize: 11, color: "var(--text-muted)" }}>Investimento</div>
                 <div style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 22, color: "var(--purple)" }}>{product.price}</div>
               </div>
             </div>
@@ -823,10 +822,10 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                 }}
                 style={{
                   flex: 1,
-                  background: "white", 
+                  background: "var(--bg-primary)", 
                   color: "var(--purple)",
                   border: "2px solid var(--purple)", 
-                  borderRadius: 4, 
+                  borderRadius: "var(--radius-sm)", 
                   padding: "14px",
                   fontFamily: "var(--font-head)", 
                   fontWeight: 700, 
@@ -842,10 +841,10 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                 }}
                 onMouseEnter={e => { 
                   e.currentTarget.style.background = "var(--purple)"; 
-                  e.currentTarget.style.color = "white"; 
+                  e.currentTarget.style.color = "var(--bg-primary)"; 
                 }}
                 onMouseLeave={e => { 
-                  e.currentTarget.style.background = "white"; 
+                  e.currentTarget.style.background = "var(--bg-primary)"; 
                   e.currentTarget.style.color = "var(--purple)"; 
                 }}
               >
@@ -863,7 +862,7 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                   background: "var(--orange)", 
                   color: "white",
                   border: "none", 
-                  borderRadius: 4, 
+                  borderRadius: "var(--radius-sm)", 
                   padding: "14px",
                   fontFamily: "var(--font-head)", 
                   fontWeight: 700, 
@@ -895,24 +894,24 @@ const ProductModal = ({ product, onClose, onQuote }) => {
 
         {/* Reviews */}
         {product.reviews.length > 0 && (
-          <div style={{ padding: "24px 28px", borderTop: "1px solid var(--gray-100)" }}>
-            <div style={{ fontSize: 14, fontWeight: 700, fontFamily: "var(--font-head)", color: "var(--text)", marginBottom: 16 }}>
+          <div style={{ padding: "24px 28px", borderTop: "1px solid var(--border-color)" }}>
+            <div style={{ fontSize: 14, fontWeight: 700, fontFamily: "var(--font-head)", color: "var(--text-primary)", marginBottom: 16 }}>
               Avaliações ({product.reviews.length})
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
               {product.reviews.map((r, i) => (
-                <div key={i} style={{ background: "var(--gray-50)", borderRadius: 12, padding: "16px" }}>
+                <div key={i} style={{ background: "var(--bg-secondary)", borderRadius: 12, padding: "16px" }}>
                   <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>
                     {Array.from({length: r.stars}).map((_, j) => <Icon key={j} name="star" size={14} color="var(--orange)" />)}
                   </div>
-                  <p style={{ fontSize: 13, color: "var(--gray-600)", lineHeight: 1.6, marginBottom: 12, fontStyle: "italic" }}>"{r.text}"</p>
+                  <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: 12, fontStyle: "italic" }}>"{r.text}"</p>
                   <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
                     <div style={{ width: 28, height: 28, borderRadius: "50%", background: "var(--purple)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <span style={{ fontSize: 11, color: "white", fontWeight: 700 }}>{r.name[0]}</span>
                     </div>
                     <div>
-                      <div style={{ fontSize: 12, fontWeight: 600, color: "var(--text)" }}>{r.name}</div>
-                      <div style={{ fontSize: 11, color: "var(--gray-400)" }}>{r.role}</div>
+                      <div style={{ fontSize: 12, fontWeight: 600, color: "var(--text-primary)" }}>{r.name}</div>
+                      <div style={{ fontSize: 11, color: "var(--text-muted)" }}>{r.role}</div>
                     </div>
                   </div>
                 </div>
@@ -945,7 +944,7 @@ function MaisVendidosSection({ products, onQuote, onSelectProduct }) {
   return (
     <section style={{
       padding: "80px 0 60px",
-      background: "var(--white)",
+      background: "var(--bg-primary)",
     }}>
       <div style={{
         maxWidth: 1200, margin: "0 auto",
@@ -966,13 +965,13 @@ function MaisVendidosSection({ products, onQuote, onSelectProduct }) {
             fontFamily: "var(--font-head)",
             fontSize: "clamp(24px, 3vw, 32px)",
             fontWeight: 700,
-            color: "var(--text)",
+            color: "var(--text-primary)",
             marginBottom: 8,
           }}>
             Os favoritos dos nossos clientes
           </h2>
           <p style={{
-            color: "var(--gray-600)",
+            color: "var(--text-secondary)",
             fontSize: 15,
           }}>
             Produtos com maior procura e 
@@ -1039,13 +1038,13 @@ const ProductsSection = ({ onQuote }) => {
   });
 
   return (
-    <section id="produtos" style={{ padding: "80px 24px", background: "var(--gray-50)" }}>
+    <section id="produtos" style={{ padding: "80px 24px", background: "var(--bg-secondary)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
 
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "var(--orange)", fontFamily: "var(--font-head)", marginBottom: 12 }}>NOSSOS SERVIÇOS</div>
-          <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 44px)", color: "var(--text)", marginBottom: 14 }}>Design que gera resultado</h2>
-          <p style={{ fontSize: 16, color: "var(--gray-600)", maxWidth: 540, margin: "0 auto" }}>
+          <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 44px)", color: "var(--text-primary)", marginBottom: 14 }}>Design que gera resultado</h2>
+          <p style={{ fontSize: 16, color: "var(--text-secondary)", maxWidth: 540, margin: "0 auto" }}>
             Escolha o serviço ideal para sua marca e descubra como transformamos ideias em design que vende.
           </p>
         </div>
@@ -1067,11 +1066,11 @@ const ProductsSection = ({ onQuote }) => {
           <div style={{ 
             textAlign: "center", 
             padding: "80px 0",
-            color: "var(--gray-400)" 
+            color: "var(--text-muted)" 
           }}>
             <div style={{
               width: 48, height: 48, borderRadius: "50%",
-              border: "3px solid var(--gray-200)",
+              border: "3px solid var(--border-subtle)",
               borderTopColor: "var(--purple)",
               margin: "0 auto 16px",
               animation: "spin 0.8s linear infinite",
@@ -1092,7 +1091,7 @@ const ProductsSection = ({ onQuote }) => {
           <div style={{ 
             textAlign: "center", 
             padding: "60px 24px", 
-            color: "var(--text)" 
+            color: "var(--text-primary)" 
           }}>
             <div style={{ 
               width: 48, height: 48, borderRadius: "50%", background: "oklch(95% 0.05 10 / 0.15)",
@@ -1104,7 +1103,7 @@ const ProductsSection = ({ onQuote }) => {
               fontFamily: "var(--font-head)", 
               fontSize: 16,
               fontWeight: 600,
-              color: "var(--text)"
+              color: "var(--text-primary)"
             }}>
               {error}
             </p>
@@ -1113,7 +1112,7 @@ const ProductsSection = ({ onQuote }) => {
               background: "var(--purple)",
               color: "white",
               border: "none",
-              borderRadius: 4,
+              borderRadius: "var(--radius-sm)",
               padding: "10px 24px",
               fontFamily: "var(--font-head)",
               fontWeight: 600,
@@ -1129,10 +1128,10 @@ const ProductsSection = ({ onQuote }) => {
           <div style={{ 
             textAlign: "center", 
             padding: "60px 0", 
-            color: "var(--gray-400)" 
+            color: "var(--text-muted)" 
           }}>
             <Icon name="filter" size={40} 
-              color="var(--gray-200)" />
+              color="var(--border-subtle)" />
             <p style={{ 
               marginTop: 16, 
               fontFamily: "var(--font-head)" 
@@ -1176,18 +1175,18 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="sobre" style={{ padding: "80px 24px", background: "var(--gray-50)" }}>
+    <section id="sobre" style={{ padding: "80px 24px", background: "var(--bg-secondary)" }}>
       <div className="about-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
 
         <div>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "var(--orange)", fontFamily: "var(--font-head)", marginBottom: 12 }}>SOBRE A FLAT.</div>
-          <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(28px, 3.5vw, 40px)", color: "var(--text)", marginBottom: 20, lineHeight: 1.2 }}>
+          <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(28px, 3.5vw, 40px)", color: "var(--text-primary)", marginBottom: 20, lineHeight: 1.2 }}>
             Especializados em transformar ideias em design que vende
           </h2>
-          <p style={{ fontSize: 15, color: "var(--gray-600)", lineHeight: 1.8, marginBottom: 16 }}>
+          <p style={{ fontSize: 15, color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: 16 }}>
             A flat. nasceu da paixão pelo design digital. Somos especialistas em criação de conteúdo visual, atendendo desde empreendedores independentes até grandes empresas.
           </p>
-          <p style={{ fontSize: 15, color: "var(--gray-600)", lineHeight: 1.8, marginBottom: 36 }}>
+          <p style={{ fontSize: 15, color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: 36 }}>
             Com criatividade e estratégia, entregamos projetos que vão além da expectativa, porque para nós, cada arte conta uma história.
           </p>
 
@@ -1195,7 +1194,7 @@ const AboutSection = () => {
             {[["2019", "Fundada"], ["500+", "Clientes"], ["98%", "Satisfação"]].map(([v, l]) => (
               <div key={l}>
                 <div style={{ fontFamily: "var(--font-head)", fontWeight: 800, fontSize: 30, color: "var(--purple)" }}>{v}</div>
-                <div style={{ fontSize: 12, color: "var(--gray-400)", fontWeight: 500 }}>{l}</div>
+                <div style={{ fontSize: 12, color: "var(--text-muted)", fontWeight: 500 }}>{l}</div>
               </div>
             ))}
           </div>
@@ -1204,21 +1203,21 @@ const AboutSection = () => {
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           {diffs.map(d => (
             <div key={d.title} style={{
-              background: "white", borderRadius: 16, padding: "22px 24px",
+              background: "var(--card-bg)", borderRadius: "var(--radius-lg)", padding: "22px 24px",
               display: "flex", gap: 18, alignItems: "flex-start",
-              border: "1px solid var(--gray-100)",
+              border: "1px solid var(--border-color)",
               boxShadow: "var(--shadow-sm)",
               transition: "all 0.2s",
             }}
-            onMouseEnter={e => { e.currentTarget.style.transform = "translateX(4px)"; e.currentTarget.style.borderColor = "oklch(45% 0.22 280 / 0.25)"; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.borderColor = "var(--gray-100)"; }}
+            onMouseEnter={e => { e.currentTarget.style.transform = "translateX(4px)"; e.currentTarget.style.borderColor = "var(--purple)"; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.borderColor = "var(--border-color)"; }}
             >
               <div style={{ width: 44, height: 44, borderRadius: 12, background: "var(--purple-pale)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <Icon name={d.icon} size={20} color="var(--purple)" />
               </div>
               <div>
-                <h4 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 16, color: "var(--text)", marginBottom: 6 }}>{d.title}</h4>
-                <p style={{ fontSize: 13, color: "var(--gray-600)", lineHeight: 1.6 }}>{d.desc}</p>
+                <h4 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 16, color: "var(--text-primary)", marginBottom: 6 }}>{d.title}</h4>
+                <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6 }}>{d.desc}</p>
               </div>
             </div>
           ))}
@@ -1248,34 +1247,34 @@ const ReviewsSection = () => {
   ];
 
   return (
-    <section style={{ padding: "80px 24px", background: "white" }}>
+    <section style={{ padding: "80px 24px", background: "var(--bg-primary)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "var(--orange)", fontFamily: "var(--font-head)", marginBottom: 12 }}>AVALIAÇÕES</div>
-          <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 44px)", color: "var(--text)", marginBottom: 8 }}>O que nossos clientes dizem</h2>
+          <h2 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 44px)", color: "var(--text-primary)", marginBottom: 8 }}>O que nossos clientes dizem</h2>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
             <div style={{ display: "flex", gap: 3 }}>
               {[...Array(5)].map((_, i) => <Icon key={i} name="star" size={18} color="var(--orange)" />)}
             </div>
-            <span style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 16, color: "var(--text)" }}>4.9</span>
-            <span style={{ fontSize: 13, color: "var(--gray-400)" }}>de 5 · 120+ avaliações</span>
+            <span style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 16, color: "var(--text-primary)" }}>4.9</span>
+            <span style={{ fontSize: 13, color: "var(--text-muted)" }}>de 5 · 120+ avaliações</span>
           </div>
         </div>
 
         <div className="reviews-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 20 }}>
           {reviews.map((r, i) => (
             <div key={i} style={{
-              background: "var(--gray-50)", borderRadius: 16, padding: "22px",
-              border: "1px solid var(--gray-100)", transition: "all 0.2s",
+              background: "var(--bg-secondary)", borderRadius: "var(--radius-lg)", padding: "22px",
+              border: "1px solid var(--border-color)", transition: "all 0.2s",
             }}
             onMouseEnter={e => { e.currentTarget.style.boxShadow = "var(--shadow-md)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
             onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = ""; }}
             >
               <div style={{ display: "flex", gap: 3, marginBottom: 14 }}>
                 {[...Array(r.stars)].map((_, j) => <Icon key={j} name="star" size={14} color="var(--orange)" />)}
-                {[...Array(5-r.stars)].map((_, j) => <Icon key={j} name="star" size={14} color="var(--gray-200)" />)}
+                {[...Array(5-r.stars)].map((_, j) => <Icon key={j} name="star" size={14} color="var(--border-subtle)" />)}
               </div>
-              <p style={{ fontSize: 14, color: "var(--gray-600)", lineHeight: 1.7, marginBottom: 18, fontStyle: "italic" }}>"{r.text}"</p>
+              <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 18, fontStyle: "italic" }}>"{r.text}"</p>
               <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
                 <div style={{
                   width: 36, height: 36, borderRadius: "50%",
@@ -1285,8 +1284,8 @@ const ReviewsSection = () => {
                   <span style={{ fontSize: 14, color: "white", fontWeight: 700, fontFamily: "var(--font-head)" }}>{r.name[0]}</span>
                 </div>
                 <div>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", fontFamily: "var(--font-head)" }}>{r.name}</div>
-                  <div style={{ fontSize: 11, color: "var(--gray-400)" }}>{r.role}</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", fontFamily: "var(--font-head)" }}>{r.name}</div>
+                  <div style={{ fontSize: 11, color: "var(--text-muted)" }}>{r.role}</div>
                 </div>
               </div>
             </div>
@@ -1513,16 +1512,16 @@ const QuoteModal = ({ onClose }) => {
     }} onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
 
       <div style={{
-        background: "white", borderRadius: 24, width: "100%", maxWidth: 480,
-        padding: "36px", boxShadow: "0 32px 80px rgba(0,0,0,0.4)",
+        background: "var(--modal-bg)", borderRadius: "var(--radius-lg)", width: "100%", maxWidth: 480,
+        padding: "36px", boxShadow: "var(--shadow-lg)",
         position: "relative",
       }}>
         <button onClick={onClose} style={{
           position: "absolute", top: 16, right: 16,
-          background: "var(--gray-100)", border: "none", borderRadius: "50%",
+          background: "var(--bg-tertiary)", border: "none", borderRadius: "50%",
           width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer",
         }}>
-          <Icon name="x" size={14} color="var(--gray-600)" />
+          <Icon name="x" size={14} color="var(--text-secondary)" />
         </button>
 
         {submitted ? (
@@ -1535,13 +1534,13 @@ const QuoteModal = ({ onClose }) => {
             }}>
               <Icon name="check" size={32} color="oklch(45% 0.22 160)" />
             </div>
-            <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 24, color: "var(--text)", marginBottom: 10 }}>Pedido enviado!</h3>
-            <p style={{ fontSize: 15, color: "var(--gray-600)", lineHeight: 1.7 }}>
+            <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 24, color: "var(--text-primary)", marginBottom: 10 }}>Pedido enviado!</h3>
+            <p style={{ fontSize: 15, color: "var(--text-secondary)", lineHeight: 1.7 }}>
               Recebemos sua solicitação e entraremos em contato em até <strong>2 horas</strong> com o orçamento personalizado.
             </p>
             <button onClick={onClose} style={{
               marginTop: 24, background: "var(--purple)", color: "white", border: "none",
-              borderRadius: 99, padding: "12px 28px",
+              borderRadius: "var(--radius-sm)", padding: "12px 28px",
               fontFamily: "var(--font-head)", fontWeight: 600, fontSize: 15, cursor: "pointer",
             }}>Fechar</button>
           </div>
@@ -1552,18 +1551,18 @@ const QuoteModal = ({ onClose }) => {
               {[1,2,3].map(s => (
                 <div key={s} style={{
                   flex: 1, height: 4, borderRadius: 99,
-                  background: s <= step ? "var(--purple)" : "var(--gray-100)",
+                  background: s <= step ? "var(--purple)" : "var(--border-color)",
                   transition: "background 0.3s",
                 }} />
               ))}
             </div>
 
-            <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 22, color: "var(--text)", marginBottom: 6 }}>
+            <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 22, color: "var(--text-primary)", marginBottom: 6 }}>
               {step === 1 && "Seus dados"}
               {step === 2 && "Sobre o projeto"}
               {step === 3 && "Descreva sua ideia"}
             </h3>
-            <p style={{ fontSize: 14, color: "var(--gray-400)", marginBottom: 24 }}>
+            <p style={{ fontSize: 14, color: "var(--text-muted)", marginBottom: 24 }}>
                {step === 1 && "Como podemos te contatar?"}
                {step === 2 && "Qual tipo de projeto?"}
                {step === 3 && "Mais detalhes, melhor o orçamento"}
@@ -1599,9 +1598,9 @@ const QuoteModal = ({ onClose }) => {
                   <button key={t} onClick={() => setFormData({...formData, type: t})} style={{
                     padding: "12px 14px", borderRadius: 10, fontSize: 13, fontWeight: 600,
                     fontFamily: "var(--font-head)", cursor: "pointer", textAlign: "left",
-                    background: formData.type === t ? "var(--purple)" : "var(--gray-50)",
-                    color: formData.type === t ? "white" : "var(--gray-600)",
-                    border: `1.5px solid ${formData.type === t ? "var(--purple)" : "var(--gray-200)"}`,
+                    background: formData.type === t ? "var(--purple)" : "var(--bg-secondary)",
+                    color: formData.type === t ? "white" : "var(--text-secondary)",
+                    border: `1.5px solid ${formData.type === t ? "var(--purple)" : "var(--border-subtle)"}`,
                     transition: "all 0.15s",
                   }}>{t}</button>
                 ))}
@@ -1610,7 +1609,7 @@ const QuoteModal = ({ onClose }) => {
 
             {step === 3 && (
               <div>
-                <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--gray-600)", marginBottom: 6 }}>Descreva seu projeto</label>
+                <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--text-secondary)", marginBottom: 6, fontFamily: "var(--font-head)" }}>Descreva seu projeto</label>
                 <textarea
                   placeholder="Ex: Quero uma miniatura de 15cm do meu personagem favorito, em PLA branco, para colocar na estante..."
                   value={formData.description}
@@ -1618,12 +1617,13 @@ const QuoteModal = ({ onClose }) => {
                   rows={5}
                   style={{
                     width: "100%", padding: "12px 14px", borderRadius: 10,
-                    border: "1.5px solid var(--gray-200)", fontSize: 14,
+                    border: "1.5px solid var(--border-subtle)", fontSize: 14,
                     fontFamily: "var(--font-body)", resize: "vertical",
-                    outline: "none", color: "var(--text)", lineHeight: 1.6,
+                    outline: "none", color: "var(--text-primary)", lineHeight: 1.6,
+                    background: "var(--bg-secondary)"
                   }}
-                  onFocus={e => { e.target.style.borderColor = "var(--purple)"; }}
-                  onBlur={e => { e.target.style.borderColor = "var(--gray-200)"; }}
+                  onFocus={e => { e.target.style.borderColor = "var(--purple)"; e.target.style.background = "var(--bg-primary)"; }}
+                  onBlur={e => { e.target.style.borderColor = "var(--border-subtle)"; e.target.style.background = "var(--bg-secondary)"; }}
                 />
               </div>
             )}
@@ -1631,8 +1631,8 @@ const QuoteModal = ({ onClose }) => {
             <div style={{ display: "flex", gap: 10, marginTop: 28 }}>
               {step > 1 && (
                 <button onClick={() => setStep(step - 1)} style={{
-                  flex: 1, background: "var(--gray-100)", color: "var(--gray-600)", border: "none",
-                  borderRadius: 4, padding: "13px",
+                  flex: 1, background: "var(--bg-tertiary)", color: "var(--text-secondary)", border: "none",
+                  borderRadius: "var(--radius-sm)", padding: "13px",
                   fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14, cursor: "pointer",
                   textTransform: "uppercase", letterSpacing: "0.06em"
                 }}>{/* eslint-disable-next-line react/no-unescaped-entities */}← Voltar</button>
@@ -1641,7 +1641,7 @@ const QuoteModal = ({ onClose }) => {
                 onClick={() => step < 3 ? handleNext() : handleSubmit()}
                 style={{
                   flex: 2, background: "var(--orange)", color: "white", border: "none",
-                  borderRadius: 4, padding: "13px",
+                  borderRadius: "var(--radius-sm)", padding: "13px",
                   fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14, cursor: "pointer",
                   boxShadow: "0 4px 12px oklch(68% 0.19 45 / 0.25)",
                   transition: "all 0.2s",
@@ -1663,40 +1663,51 @@ const QuoteModal = ({ onClose }) => {
 
 const InputField = ({ label, placeholder, value, onChange }) => (
   <div>
-    <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--gray-600)", marginBottom: 6, fontFamily: "var(--font-head)" }}>{label}</label>
+    <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--text-secondary)", marginBottom: 6, fontFamily: "var(--font-head)" }}>{label}</label>
     <input
       value={value}
       onChange={e => onChange(e.target.value)}
       placeholder={placeholder}
       style={{
-        width: "100%", padding: "11px 14px", borderRadius: 4,
-        border: "1.5px solid var(--gray-200)", fontSize: 14,
-        fontFamily: "var(--font-body)", outline: "none", color: "var(--text)",
-        background: "var(--gray-50)", transition: "border 0.15s",
+        width: "100%", padding: "11px 14px", borderRadius: "var(--radius-sm)",
+        border: "1.5px solid var(--border-subtle)", fontSize: 14,
+        fontFamily: "var(--font-body)", outline: "none", color: "var(--text-primary)",
+        background: "var(--bg-secondary)", transition: "all 0.15s",
       }}
-      onFocus={e => { e.target.style.borderColor = "var(--purple)"; e.target.style.background = "white"; }}
-      onBlur={e => { e.target.style.borderColor = "var(--gray-200)"; e.target.style.background = "var(--gray-50)"; }}
+      onFocus={e => { e.target.style.borderColor = "var(--purple)"; e.target.style.background = "var(--bg-primary)"; }}
+      onBlur={e => { e.target.style.borderColor = "var(--border-subtle)"; e.target.style.background = "var(--bg-secondary)"; }}
     />
   </div>
 );
 
-// ─── APP ROOT ──────────────────────────────────────────────
 export const App = () => {
   const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
   const [quoteOpen, setQuoteOpen] = React.useState(false);
 
-  // Apply tweaks to CSS vars
+  // Apply tweaks to CSS vars and manage theme classes
   React.useEffect(() => {
     document.documentElement.style.setProperty("--orange", tweaks.accentColor);
     document.documentElement.style.setProperty("--purple-dark", tweaks.darkBg);
-  }, [tweaks.accentColor, tweaks.darkBg]);
+    document.documentElement.style.setProperty("--purple", tweaks.primaryColor);
+
+    const root = document.documentElement;
+    if (tweaks.theme === "claro") {
+      root.classList.add("light-mode");
+      root.classList.remove("dark-mode");
+    } else if (tweaks.theme === "escuro") {
+      root.classList.add("dark-mode");
+      root.classList.remove("light-mode");
+    } else {
+      // "sistema"
+      root.classList.remove("light-mode", "dark-mode");
+    }
+  }, [tweaks.accentColor, tweaks.darkBg, tweaks.primaryColor, tweaks.theme]);
 
   return (
     <div>
       <Navbar onQuote={() => setQuoteOpen(true)} />
       <Hero onQuote={() => setQuoteOpen(true)} tweaks={tweaks} />
       <ProductsSection onQuote={() => setQuoteOpen(true)} />
-
 
       {tweaks.showReviews && <ReviewsSection />}
       <AboutSection />
@@ -1706,8 +1717,10 @@ export const App = () => {
       {quoteOpen && <QuoteModal onClose={() => setQuoteOpen(false)} />}
 
       <TweaksPanel>
-        <TweakSection label="Cores" />
+        <TweakSection label="Aparência" />
+        <TweakRadio label="Tema" value={tweaks.theme} options={["sistema", "claro", "escuro"]} onChange={v => setTweak("theme", v)} />
         <TweakColor label="Cor de Destaque (CTA)" value={tweaks.accentColor} onChange={v => setTweak("accentColor", v)} />
+        <TweakColor label="Cor da Marca" value={tweaks.primaryColor} onChange={v => setTweak("primaryColor", v)} />
         <TweakColor label="Fundo Escuro" value={tweaks.darkBg} onChange={v => setTweak("darkBg", v)} />
         <TweakSection label="Conteúdo" />
         <TweakText label="Título do Hero" value={tweaks.heroTitle} onChange={v => setTweak("heroTitle", v)} />

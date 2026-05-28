@@ -31,6 +31,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+      /* Cores básicas de marca */
       --purple: oklch(45% 0.22 280);
       --purple-light: oklch(55% 0.20 280);
       --purple-pale: oklch(95% 0.05 280);
@@ -38,35 +39,133 @@
       --purple-dark: oklch(18% 0.12 280);
       --orange: oklch(68% 0.19 45);
       --orange-hover: oklch(62% 0.21 45);
-      --white: #ffffff;
-      --gray-50: oklch(98% 0.005 280);
-      --gray-100: oklch(94% 0.01 280);
-      --gray-200: oklch(88% 0.015 280);
-      --gray-400: oklch(53% 0.02 280);
-      --gray-600: oklch(43% 0.02 280);
-      --gray-800: oklch(28% 0.03 280);
-      --text: oklch(18% 0.04 280);
+      
+      /* Variáveis de layout e tipografia */
       --font-head: 'Space Grotesk', sans-serif;
       --font-body: 'Inter', sans-serif;
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
-      --shadow-sm: 0 2px 8px oklch(45% 0.22 280 / 0.08);
+      
+      /* Cantos vivos cirúrgicos (DESIGN.md) */
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --radius-lg: 12px;
+
+      /* Tokens Cromáticos Semânticos - Light Mode por padrão */
+      --bg-primary: #ffffff;
+      --bg-secondary: oklch(98% 0.005 280); /* gray-50 */
+      --bg-tertiary: oklch(94% 0.01 280); /* gray-100 */
+      --border-color: oklch(94% 0.01 280); /* gray-100 */
+      --border-subtle: oklch(88% 0.015 280); /* gray-200 */
+      
+      --text-primary: oklch(18% 0.04 280); /* text */
+      --text-secondary: oklch(43% 0.02 280); /* gray-600 */
+      --text-muted: oklch(53% 0.02 280); /* gray-400 */
+      
+      --card-bg: #ffffff;
+      --navbar-bg: rgba(255, 255, 255, 0.95);
+      --modal-bg: #ffffff;
+      
+      --shadow-color: oklch(45% 0.22 280 / 0.08);
+      --shadow-sm: 0 2px 8px var(--shadow-color);
       --shadow-md: 0 4px 24px oklch(45% 0.22 280 / 0.12);
       --shadow-lg: 0 12px 48px oklch(45% 0.22 280 / 0.18);
+
+      --hero-gradient: radial-gradient(ellipse 80% 60% at 60% 30%, oklch(92% 0.08 280) 0%, oklch(98% 0.02 280) 55%, var(--bg-primary) 100%);
+    }
+
+    /* Mídia nativa do sistema operacional */
+    @media (prefers-color-scheme: dark) {
+      :root:not(.light-mode) {
+        --bg-primary: var(--purple-dark);
+        --bg-secondary: oklch(14% 0.06 280);
+        --bg-tertiary: oklch(20% 0.08 280);
+        --border-color: oklch(22% 0.08 280);
+        --border-subtle: oklch(25% 0.08 280);
+        
+        --text-primary: oklch(95% 0.02 280);
+        --text-secondary: oklch(78% 0.03 280);
+        --text-muted: oklch(60% 0.02 280);
+        
+        --card-bg: oklch(14% 0.06 280);
+        --navbar-bg: oklch(12% 0.08 280 / 0.95);
+        --modal-bg: oklch(14% 0.06 280);
+        
+        --shadow-color: oklch(10% 0.04 280 / 0.4);
+        --shadow-sm: 0 2px 8px var(--shadow-color);
+        --shadow-md: 0 4px 24px var(--shadow-color);
+        --shadow-lg: 0 12px 48px var(--shadow-color);
+        
+        --purple: oklch(65% 0.20 280);
+        --purple-pale: oklch(25% 0.12 280);
+
+        --hero-gradient: radial-gradient(ellipse 80% 60% at 60% 30%, oklch(25% 0.12 280 / 0.4) 0%, oklch(16% 0.06 280 / 0.2) 55%, var(--bg-primary) 100%);
+      }
+    }
+
+    /* Forçado explicitamente via JavaScript / tweaks panel */
+    .dark-mode {
+      --bg-primary: var(--purple-dark);
+      --bg-secondary: oklch(14% 0.06 280);
+      --bg-tertiary: oklch(20% 0.08 280);
+      --border-color: oklch(22% 0.08 280);
+      --border-subtle: oklch(25% 0.08 280);
+      
+      --text-primary: oklch(95% 0.02 280);
+      --text-secondary: oklch(78% 0.03 280);
+      --text-muted: oklch(60% 0.02 280);
+      
+      --card-bg: oklch(14% 0.06 280);
+      --navbar-bg: oklch(12% 0.08 280 / 0.95);
+      --modal-bg: oklch(14% 0.06 280);
+      
+      --shadow-color: oklch(10% 0.04 280 / 0.4);
+      --shadow-sm: 0 2px 8px var(--shadow-color);
+      --shadow-md: 0 4px 24px var(--shadow-color);
+      --shadow-lg: 0 12px 48px var(--shadow-color);
+      
+      --purple: oklch(65% 0.20 280);
+      --purple-pale: oklch(25% 0.12 280);
+
+      --hero-gradient: radial-gradient(ellipse 80% 60% at 60% 30%, oklch(25% 0.12 280 / 0.4) 0%, oklch(16% 0.06 280 / 0.2) 55%, var(--bg-primary) 100%);
+    }
+
+    .light-mode {
+      --bg-primary: #ffffff;
+      --bg-secondary: oklch(98% 0.005 280);
+      --bg-tertiary: oklch(94% 0.01 280);
+      --border-color: oklch(94% 0.01 280);
+      --border-subtle: oklch(88% 0.015 280);
+      
+      --text-primary: oklch(18% 0.04 280);
+      --text-secondary: oklch(43% 0.02 280);
+      --text-muted: oklch(53% 0.02 280);
+      
+      --card-bg: #ffffff;
+      --navbar-bg: rgba(255, 255, 255, 0.95);
+      --modal-bg: #ffffff;
+      
+      --shadow-color: oklch(45% 0.22 280 / 0.08);
+      --shadow-sm: 0 2px 8px var(--shadow-color);
+      --shadow-md: 0 4px 24px oklch(45% 0.22 280 / 0.12);
+      --shadow-lg: 0 12px 48px oklch(45% 0.22 280 / 0.18);
+      
+      --purple: oklch(45% 0.22 280);
+      --purple-pale: oklch(95% 0.05 280);
+
+      --hero-gradient: radial-gradient(ellipse 80% 60% at 60% 30%, oklch(92% 0.08 280) 0%, oklch(98% 0.02 280) 55%, var(--bg-primary) 100%);
     }
 
     html { scroll-behavior: smooth; }
     body {
       font-family: var(--font-body);
-      color: var(--text);
-      background: var(--white);
+      color: var(--text-primary);
+      background: var(--bg-primary);
       overflow-x: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     /* Scrollbar */
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--gray-100); }
+    ::-webkit-scrollbar-track { background: var(--bg-tertiary); }
     ::-webkit-scrollbar-thumb { background: var(--purple-light); border-radius: 99px; }
 
     #root { min-height: 100vh; }
