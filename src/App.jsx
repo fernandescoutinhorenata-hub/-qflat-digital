@@ -281,23 +281,27 @@ const Hero = ({ onQuote, tweaks }) => {
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 48 }}>
             <button onClick={() => window.open("https://wa.me/5579999990966", "_blank")} style={{
               background: "var(--orange)", color: "#fff", border: "none",
-              borderRadius: 99, padding: "15px 32px",
-              fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 15,
+              borderRadius: 4, padding: "15px 32px",
+              fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14,
               cursor: "pointer", transition: "all 0.25s",
-              boxShadow: "0 4px 20px oklch(68% 0.19 45 / 0.40)",
+              boxShadow: "0 4px 16px oklch(68% 0.19 45 / 0.30)",
               display: "flex", alignItems: "center", gap: 8,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em"
             }}
-            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 28px oklch(68% 0.19 45 / 0.50)"; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 4px 20px oklch(68% 0.19 45 / 0.40)"; }}
+            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 24px oklch(68% 0.19 45 / 0.40)"; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 4px 16px oklch(68% 0.19 45 / 0.30)"; }}
             >
               {tweaks.ctaText} <Icon name="arrow" size={16} color="#fff" />
             </button>
             <a href="#produtos" style={{
               background: "transparent", color: "var(--purple)",
-              border: "2px solid oklch(45% 0.22 280 / 0.3)", borderRadius: 99,
+              border: "2px solid oklch(45% 0.22 280 / 0.3)", borderRadius: 4,
               padding: "13px 28px", textDecoration: "none",
-              fontFamily: "var(--font-head)", fontWeight: 600, fontSize: 15,
+              fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14,
               transition: "all 0.2s", display: "inline-flex", alignItems: "center",
+              textTransform: "uppercase",
+              letterSpacing: "0.08em"
             }}
             onMouseEnter={e => { e.currentTarget.style.background = "oklch(45% 0.22 280 / 0.06)"; e.currentTarget.style.borderColor = "var(--purple)"; }}
             onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "oklch(45% 0.22 280 / 0.3)"; }}
@@ -530,7 +534,7 @@ const ProductCard = ({ product, onClick }) => {
       aria-label={`Ver detalhes de ${product.name}`}
       onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(product); } }}
       style={{
-        background: "white", borderRadius: 20,
+        background: "white", borderRadius: 6,
         border: `1.5px solid ${hovered ? "oklch(45% 0.22 280 / 0.30)" : "var(--gray-100)"}`,
         overflow: "hidden", cursor: "pointer",
         transition: "all 0.25s cubic-bezier(.22,1,.36,1)",
@@ -618,11 +622,13 @@ const ProductCard = ({ product, onClick }) => {
           </div>
           <button style={{
             background: hovered ? "var(--orange)" : "var(--purple)",
-            color: "white", border: "none", borderRadius: 99,
-            padding: "9px 18px", fontSize: 13, fontWeight: 600,
+            color: "white", border: "none", borderRadius: 4,
+            padding: "9px 18px", fontSize: 12, fontWeight: 700,
             fontFamily: "var(--font-head)", cursor: "pointer",
             transition: "all 0.2s",
             flexShrink: 0,
+            textTransform: "uppercase",
+            letterSpacing: "0.08em"
           }}>Ver Detalhes</button>
         </div>
       </div>
@@ -820,17 +826,19 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                   background: "white", 
                   color: "var(--purple)",
                   border: "2px solid var(--purple)", 
-                  borderRadius: 12, 
+                  borderRadius: 4, 
                   padding: "14px",
                   fontFamily: "var(--font-head)", 
                   fontWeight: 700, 
-                  fontSize: 14,
+                  fontSize: 13,
                   cursor: "pointer", 
                   transition: "all 0.2s",
                   display: "flex", 
                   alignItems: "center", 
                   justifyContent: "center", 
                   gap: 8,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em"
                 }}
                 onMouseEnter={e => { 
                   e.currentTarget.style.background = "var(--purple)"; 
@@ -855,18 +863,20 @@ const ProductModal = ({ product, onClose, onQuote }) => {
                   background: "var(--orange)", 
                   color: "white",
                   border: "none", 
-                  borderRadius: 12, 
+                  borderRadius: 4, 
                   padding: "14px",
                   fontFamily: "var(--font-head)", 
                   fontWeight: 700, 
-                  fontSize: 14,
+                  fontSize: 13,
                   cursor: "pointer", 
                   transition: "all 0.2s",
-                  boxShadow: "0 4px 16px oklch(68% 0.19 45 / 0.35)",
+                  boxShadow: "0 4px 12px oklch(68% 0.19 45 / 0.25)",
                   display: "flex", 
                   alignItems: "center", 
                   justifyContent: "center", 
                   gap: 8,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em"
                 }}
                 onMouseEnter={e => { 
                   e.currentTarget.style.background = "var(--orange-hover)"; 
@@ -1339,14 +1349,16 @@ const CtaSection = ({ onQuote }) => (
           window.open(`https://wa.me/5579999990966?text=${encodeURIComponent(msg)}`, "_blank");
         }} style={{
           background: "var(--orange)", color: "white", border: "none",
-          borderRadius: 99, padding: "16px 36px",
-          fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 16,
+          borderRadius: 4, padding: "16px 36px",
+          fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 15,
           cursor: "pointer", transition: "all 0.25s",
-          boxShadow: "0 4px 24px oklch(68% 0.19 45 / 0.45)",
+          boxShadow: "0 4px 16px oklch(68% 0.19 45 / 0.30)",
           display: "flex", alignItems: "center", gap: 10,
+          textTransform: "uppercase",
+          letterSpacing: "0.08em"
         }}
-        onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px) scale(1.02)"; e.currentTarget.style.boxShadow = "0 8px 32px oklch(68% 0.19 45 / 0.55)"; }}
-        onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 4px 24px oklch(68% 0.19 45 / 0.45)"; }}
+        onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px) scale(1.02)"; e.currentTarget.style.boxShadow = "0 8px 24px oklch(68% 0.19 45 / 0.40)"; }}
+        onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 4px 16px oklch(68% 0.19 45 / 0.30)"; }}
         >
           <Icon name="send" size={17} color="#fff" /> Solicitar orçamento grátis
         </button>
@@ -1620,18 +1632,21 @@ const QuoteModal = ({ onClose }) => {
               {step > 1 && (
                 <button onClick={() => setStep(step - 1)} style={{
                   flex: 1, background: "var(--gray-100)", color: "var(--gray-600)", border: "none",
-                  borderRadius: 99, padding: "13px",
-                  fontFamily: "var(--font-head)", fontWeight: 600, fontSize: 15, cursor: "pointer",
+                  borderRadius: 4, padding: "13px",
+                  fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14, cursor: "pointer",
+                  textTransform: "uppercase", letterSpacing: "0.06em"
                 }}>{/* eslint-disable-next-line react/no-unescaped-entities */}← Voltar</button>
               )}
               <button
                 onClick={() => step < 3 ? handleNext() : handleSubmit()}
                 style={{
                   flex: 2, background: "var(--orange)", color: "white", border: "none",
-                  borderRadius: 99, padding: "13px",
-                  fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 15, cursor: "pointer",
-                  boxShadow: "0 4px 16px oklch(68% 0.19 45 / 0.35)",
+                  borderRadius: 4, padding: "13px",
+                  fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14, cursor: "pointer",
+                  boxShadow: "0 4px 12px oklch(68% 0.19 45 / 0.25)",
                   transition: "all 0.2s",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em"
                 }}
                 onMouseEnter={e => { e.currentTarget.style.background = "var(--orange-hover)"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "var(--orange)"; }}
@@ -1654,7 +1669,7 @@ const InputField = ({ label, placeholder, value, onChange }) => (
       onChange={e => onChange(e.target.value)}
       placeholder={placeholder}
       style={{
-        width: "100%", padding: "11px 14px", borderRadius: 10,
+        width: "100%", padding: "11px 14px", borderRadius: 4,
         border: "1.5px solid var(--gray-200)", fontSize: 14,
         fontFamily: "var(--font-body)", outline: "none", color: "var(--text)",
         background: "var(--gray-50)", transition: "border 0.15s",
