@@ -658,7 +658,7 @@ const ProductModal = ({ product, onClose, onQuote }) => {
         <button onClick={onClose} style={{
           position: "absolute", top: 16, right: 16, zIndex: 10,
           background: "var(--gray-100)", border: "none", borderRadius: "50%",
-          width: 36, height: 36, display: "flex", alignItems: "center", justifyContent: "center",
+          width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center",
           cursor: "pointer",
         }}>
           <Icon name="x" size={16} color="var(--gray-600)" />
@@ -970,11 +970,7 @@ function MaisVendidosSection({ products, onQuote, onSelectProduct }) {
           </p>
         </div>
 
-        <div className="products-grid" style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: 24,
-        }}>
+        <div className="products-grid">
           {maisVendidos.map(p => (
             <ProductCard
               key={p.id}
@@ -1135,13 +1131,7 @@ const ProductsSection = ({ onQuote }) => {
             </p>
           </div>
         ) : (
-          <div 
-            className="products-grid"
-            style={{ 
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)", 
-              gap: 24 
-            }}>
+          <div className="products-grid">
             {filtered.map(p => 
               <ProductCard 
                 key={p.id} 
@@ -1151,19 +1141,6 @@ const ProductsSection = ({ onQuote }) => {
             )}
           </div>
         )}
-        <style>{`
-          @media (max-width: 1024px) {
-            .products-grid {
-              grid-template-columns: repeat(2, 1fr) !important;
-            }
-          }
-          @media (max-width: 640px) {
-            .products-grid {
-              grid-template-columns: 1fr !important;
-            }
-          }
-        `}</style>
-
       </div>
 
       {selectedProduct && (
@@ -1531,7 +1508,7 @@ const QuoteModal = ({ onClose }) => {
         <button onClick={onClose} style={{
           position: "absolute", top: 16, right: 16,
           background: "var(--gray-100)", border: "none", borderRadius: "50%",
-          width: 32, height: 32, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer",
+          width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer",
         }}>
           <Icon name="x" size={14} color="var(--gray-600)" />
         </button>
