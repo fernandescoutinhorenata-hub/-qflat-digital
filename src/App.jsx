@@ -7,7 +7,7 @@ import {
 // Visual system: Space Grotesk + Inter, Purple/White/Orange palette
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "theme": "sistema",
+  "theme": "claro",
   "primaryColor": "#7c3aed",
   "accentColor": "#f97316",
   "darkBg": "#1a0a2e",
